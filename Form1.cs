@@ -31,28 +31,34 @@ namespace PetCareProApp
 
         private void ActiveerMenuKnop(object sender)
         {
-            // Reset alle knoppen naar de standaard 'niet-actief' stijl
+            // 1. Controleer of de 'sender' wel echt een button is
+            if (!(sender is Button actieveBtn)) return;
+
+            // 2. Reset ALLE knoppen in het navigatiepaneel
             foreach (Control c in pnlNavigation.Controls)
             {
                 if (c is Button btn)
                 {
-                    btn.BackColor = Color.LightGray; 
-                    btn.ForeColor = Color.Black;   
+                    btn.BackColor = Color.LightGray;
+                    btn.ForeColor = Color.Black;
                 }
             }
 
-            // 2. Stijl de geklikte knop
-            Button actieveBtn = (Button)sender;
-            actieveBtn.BackColor = Color.White;  
-            actieveBtn.ForeColor = Color.RoyalBlue;  
+            // 3. Stijl de geklikte knop
+            actieveBtn.BackColor = Color.White;
+            actieveBtn.ForeColor = Color.RoyalBlue;
+
+            // 4. Verplaats en toon de indicator
+            pnlSelectionIndicator.Height = actieveBtn.Height; // Zorg dat de hoogte matcht
+            pnlSelectionIndicator.Top = actieveBtn.Top;       // Zet hem op dezelfde hoogte
+            pnlSelectionIndicator.Visible = true;
+            pnlSelectionIndicator.BringToFront();             // Zorg dat hij bovenop ligt
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             ActiveerMenuKnop(sender);
             ToonScherm(new ucDashboard());
-            //pnlSelectionIndicator.Top = actieveBtn.Top;
-            pnlSelectionIndicator.Visible = true;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -68,32 +74,24 @@ namespace PetCareProApp
         {
             ActiveerMenuKnop(sender);
             ToonScherm(new ucDieren());
-            //pnlSelectionIndicator.Top = actieveBtn.Top;
-            pnlSelectionIndicator.Visible = true;
         }
 
         private void btnEigenaren_Click(object sender, EventArgs e)
         {
             ActiveerMenuKnop(sender);
             ToonScherm(new ucEigenaren());
-            //pnlSelectionIndicator.Top = actieveBtn.Top;
-            pnlSelectionIndicator.Visible = true;
         }
 
         private void btnKalender_Click(object sender, EventArgs e)
         {
             ActiveerMenuKnop(sender);
             ToonScherm(new ucKalender());
-            //pnlSelectionIndicator.Top = actieveBtn.Top;
-            pnlSelectionIndicator.Visible = true;
         }
 
         private void btnInstellingen_Click(object sender, EventArgs e)
         {
             ActiveerMenuKnop(sender);
             ToonScherm(new ucInstellingen());
-            //pnlSelectionIndicator.Top = actieveBtn.Top;
-            pnlSelectionIndicator.Visible = true;
         }
     }
 }
