@@ -16,5 +16,46 @@ namespace PetCareProApp
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ActiveerMenuKnop(object sender)
+        {
+            // Reset alle knoppen naar de standaard 'niet-actief' stijl
+            foreach (Control c in pnlNavigation.Controls)
+            {
+                if (c is Button btn)
+                {
+                    btn.BackColor = Color.LightGray; 
+                    btn.ForeColor = Color.Black;   
+                }
+            }
+
+            // 2. Stijl de geklikte knop
+            Button actieveBtn = (Button)sender;
+            actieveBtn.BackColor = Color.White;  
+            actieveBtn.ForeColor = Color.RoyalBlue;  
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            ActiveerMenuKnop(sender);
+            //ToonScherm(new UCDashboard());
+            //pnlSelectionIndicator.Top = actieveBtn.Top;
+            pnlSelectionIndicator.Visible = true;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // 1. Zorg dat het Dashboard scherm direct getoond wordt
+            //ToonScherm(new UCDashboard());
+
+            // 2. Maak de Dashboard knop visueel actief
+            // We roepen de methode aan die we eerder hebben gemaakt
+            ActiveerMenuKnop(btnDashboard);
+        }
     }
 }
