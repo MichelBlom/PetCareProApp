@@ -60,6 +60,30 @@
     <Compile Include="ucDashboard.Designer.cs">
       <DependentUpon>ucDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucDieren.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDieren.Designer.cs">
+      <DependentUpon>ucDieren.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucEigenaren.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucEigenaren.Designer.cs">
+      <DependentUpon>ucEigenaren.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucInstellingen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucInstellingen.Designer.cs">
+      <DependentUpon>ucInstellingen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucKalender.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucKalender.Designer.cs">
+      <DependentUpon>ucKalender.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +99,18 @@
     </Compile>
     <EmbeddedResource Include="ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDieren.resx">
+      <DependentUpon>ucDieren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucEigenaren.resx">
+      <DependentUpon>ucEigenaren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucInstellingen.resx">
+      <DependentUpon>ucInstellingen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucKalender.resx">
+      <DependentUpon>ucKalender.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
