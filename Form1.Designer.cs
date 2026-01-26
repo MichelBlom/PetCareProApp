@@ -40,6 +40,7 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.lblVersieMain = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -90,6 +91,7 @@
             // pnlNavigation
             // 
             this.pnlNavigation.BackColor = System.Drawing.Color.LightGray;
+            this.pnlNavigation.Controls.Add(this.lblVersieMain);
             this.pnlNavigation.Controls.Add(this.pnlSelectionIndicator);
             this.pnlNavigation.Controls.Add(this.btnInstellingen);
             this.pnlNavigation.Controls.Add(this.btnKalender);
@@ -236,6 +238,16 @@
             this.pnlMain.Size = new System.Drawing.Size(800, 610);
             this.pnlMain.TabIndex = 2;
             // 
+            // lblVersieMain
+            // 
+            this.lblVersieMain.AutoSize = true;
+            this.lblVersieMain.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersieMain.Location = new System.Drawing.Point(61, 582);
+            this.lblVersieMain.Name = "lblVersieMain";
+            this.lblVersieMain.Size = new System.Drawing.Size(69, 17);
+            this.lblVersieMain.TabIndex = 2;
+            this.lblVersieMain.Text = "Versie 1.03";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -257,6 +269,7 @@
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlNavigation.ResumeLayout(false);
+            this.pnlNavigation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -276,6 +289,7 @@
         private System.Windows.Forms.Button btnEigenaren;
         private System.Windows.Forms.Button btnDieren;
         private System.Windows.Forms.Panel pnlSelectionIndicator;
+        private System.Windows.Forms.Label lblVersieMain;
     }
 }
 

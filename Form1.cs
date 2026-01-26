@@ -12,7 +12,7 @@ namespace PetCareProApp
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        public MainForm() // Constructor
         {
             InitializeComponent();
         }
@@ -31,10 +31,10 @@ namespace PetCareProApp
 
         private void ActiveerMenuKnop(object sender)
         {
-            // 1. Controleer of de 'sender' wel echt een button is
+            // Controleer of er een button is
             if (!(sender is Button actieveBtn)) return;
 
-            // 2. Reset ALLE knoppen in het navigatiepaneel
+            // Reset knoppen in het navigatiepaneel
             foreach (Control c in pnlNavigation.Controls)
             {
                 if (c is Button btn)
@@ -44,11 +44,11 @@ namespace PetCareProApp
                 }
             }
 
-            // 3. Stijl de geklikte knop
+            // Stijl geklikte knop
             actieveBtn.BackColor = Color.White;
             actieveBtn.ForeColor = Color.RoyalBlue;
 
-            // 4. Verplaats en toon de indicator
+            // Verplaats en toon de indicator
             pnlSelectionIndicator.Height = actieveBtn.Height; // Zorg dat de hoogte matcht
             pnlSelectionIndicator.Top = actieveBtn.Top;       // Zet hem op dezelfde hoogte
             pnlSelectionIndicator.Visible = true;
