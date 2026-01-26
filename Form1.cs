@@ -17,6 +17,13 @@ namespace PetCareProApp
             InitializeComponent();
         }
 
+        public void ToonScherm(UserControl scherm)
+        {
+            pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
+            scherm.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(scherm);
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -43,7 +50,7 @@ namespace PetCareProApp
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             ActiveerMenuKnop(sender);
-            //ToonScherm(new UCDashboard());
+            ToonScherm(new ucDashboard());
             //pnlSelectionIndicator.Top = actieveBtn.Top;
             pnlSelectionIndicator.Visible = true;
         }
@@ -51,10 +58,9 @@ namespace PetCareProApp
         private void MainForm_Load(object sender, EventArgs e)
         {
             // 1. Zorg dat het Dashboard scherm direct getoond wordt
-            //ToonScherm(new UCDashboard());
+            ToonScherm(new ucDashboard());
 
             // 2. Maak de Dashboard knop visueel actief
-            // We roepen de methode aan die we eerder hebben gemaakt
             ActiveerMenuKnop(btnDashboard);
         }
     }

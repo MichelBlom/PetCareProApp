@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblHeader = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.pnlNavigation = new System.Windows.Forms.Panel();
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnDieren = new System.Windows.Forms.Button();
-            this.btnEigenaren = new System.Windows.Forms.Button();
-            this.btnKalender = new System.Windows.Forms.Button();
-            this.btnInstellingen = new System.Windows.Forms.Button();
             this.pnlSelectionIndicator = new System.Windows.Forms.Panel();
+            this.btnInstellingen = new System.Windows.Forms.Button();
+            this.btnKalender = new System.Windows.Forms.Button();
+            this.btnEigenaren = new System.Windows.Forms.Button();
+            this.btnDieren = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,17 +57,6 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1000, 30);
             this.pnlHeader.TabIndex = 0;
-            // 
-            // lblHeader
-            // 
-            this.lblHeader.AutoSize = true;
-            this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.ForeColor = System.Drawing.Color.White;
-            this.lblHeader.Location = new System.Drawing.Point(3, 4);
-            this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(98, 23);
-            this.lblHeader.TabIndex = 0;
-            this.lblHeader.Text = "PetCarePro";
             // 
             // btnClose
             // 
@@ -87,6 +76,17 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblHeader
+            // 
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.ForeColor = System.Drawing.Color.White;
+            this.lblHeader.Location = new System.Drawing.Point(3, 4);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(98, 23);
+            this.lblHeader.TabIndex = 0;
+            this.lblHeader.Text = "PetCarePro";
+            // 
             // pnlNavigation
             // 
             this.pnlNavigation.BackColor = System.Drawing.Color.LightGray;
@@ -105,23 +105,93 @@
             this.pnlNavigation.Size = new System.Drawing.Size(200, 610);
             this.pnlNavigation.TabIndex = 1;
             // 
-            // pnlMain
+            // pnlSelectionIndicator
             // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(200, 30);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(800, 610);
-            this.pnlMain.TabIndex = 2;
+            this.pnlSelectionIndicator.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlSelectionIndicator.Location = new System.Drawing.Point(0, 163);
+            this.pnlSelectionIndicator.Name = "pnlSelectionIndicator";
+            this.pnlSelectionIndicator.Size = new System.Drawing.Size(8, 40);
+            this.pnlSelectionIndicator.TabIndex = 0;
             // 
-            // pictureBox1
+            // btnInstellingen
             // 
-            this.pictureBox1.Image = global::PetCareProApp.Properties.Resources.petcarepro4;
-            this.pictureBox1.Location = new System.Drawing.Point(-49, -18);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 209);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.btnInstellingen.BackColor = System.Drawing.Color.LightGray;
+            this.btnInstellingen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInstellingen.FlatAppearance.BorderSize = 0;
+            this.btnInstellingen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInstellingen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInstellingen.Image = global::PetCareProApp.Properties.Resources.customize;
+            this.btnInstellingen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInstellingen.Location = new System.Drawing.Point(0, 347);
+            this.btnInstellingen.Margin = new System.Windows.Forms.Padding(0);
+            this.btnInstellingen.Name = "btnInstellingen";
+            this.btnInstellingen.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnInstellingen.Size = new System.Drawing.Size(200, 40);
+            this.btnInstellingen.TabIndex = 1;
+            this.btnInstellingen.Text = "  INSTELLINGEN";
+            this.btnInstellingen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInstellingen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInstellingen.UseVisualStyleBackColor = false;
+            // 
+            // btnKalender
+            // 
+            this.btnKalender.BackColor = System.Drawing.Color.LightGray;
+            this.btnKalender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKalender.FlatAppearance.BorderSize = 0;
+            this.btnKalender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKalender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKalender.Image = global::PetCareProApp.Properties.Resources.calendar;
+            this.btnKalender.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKalender.Location = new System.Drawing.Point(0, 301);
+            this.btnKalender.Margin = new System.Windows.Forms.Padding(0);
+            this.btnKalender.Name = "btnKalender";
+            this.btnKalender.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnKalender.Size = new System.Drawing.Size(200, 40);
+            this.btnKalender.TabIndex = 1;
+            this.btnKalender.Text = "  KALENDER";
+            this.btnKalender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKalender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnKalender.UseVisualStyleBackColor = false;
+            // 
+            // btnEigenaren
+            // 
+            this.btnEigenaren.BackColor = System.Drawing.Color.LightGray;
+            this.btnEigenaren.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEigenaren.FlatAppearance.BorderSize = 0;
+            this.btnEigenaren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEigenaren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEigenaren.Image = global::PetCareProApp.Properties.Resources.employees_woman_man;
+            this.btnEigenaren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEigenaren.Location = new System.Drawing.Point(0, 255);
+            this.btnEigenaren.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEigenaren.Name = "btnEigenaren";
+            this.btnEigenaren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnEigenaren.Size = new System.Drawing.Size(200, 40);
+            this.btnEigenaren.TabIndex = 1;
+            this.btnEigenaren.Text = "  EIGENAREN";
+            this.btnEigenaren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEigenaren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEigenaren.UseVisualStyleBackColor = false;
+            // 
+            // btnDieren
+            // 
+            this.btnDieren.BackColor = System.Drawing.Color.LightGray;
+            this.btnDieren.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDieren.FlatAppearance.BorderSize = 0;
+            this.btnDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDieren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDieren.Image = global::PetCareProApp.Properties.Resources.paw;
+            this.btnDieren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDieren.Location = new System.Drawing.Point(0, 209);
+            this.btnDieren.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDieren.Name = "btnDieren";
+            this.btnDieren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnDieren.Size = new System.Drawing.Size(200, 40);
+            this.btnDieren.TabIndex = 1;
+            this.btnDieren.Text = "  DIEREN";
+            this.btnDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDieren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDieren.UseVisualStyleBackColor = false;
             // 
             // btnDashboard
             // 
@@ -144,93 +214,23 @@
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // btnDieren
+            // pictureBox1
             // 
-            this.btnDieren.BackColor = System.Drawing.Color.LightGray;
-            this.btnDieren.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDieren.FlatAppearance.BorderSize = 0;
-            this.btnDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDieren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDieren.Image = global::PetCareProApp.Properties.Resources.paw;
-            this.btnDieren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDieren.Location = new System.Drawing.Point(0, 209);
-            this.btnDieren.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDieren.Name = "btnDieren";
-            this.btnDieren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnDieren.Size = new System.Drawing.Size(200, 40);
-            this.btnDieren.TabIndex = 1;
-            this.btnDieren.Text = "  DIEREN";
-            this.btnDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDieren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDieren.UseVisualStyleBackColor = false;
+            this.pictureBox1.Image = global::PetCareProApp.Properties.Resources.petcarepro4;
+            this.pictureBox1.Location = new System.Drawing.Point(-49, -18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(296, 209);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
-            // btnEigenaren
+            // pnlMain
             // 
-            this.btnEigenaren.BackColor = System.Drawing.Color.LightGray;
-            this.btnEigenaren.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEigenaren.FlatAppearance.BorderSize = 0;
-            this.btnEigenaren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEigenaren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEigenaren.Image = global::PetCareProApp.Properties.Resources.employees_woman_man;
-            this.btnEigenaren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEigenaren.Location = new System.Drawing.Point(0, 255);
-            this.btnEigenaren.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEigenaren.Name = "btnEigenaren";
-            this.btnEigenaren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnEigenaren.Size = new System.Drawing.Size(200, 40);
-            this.btnEigenaren.TabIndex = 1;
-            this.btnEigenaren.Text = "  EIGENAREN";
-            this.btnEigenaren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEigenaren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEigenaren.UseVisualStyleBackColor = false;
-            // 
-            // btnKalender
-            // 
-            this.btnKalender.BackColor = System.Drawing.Color.LightGray;
-            this.btnKalender.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKalender.FlatAppearance.BorderSize = 0;
-            this.btnKalender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKalender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKalender.Image = global::PetCareProApp.Properties.Resources.calendar;
-            this.btnKalender.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKalender.Location = new System.Drawing.Point(0, 301);
-            this.btnKalender.Margin = new System.Windows.Forms.Padding(0);
-            this.btnKalender.Name = "btnKalender";
-            this.btnKalender.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnKalender.Size = new System.Drawing.Size(200, 40);
-            this.btnKalender.TabIndex = 1;
-            this.btnKalender.Text = "  KALENDER";
-            this.btnKalender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKalender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnKalender.UseVisualStyleBackColor = false;
-            // 
-            // btnInstellingen
-            // 
-            this.btnInstellingen.BackColor = System.Drawing.Color.LightGray;
-            this.btnInstellingen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInstellingen.FlatAppearance.BorderSize = 0;
-            this.btnInstellingen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstellingen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstellingen.Image = global::PetCareProApp.Properties.Resources.customize;
-            this.btnInstellingen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInstellingen.Location = new System.Drawing.Point(0, 347);
-            this.btnInstellingen.Margin = new System.Windows.Forms.Padding(0);
-            this.btnInstellingen.Name = "btnInstellingen";
-            this.btnInstellingen.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnInstellingen.Size = new System.Drawing.Size(200, 40);
-            this.btnInstellingen.TabIndex = 1;
-            this.btnInstellingen.Text = "  INSTELLINGEN";
-            this.btnInstellingen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInstellingen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInstellingen.UseVisualStyleBackColor = false;
-            // 
-            // pnlSelectionIndicator
-            // 
-            this.pnlSelectionIndicator.BackColor = System.Drawing.Color.RoyalBlue;
-            this.pnlSelectionIndicator.Location = new System.Drawing.Point(0, 163);
-            this.pnlSelectionIndicator.Name = "pnlSelectionIndicator";
-            this.pnlSelectionIndicator.Size = new System.Drawing.Size(8, 40);
-            this.pnlSelectionIndicator.TabIndex = 0;
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(200, 30);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(800, 610);
+            this.pnlMain.TabIndex = 2;
             // 
             // MainForm
             // 
