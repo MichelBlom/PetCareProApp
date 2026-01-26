@@ -61,6 +61,7 @@
             this.pnlContentDieren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentDieren.Location = new System.Drawing.Point(0, 40);
             this.pnlContentDieren.Name = "pnlContentDieren";
+            this.pnlContentDieren.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.pnlContentDieren.Size = new System.Drawing.Size(800, 570);
             this.pnlContentDieren.TabIndex = 1;
             // 

@@ -62,6 +62,7 @@
             this.pnlContentDashboard.MaximumSize = new System.Drawing.Size(800, 570);
             this.pnlContentDashboard.MinimumSize = new System.Drawing.Size(800, 570);
             this.pnlContentDashboard.Name = "pnlContentDashboard";
+            this.pnlContentDashboard.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.pnlContentDashboard.Size = new System.Drawing.Size(800, 570);
             this.pnlContentDashboard.TabIndex = 1;
             // 

@@ -60,6 +60,7 @@
             this.pnlContentKalender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentKalender.Location = new System.Drawing.Point(0, 40);
             this.pnlContentKalender.Name = "pnlContentKalender";
+            this.pnlContentKalender.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.pnlContentKalender.Size = new System.Drawing.Size(800, 570);
             this.pnlContentKalender.TabIndex = 1;
             // 

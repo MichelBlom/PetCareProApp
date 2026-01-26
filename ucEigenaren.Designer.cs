@@ -58,6 +58,7 @@
             this.pnlContentigenaren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentigenaren.Location = new System.Drawing.Point(0, 40);
             this.pnlContentigenaren.Name = "pnlContentigenaren";
+            this.pnlContentigenaren.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.pnlContentigenaren.Size = new System.Drawing.Size(800, 570);
             this.pnlContentigenaren.TabIndex = 1;
             // 

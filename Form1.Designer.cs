@@ -132,6 +132,7 @@
             this.btnInstellingen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInstellingen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInstellingen.UseVisualStyleBackColor = false;
+            this.btnInstellingen.Click += new System.EventHandler(this.btnInstellingen_Click);
             // 
             // btnKalender
             // 
@@ -152,6 +153,7 @@
             this.btnKalender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKalender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnKalender.UseVisualStyleBackColor = false;
+            this.btnKalender.Click += new System.EventHandler(this.btnKalender_Click);
             // 
             // btnEigenaren
             // 
@@ -172,6 +174,7 @@
             this.btnEigenaren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEigenaren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEigenaren.UseVisualStyleBackColor = false;
+            this.btnEigenaren.Click += new System.EventHandler(this.btnEigenaren_Click);
             // 
             // btnDieren
             // 
@@ -192,6 +195,7 @@
             this.btnDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDieren.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDieren.UseVisualStyleBackColor = false;
+            this.btnDieren.Click += new System.EventHandler(this.btnDieren_Click);
             // 
             // btnDashboard
             // 

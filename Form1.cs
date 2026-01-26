@@ -63,5 +63,37 @@ namespace PetCareProApp
             // 2. Maak de Dashboard knop visueel actief
             ActiveerMenuKnop(btnDashboard);
         }
+
+        private void btnDieren_Click(object sender, EventArgs e)
+        {
+            ActiveerMenuKnop(sender);
+            ToonScherm(new ucDieren());
+            //pnlSelectionIndicator.Top = actieveBtn.Top;
+            pnlSelectionIndicator.Visible = true;
+        }
+
+        private void btnEigenaren_Click(object sender, EventArgs e)
+        {
+            ActiveerMenuKnop(sender);
+            ToonScherm(new ucEigenaren());
+            //pnlSelectionIndicator.Top = actieveBtn.Top;
+            pnlSelectionIndicator.Visible = true;
+        }
+
+        private void btnKalender_Click(object sender, EventArgs e)
+        {
+            ActiveerMenuKnop(sender);
+            ToonScherm(new ucKalender());
+            //pnlSelectionIndicator.Top = actieveBtn.Top;
+            pnlSelectionIndicator.Visible = true;
+        }
+
+        private void btnInstellingen_Click(object sender, EventArgs e)
+        {
+            ActiveerMenuKnop(sender);
+            ToonScherm(new ucInstellingen());
+            //pnlSelectionIndicator.Top = actieveBtn.Top;
+            pnlSelectionIndicator.Visible = true;
+        }
     }
 }

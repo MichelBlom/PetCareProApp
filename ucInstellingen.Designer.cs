@@ -58,6 +58,7 @@
             this.pnlContentInstellingen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentInstellingen.Location = new System.Drawing.Point(0, 40);
             this.pnlContentInstellingen.Name = "pnlContentInstellingen";
+            this.pnlContentInstellingen.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.pnlContentInstellingen.Size = new System.Drawing.Size(800, 570);
             this.pnlContentInstellingen.TabIndex = 1;
             // 
