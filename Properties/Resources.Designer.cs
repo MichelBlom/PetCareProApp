@@ -113,6 +113,16 @@ namespace PetCareProApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap paw_print {
+            get {
+                object obj = ResourceManager.GetObject("paw-print", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap petcarepro4 {
             get {
                 object obj = ResourceManager.GetObject("petcarepro4", resourceCulture);

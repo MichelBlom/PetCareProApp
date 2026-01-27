@@ -12,6 +12,7 @@ namespace PetCareProApp
 {
     public partial class ucDieren : UserControl
     {
+        
         public ucDieren()
         {
             InitializeComponent();
@@ -20,6 +21,10 @@ namespace PetCareProApp
         private void btnToevoegenDieren_Click(object sender, EventArgs e)
         {
             //ToonScherm(new ucDierenToevoegen());
+            if (this.ParentForm is MainForm mainForm)
+            {
+                mainForm.ToonScherm(new ucDierenToevoegen());
+            }
         }
     }
 }

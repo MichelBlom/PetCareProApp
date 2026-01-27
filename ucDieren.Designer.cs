@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeaderDieren = new System.Windows.Forms.Panel();
             this.lblHeaderDieren = new System.Windows.Forms.Label();
             this.pnlFooterDieren = new System.Windows.Forms.Panel();
@@ -66,10 +66,10 @@
             // lblHeaderDieren
             // 
             this.lblHeaderDieren.AutoSize = true;
-            this.lblHeaderDieren.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderDieren.Location = new System.Drawing.Point(3, 11);
+            this.lblHeaderDieren.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeaderDieren.Location = new System.Drawing.Point(3, 10);
             this.lblHeaderDieren.Name = "lblHeaderDieren";
-            this.lblHeaderDieren.Size = new System.Drawing.Size(169, 28);
+            this.lblHeaderDieren.Size = new System.Drawing.Size(190, 31);
             this.lblHeaderDieren.TabIndex = 1;
             this.lblHeaderDieren.Text = "Overzicht dieren";
             // 
@@ -105,14 +105,14 @@
             this.ColumnRas,
             this.ColumnEigenaar,
             this.ColumnChipnr});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDieren.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDieren.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDieren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDieren.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvDieren.Location = new System.Drawing.Point(10, 60);
@@ -176,37 +176,38 @@
             // 
             // btnZoekenDieren
             // 
+            this.btnZoekenDieren.BackColor = System.Drawing.Color.Gainsboro;
             this.btnZoekenDieren.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnZoekenDieren.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnZoekenDieren.FlatAppearance.BorderSize = 2;
+            this.btnZoekenDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnZoekenDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoekenDieren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZoekenDieren.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnZoekenDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZoekenDieren.ForeColor = System.Drawing.Color.Black;
             this.btnZoekenDieren.Location = new System.Drawing.Point(665, 10);
             this.btnZoekenDieren.Name = "btnZoekenDieren";
             this.btnZoekenDieren.Size = new System.Drawing.Size(100, 30);
             this.btnZoekenDieren.TabIndex = 0;
             this.btnZoekenDieren.Text = "Zoeken";
-            this.btnZoekenDieren.UseVisualStyleBackColor = true;
+            this.btnZoekenDieren.UseVisualStyleBackColor = false;
             // 
             // txbZoekenDieren
             // 
             this.txbZoekenDieren.BackColor = System.Drawing.Color.White;
+            this.txbZoekenDieren.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbZoekenDieren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbZoekenDieren.Location = new System.Drawing.Point(459, 12);
+            this.txbZoekenDieren.Location = new System.Drawing.Point(459, 13);
             this.txbZoekenDieren.Name = "txbZoekenDieren";
             this.txbZoekenDieren.Size = new System.Drawing.Size(200, 27);
             this.txbZoekenDieren.TabIndex = 1;
             // 
             // btnVerwijderDieren
             // 
-            this.btnVerwijderDieren.BackColor = System.Drawing.Color.Red;
+            this.btnVerwijderDieren.BackColor = System.Drawing.Color.Gainsboro;
             this.btnVerwijderDieren.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVerwijderDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnVerwijderDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerwijderDieren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerwijderDieren.ForeColor = System.Drawing.Color.White;
-            this.btnVerwijderDieren.Location = new System.Drawing.Point(456, 15);
+            this.btnVerwijderDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerwijderDieren.ForeColor = System.Drawing.Color.Black;
+            this.btnVerwijderDieren.Location = new System.Drawing.Point(655, 15);
             this.btnVerwijderDieren.Name = "btnVerwijderDieren";
             this.btnVerwijderDieren.Size = new System.Drawing.Size(120, 30);
             this.btnVerwijderDieren.TabIndex = 1;
@@ -215,13 +216,13 @@
             // 
             // btnBewerkenDieren
             // 
-            this.btnBewerkenDieren.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBewerkenDieren.BackColor = System.Drawing.Color.Gainsboro;
             this.btnBewerkenDieren.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBewerkenDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnBewerkenDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBewerkenDieren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBewerkenDieren.ForeColor = System.Drawing.Color.White;
-            this.btnBewerkenDieren.Location = new System.Drawing.Point(330, 15);
+            this.btnBewerkenDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBewerkenDieren.ForeColor = System.Drawing.Color.Black;
+            this.btnBewerkenDieren.Location = new System.Drawing.Point(529, 15);
             this.btnBewerkenDieren.Name = "btnBewerkenDieren";
             this.btnBewerkenDieren.Size = new System.Drawing.Size(120, 30);
             this.btnBewerkenDieren.TabIndex = 2;
@@ -230,13 +231,13 @@
             // 
             // btnToevoegenDieren
             // 
-            this.btnToevoegenDieren.BackColor = System.Drawing.Color.Green;
+            this.btnToevoegenDieren.BackColor = System.Drawing.Color.Gainsboro;
             this.btnToevoegenDieren.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToevoegenDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnToevoegenDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToevoegenDieren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToevoegenDieren.ForeColor = System.Drawing.Color.White;
-            this.btnToevoegenDieren.Location = new System.Drawing.Point(204, 15);
+            this.btnToevoegenDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToevoegenDieren.ForeColor = System.Drawing.Color.Black;
+            this.btnToevoegenDieren.Location = new System.Drawing.Point(403, 15);
             this.btnToevoegenDieren.Name = "btnToevoegenDieren";
             this.btnToevoegenDieren.Size = new System.Drawing.Size(120, 30);
             this.btnToevoegenDieren.TabIndex = 3;

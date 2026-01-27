@@ -15,6 +15,7 @@ namespace PetCareProApp
         public MainForm() // Constructor
         {
             InitializeComponent();
+            
         }
 
         public void ToonScherm(UserControl scherm)
