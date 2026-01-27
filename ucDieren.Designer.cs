@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeaderDieren = new System.Windows.Forms.Panel();
             this.lblHeaderDieren = new System.Windows.Forms.Label();
             this.pnlFooterDieren = new System.Windows.Forms.Panel();
@@ -45,6 +45,7 @@
             this.btnVerwijderDieren = new System.Windows.Forms.Button();
             this.btnBewerkenDieren = new System.Windows.Forms.Button();
             this.btnToevoegenDieren = new System.Windows.Forms.Button();
+            this.ColumnVerblijf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlHeaderDieren.SuspendLayout();
             this.pnlFooterDieren.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDieren)).BeginInit();
@@ -92,7 +93,7 @@
             this.dgvDieren.AllowUserToDeleteRows = false;
             this.dgvDieren.AllowUserToResizeRows = false;
             this.dgvDieren.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDieren.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dgvDieren.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvDieren.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDieren.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDieren.ColumnHeadersHeight = 29;
@@ -104,15 +105,16 @@
             this.ColumnGeslacht,
             this.ColumnRas,
             this.ColumnEigenaar,
-            this.ColumnChipnr});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDieren.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnChipnr,
+            this.ColumnVerblijf});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDieren.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDieren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDieren.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvDieren.Location = new System.Drawing.Point(10, 60);
@@ -207,7 +209,7 @@
             this.btnVerwijderDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerwijderDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerwijderDieren.ForeColor = System.Drawing.Color.Black;
-            this.btnVerwijderDieren.Location = new System.Drawing.Point(655, 15);
+            this.btnVerwijderDieren.Location = new System.Drawing.Point(645, 15);
             this.btnVerwijderDieren.Name = "btnVerwijderDieren";
             this.btnVerwijderDieren.Size = new System.Drawing.Size(120, 30);
             this.btnVerwijderDieren.TabIndex = 1;
@@ -222,7 +224,7 @@
             this.btnBewerkenDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBewerkenDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBewerkenDieren.ForeColor = System.Drawing.Color.Black;
-            this.btnBewerkenDieren.Location = new System.Drawing.Point(529, 15);
+            this.btnBewerkenDieren.Location = new System.Drawing.Point(519, 15);
             this.btnBewerkenDieren.Name = "btnBewerkenDieren";
             this.btnBewerkenDieren.Size = new System.Drawing.Size(120, 30);
             this.btnBewerkenDieren.TabIndex = 2;
@@ -237,13 +239,20 @@
             this.btnToevoegenDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToevoegenDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToevoegenDieren.ForeColor = System.Drawing.Color.Black;
-            this.btnToevoegenDieren.Location = new System.Drawing.Point(403, 15);
+            this.btnToevoegenDieren.Location = new System.Drawing.Point(393, 15);
             this.btnToevoegenDieren.Name = "btnToevoegenDieren";
             this.btnToevoegenDieren.Size = new System.Drawing.Size(120, 30);
             this.btnToevoegenDieren.TabIndex = 3;
             this.btnToevoegenDieren.Text = "Toevoegen";
             this.btnToevoegenDieren.UseVisualStyleBackColor = false;
             this.btnToevoegenDieren.Click += new System.EventHandler(this.btnToevoegenDieren_Click);
+            // 
+            // ColumnVerblijf
+            // 
+            this.ColumnVerblijf.HeaderText = "Verblijf";
+            this.ColumnVerblijf.MinimumWidth = 6;
+            this.ColumnVerblijf.Name = "ColumnVerblijf";
+            this.ColumnVerblijf.ReadOnly = true;
             // 
             // ucDieren
             // 
@@ -286,5 +295,6 @@
         private System.Windows.Forms.Button btnVerwijderDieren;
         private System.Windows.Forms.Button btnToevoegenDieren;
         private System.Windows.Forms.Button btnBewerkenDieren;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVerblijf;
     }
 }

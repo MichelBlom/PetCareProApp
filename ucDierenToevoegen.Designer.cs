@@ -57,6 +57,8 @@
             this.lblOpmerkingenDierToevoegen = new System.Windows.Forms.Label();
             this.txbOpmerkingenDierToevoegen = new System.Windows.Forms.TextBox();
             this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
+            this.lblVerblijfDierToevoegen = new System.Windows.Forms.Label();
+            this.cmbVerblijfDierToevoegen = new System.Windows.Forms.ComboBox();
             this.pnlHeaderDierenToevoegen.SuspendLayout();
             this.pnlFooterDierenToevoegen.SuspendLayout();
             this.pnlLeftDierenToevoegen.SuspendLayout();
@@ -107,7 +109,7 @@
             this.btnAnnulerenDierToevoegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnulerenDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnulerenDierToevoegen.ForeColor = System.Drawing.Color.Black;
-            this.btnAnnulerenDierToevoegen.Location = new System.Drawing.Point(677, 15);
+            this.btnAnnulerenDierToevoegen.Location = new System.Drawing.Point(667, 15);
             this.btnAnnulerenDierToevoegen.Name = "btnAnnulerenDierToevoegen";
             this.btnAnnulerenDierToevoegen.Size = new System.Drawing.Size(100, 30);
             this.btnAnnulerenDierToevoegen.TabIndex = 0;
@@ -123,7 +125,7 @@
             this.btnOpslaanDierToevoegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpslaanDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpslaanDierToevoegen.ForeColor = System.Drawing.Color.Black;
-            this.btnOpslaanDierToevoegen.Location = new System.Drawing.Point(571, 15);
+            this.btnOpslaanDierToevoegen.Location = new System.Drawing.Point(561, 15);
             this.btnOpslaanDierToevoegen.Name = "btnOpslaanDierToevoegen";
             this.btnOpslaanDierToevoegen.Size = new System.Drawing.Size(100, 30);
             this.btnOpslaanDierToevoegen.TabIndex = 1;
@@ -133,6 +135,7 @@
             // pnlLeftDierenToevoegen
             // 
             this.pnlLeftDierenToevoegen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlLeftDierenToevoegen.Controls.Add(this.lblVerblijfDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblEigenaarDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblChipNrDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblRasDierToevoegen);
@@ -211,7 +214,7 @@
             // lblEigenaarDierToevoegen
             // 
             this.lblEigenaarDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEigenaarDierToevoegen.Location = new System.Drawing.Point(0, 307);
+            this.lblEigenaarDierToevoegen.Location = new System.Drawing.Point(0, 347);
             this.lblEigenaarDierToevoegen.Name = "lblEigenaarDierToevoegen";
             this.lblEigenaarDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblEigenaarDierToevoegen.TabIndex = 6;
@@ -221,6 +224,7 @@
             // pnlMiddleDierToevoegen
             // 
             this.pnlMiddleDierToevoegen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlMiddleDierToevoegen.Controls.Add(this.cmbVerblijfDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.linkLabelEigenaarDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.cmbEigenaarDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.rdbVrouwDierToevoegen);
@@ -332,7 +336,7 @@
             this.cmbEigenaarDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbEigenaarDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEigenaarDierToevoegen.FormattingEnabled = true;
-            this.cmbEigenaarDierToevoegen.Location = new System.Drawing.Point(3, 316);
+            this.cmbEigenaarDierToevoegen.Location = new System.Drawing.Point(3, 356);
             this.cmbEigenaarDierToevoegen.Name = "cmbEigenaarDierToevoegen";
             this.cmbEigenaarDierToevoegen.Size = new System.Drawing.Size(150, 28);
             this.cmbEigenaarDierToevoegen.TabIndex = 9;
@@ -340,7 +344,7 @@
             // linkLabelEigenaarDierToevoegen
             // 
             this.linkLabelEigenaarDierToevoegen.AutoSize = true;
-            this.linkLabelEigenaarDierToevoegen.Location = new System.Drawing.Point(1, 347);
+            this.linkLabelEigenaarDierToevoegen.Location = new System.Drawing.Point(-2, 387);
             this.linkLabelEigenaarDierToevoegen.Name = "linkLabelEigenaarDierToevoegen";
             this.linkLabelEigenaarDierToevoegen.Size = new System.Drawing.Size(196, 20);
             this.linkLabelEigenaarDierToevoegen.TabIndex = 10;
@@ -379,7 +383,7 @@
             // 
             this.lblOpmerkingenDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOpmerkingenDierToevoegen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblOpmerkingenDierToevoegen.Location = new System.Drawing.Point(6, 227);
+            this.lblOpmerkingenDierToevoegen.Location = new System.Drawing.Point(6, 244);
             this.lblOpmerkingenDierToevoegen.Name = "lblOpmerkingenDierToevoegen";
             this.lblOpmerkingenDierToevoegen.Size = new System.Drawing.Size(150, 30);
             this.lblOpmerkingenDierToevoegen.TabIndex = 3;
@@ -391,7 +395,7 @@
             // 
             this.txbOpmerkingenDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbOpmerkingenDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbOpmerkingenDierToevoegen.Location = new System.Drawing.Point(10, 260);
+            this.txbOpmerkingenDierToevoegen.Location = new System.Drawing.Point(10, 277);
             this.txbOpmerkingenDierToevoegen.Multiline = true;
             this.txbOpmerkingenDierToevoegen.Name = "txbOpmerkingenDierToevoegen";
             this.txbOpmerkingenDierToevoegen.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -409,6 +413,26 @@
             this.pcbFotoDierToevoegen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbFotoDierToevoegen.TabIndex = 0;
             this.pcbFotoDierToevoegen.TabStop = false;
+            // 
+            // lblVerblijfDierToevoegen
+            // 
+            this.lblVerblijfDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerblijfDierToevoegen.Location = new System.Drawing.Point(0, 307);
+            this.lblVerblijfDierToevoegen.Name = "lblVerblijfDierToevoegen";
+            this.lblVerblijfDierToevoegen.Size = new System.Drawing.Size(120, 43);
+            this.lblVerblijfDierToevoegen.TabIndex = 7;
+            this.lblVerblijfDierToevoegen.Text = "Verblijf:";
+            this.lblVerblijfDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbVerblijfDierToevoegen
+            // 
+            this.cmbVerblijfDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbVerblijfDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbVerblijfDierToevoegen.FormattingEnabled = true;
+            this.cmbVerblijfDierToevoegen.Location = new System.Drawing.Point(3, 316);
+            this.cmbVerblijfDierToevoegen.Name = "cmbVerblijfDierToevoegen";
+            this.cmbVerblijfDierToevoegen.Size = new System.Drawing.Size(150, 28);
+            this.cmbVerblijfDierToevoegen.TabIndex = 11;
             // 
             // ucDierenToevoegen
             // 
@@ -473,5 +497,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblOpmerkingenDierToevoegen;
         private System.Windows.Forms.TextBox txbOpmerkingenDierToevoegen;
+        private System.Windows.Forms.Label lblVerblijfDierToevoegen;
+        private System.Windows.Forms.ComboBox cmbVerblijfDierToevoegen;
     }
 }

@@ -53,6 +53,8 @@
             this.btnBewerkenProfielDieren = new System.Windows.Forms.Button();
             this.pcbFotoProfielDieren = new System.Windows.Forms.PictureBox();
             this.lblOutputOpmerkingenProfielDieren = new System.Windows.Forms.Label();
+            this.lblVerblijfDierProfiel = new System.Windows.Forms.Label();
+            this.lblVerblijfOutputProfielDieren = new System.Windows.Forms.Label();
             this.pnlHeaderProfielDieren.SuspendLayout();
             this.pnlFooterProfielDieren.SuspendLayout();
             this.pnlLeftProfielDieren.SuspendLayout();
@@ -112,6 +114,7 @@
             // pnlLeftProfielDieren
             // 
             this.pnlLeftProfielDieren.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlLeftProfielDieren.Controls.Add(this.lblVerblijfDierProfiel);
             this.pnlLeftProfielDieren.Controls.Add(this.lblEigenaarDierProfiel);
             this.pnlLeftProfielDieren.Controls.Add(this.lblChipNrDierProfiel);
             this.pnlLeftProfielDieren.Controls.Add(this.lblRasDierProfiel);
@@ -198,6 +201,7 @@
             // pnlMiddleProfielDieren
             // 
             this.pnlMiddleProfielDieren.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlMiddleProfielDieren.Controls.Add(this.lblVerblijfOutputProfielDieren);
             this.pnlMiddleProfielDieren.Controls.Add(this.lblEigenaarOutputProfielDieren);
             this.pnlMiddleProfielDieren.Controls.Add(this.lblChipNrOutputProfielDieren);
             this.pnlMiddleProfielDieren.Controls.Add(this.lblRasOutputProfielDieren);
@@ -298,7 +302,7 @@
             // 
             this.lblOpmerkingenProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOpmerkingenProfielDieren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblOpmerkingenProfielDieren.Location = new System.Drawing.Point(3, 231);
+            this.lblOpmerkingenProfielDieren.Location = new System.Drawing.Point(3, 251);
             this.lblOpmerkingenProfielDieren.Name = "lblOpmerkingenProfielDieren";
             this.lblOpmerkingenProfielDieren.Size = new System.Drawing.Size(150, 30);
             this.lblOpmerkingenProfielDieren.TabIndex = 5;
@@ -336,10 +340,30 @@
             // 
             this.lblOutputOpmerkingenProfielDieren.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblOutputOpmerkingenProfielDieren.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblOutputOpmerkingenProfielDieren.Location = new System.Drawing.Point(7, 261);
+            this.lblOutputOpmerkingenProfielDieren.Location = new System.Drawing.Point(7, 281);
             this.lblOutputOpmerkingenProfielDieren.Name = "lblOutputOpmerkingenProfielDieren";
             this.lblOutputOpmerkingenProfielDieren.Size = new System.Drawing.Size(340, 100);
             this.lblOutputOpmerkingenProfielDieren.TabIndex = 7;
+            // 
+            // lblVerblijfDierProfiel
+            // 
+            this.lblVerblijfDierProfiel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerblijfDierProfiel.Location = new System.Drawing.Point(0, 347);
+            this.lblVerblijfDierProfiel.Name = "lblVerblijfDierProfiel";
+            this.lblVerblijfDierProfiel.Size = new System.Drawing.Size(120, 43);
+            this.lblVerblijfDierProfiel.TabIndex = 14;
+            this.lblVerblijfDierProfiel.Text = "Verblijf:";
+            this.lblVerblijfDierProfiel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblVerblijfOutputProfielDieren
+            // 
+            this.lblVerblijfOutputProfielDieren.AutoSize = true;
+            this.lblVerblijfOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerblijfOutputProfielDieren.Location = new System.Drawing.Point(3, 357);
+            this.lblVerblijfOutputProfielDieren.Name = "lblVerblijfOutputProfielDieren";
+            this.lblVerblijfOutputProfielDieren.Size = new System.Drawing.Size(0, 23);
+            this.lblVerblijfOutputProfielDieren.TabIndex = 7;
+            this.lblVerblijfOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ucProfielPaginaDieren
             // 
@@ -398,5 +422,7 @@
         private System.Windows.Forms.Button btnBewerkenProfielDieren;
         private System.Windows.Forms.Label lblOpmerkingenProfielDieren;
         private System.Windows.Forms.Label lblOutputOpmerkingenProfielDieren;
+        private System.Windows.Forms.Label lblVerblijfDierProfiel;
+        private System.Windows.Forms.Label lblVerblijfOutputProfielDieren;
     }
 }
