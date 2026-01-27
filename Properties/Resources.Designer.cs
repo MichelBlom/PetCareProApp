@@ -103,6 +103,16 @@ namespace PetCareProApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image {
+            get {
+                object obj = ResourceManager.GetObject("image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paw {
             get {
                 object obj = ResourceManager.GetObject("paw", resourceCulture);
@@ -116,6 +126,16 @@ namespace PetCareProApp.Properties {
         internal static System.Drawing.Bitmap paw_print {
             get {
                 object obj = ResourceManager.GetObject("paw-print", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap paws {
+            get {
+                object obj = ResourceManager.GetObject("paws", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

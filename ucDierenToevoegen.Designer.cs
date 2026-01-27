@@ -53,10 +53,10 @@
             this.cmbEigenaarDierToevoegen = new System.Windows.Forms.ComboBox();
             this.linkLabelEigenaarDierToevoegen = new System.Windows.Forms.LinkLabel();
             this.pnlRightDierToevoegen = new System.Windows.Forms.Panel();
-            this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblOpmerkingenDierToevoegen = new System.Windows.Forms.Label();
             this.txbOpmerkingenDierToevoegen = new System.Windows.Forms.TextBox();
+            this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
             this.pnlHeaderDierenToevoegen.SuspendLayout();
             this.pnlFooterDierenToevoegen.SuspendLayout();
             this.pnlLeftDierenToevoegen.SuspendLayout();
@@ -132,6 +132,7 @@
             // 
             // pnlLeftDierenToevoegen
             // 
+            this.pnlLeftDierenToevoegen.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblEigenaarDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblChipNrDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblRasDierToevoegen);
@@ -219,6 +220,7 @@
             // 
             // pnlMiddleDierToevoegen
             // 
+            this.pnlMiddleDierToevoegen.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlMiddleDierToevoegen.Controls.Add(this.linkLabelEigenaarDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.cmbEigenaarDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.rdbVrouwDierToevoegen);
@@ -347,6 +349,7 @@
             // 
             // pnlRightDierToevoegen
             // 
+            this.pnlRightDierToevoegen.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlRightDierToevoegen.Controls.Add(this.txbOpmerkingenDierToevoegen);
             this.pnlRightDierToevoegen.Controls.Add(this.lblOpmerkingenDierToevoegen);
             this.pnlRightDierToevoegen.Controls.Add(this.button1);
@@ -356,18 +359,6 @@
             this.pnlRightDierToevoegen.Name = "pnlRightDierToevoegen";
             this.pnlRightDierToevoegen.Size = new System.Drawing.Size(460, 480);
             this.pnlRightDierToevoegen.TabIndex = 4;
-            // 
-            // pcbFotoDierToevoegen
-            // 
-            this.pcbFotoDierToevoegen.BackgroundImage = global::PetCareProApp.Properties.Resources.paw;
-            this.pcbFotoDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbFotoDierToevoegen.Image = global::PetCareProApp.Properties.Resources.paw_print;
-            this.pcbFotoDierToevoegen.Location = new System.Drawing.Point(201, 28);
-            this.pcbFotoDierToevoegen.Name = "pcbFotoDierToevoegen";
-            this.pcbFotoDierToevoegen.Size = new System.Drawing.Size(150, 150);
-            this.pcbFotoDierToevoegen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbFotoDierToevoegen.TabIndex = 0;
-            this.pcbFotoDierToevoegen.TabStop = false;
             // 
             // button1
             // 
@@ -406,6 +397,18 @@
             this.txbOpmerkingenDierToevoegen.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txbOpmerkingenDierToevoegen.Size = new System.Drawing.Size(341, 107);
             this.txbOpmerkingenDierToevoegen.TabIndex = 4;
+            // 
+            // pcbFotoDierToevoegen
+            // 
+            this.pcbFotoDierToevoegen.BackgroundImage = global::PetCareProApp.Properties.Resources.paw;
+            this.pcbFotoDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbFotoDierToevoegen.Image = global::PetCareProApp.Properties.Resources.paw_print;
+            this.pcbFotoDierToevoegen.Location = new System.Drawing.Point(201, 28);
+            this.pcbFotoDierToevoegen.Name = "pcbFotoDierToevoegen";
+            this.pcbFotoDierToevoegen.Size = new System.Drawing.Size(150, 150);
+            this.pcbFotoDierToevoegen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbFotoDierToevoegen.TabIndex = 0;
+            this.pcbFotoDierToevoegen.TabStop = false;
             // 
             // ucDierenToevoegen
             // 
