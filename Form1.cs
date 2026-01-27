@@ -49,6 +49,9 @@ namespace PetCareProApp
             actieveBtn.BackColor = Color.White;
             actieveBtn.ForeColor = Color.RoyalBlue;
 
+            // Hover kleur bij actieve knop
+            //actieveBtn.FlatAppearance.MouseOverBackColor = Color.White;
+
             // Verplaats en toon de indicator
             pnlSelectionIndicator.Height = actieveBtn.Height; // Zorg dat de hoogte matcht
             pnlSelectionIndicator.Top = actieveBtn.Top;       // Zet hem op dezelfde hoogte

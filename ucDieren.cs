@@ -26,5 +26,29 @@ namespace PetCareProApp
                 mainForm.ToonScherm(new ucDierenToevoegen());
             }
         }
+
+        private void ucDieren_Load(object sender, EventArgs e)
+        {
+            DataManager.Initialiseer(); // Zorgt dat de mappen bestaan
+            VerversGrid();
+        }
+
+        private void VerversGrid()
+        {
+            List<Dier> lijst = DataManager.LaadDieren();
+            dgvDieren.AutoGenerateColumns = false;
+
+            // Koppeling van kolommen aan eigenschappen van Dier
+            ColumnNaam.DataPropertyName = "Naam";
+            ColumnSoort.DataPropertyName = "Soort";
+            ColumnLeeftijd.DataPropertyName = "Leeftijd";
+            ColumnRas.DataPropertyName = "Ras";
+            ColumnGeslacht.DataPropertyName = "Geslacht";
+            ColumnChipnr.DataPropertyName = "Chipnummer";
+            ColumnEigenaar.DataPropertyName = "Eigenaar";
+            ColumnVerblijf.DataPropertyName = "Verblijf";
+
+            dgvDieren.DataSource = lijst;
+        }
     }
 }

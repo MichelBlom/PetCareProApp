@@ -34,13 +34,13 @@
             this.pnlNavigation = new System.Windows.Forms.Panel();
             this.lblVersieMain = new System.Windows.Forms.Label();
             this.pnlSelectionIndicator = new System.Windows.Forms.Panel();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.btnInstellingen = new System.Windows.Forms.Button();
             this.btnKalender = new System.Windows.Forms.Button();
             this.btnEigenaren = new System.Windows.Forms.Button();
             this.btnDieren = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -125,14 +125,6 @@
             this.pnlSelectionIndicator.Name = "pnlSelectionIndicator";
             this.pnlSelectionIndicator.Size = new System.Drawing.Size(8, 40);
             this.pnlSelectionIndicator.TabIndex = 0;
-            // 
-            // pnlMain
-            // 
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(200, 30);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(800, 610);
-            this.pnlMain.TabIndex = 2;
             // 
             // btnInstellingen
             // 
@@ -223,6 +215,7 @@
             this.btnDashboard.BackColor = System.Drawing.Color.LightGray;
             this.btnDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
+            this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.Image = global::PetCareProApp.Properties.Resources.home__4_;
@@ -248,6 +241,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(200, 30);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(800, 610);
+            this.pnlMain.TabIndex = 2;
             // 
             // MainForm
             // 
