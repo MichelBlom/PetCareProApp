@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PetCareProApp
 {
-    public partial class ucDieren : UserControl
+    public partial class ucDierenToevoegen : UserControl
     {
-        public ucDieren()
+        public ucDierenToevoegen()
         {
             InitializeComponent();
-        }
-
-        private void btnToevoegenDieren_Click(object sender, EventArgs e)
-        {
-            //ToonScherm(new ucDierenToevoegen());
         }
     }
 }

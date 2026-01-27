@@ -32,6 +32,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.pnlNavigation = new System.Windows.Forms.Panel();
+            this.lblVersieMain = new System.Windows.Forms.Label();
             this.pnlSelectionIndicator = new System.Windows.Forms.Panel();
             this.btnInstellingen = new System.Windows.Forms.Button();
             this.btnKalender = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.lblVersieMain = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,6 +49,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.Controls.Add(this.lblHeader);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,7 +68,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(970, 0);
+            this.btnClose.Location = new System.Drawing.Point(968, 0);
             this.btnClose.MaximumSize = new System.Drawing.Size(30, 30);
             this.btnClose.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnClose.Name = "btnClose";
@@ -106,6 +107,16 @@
             this.pnlNavigation.Name = "pnlNavigation";
             this.pnlNavigation.Size = new System.Drawing.Size(200, 610);
             this.pnlNavigation.TabIndex = 1;
+            // 
+            // lblVersieMain
+            // 
+            this.lblVersieMain.AutoSize = true;
+            this.lblVersieMain.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersieMain.Location = new System.Drawing.Point(61, 582);
+            this.lblVersieMain.Name = "lblVersieMain";
+            this.lblVersieMain.Size = new System.Drawing.Size(69, 17);
+            this.lblVersieMain.TabIndex = 2;
+            this.lblVersieMain.Text = "Versie 1.03";
             // 
             // pnlSelectionIndicator
             // 
@@ -237,16 +248,6 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(800, 610);
             this.pnlMain.TabIndex = 2;
-            // 
-            // lblVersieMain
-            // 
-            this.lblVersieMain.AutoSize = true;
-            this.lblVersieMain.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersieMain.Location = new System.Drawing.Point(61, 582);
-            this.lblVersieMain.Name = "lblVersieMain";
-            this.lblVersieMain.Size = new System.Drawing.Size(69, 17);
-            this.lblVersieMain.TabIndex = 2;
-            this.lblVersieMain.Text = "Versie 1.03";
             // 
             // MainForm
             // 

@@ -69,6 +69,12 @@
     <Compile Include="ucDieren.Designer.cs">
       <DependentUpon>ucDieren.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucDierenToevoegen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDierenToevoegen.Designer.cs">
+      <DependentUpon>ucDierenToevoegen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucEigenaren.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDieren.resx">
       <DependentUpon>ucDieren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDierenToevoegen.resx">
+      <DependentUpon>ucDierenToevoegen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucEigenaren.resx">
       <DependentUpon>ucEigenaren.cs</DependentUpon>

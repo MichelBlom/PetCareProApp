@@ -31,7 +31,7 @@ namespace PetCareProApp
 
         private void ActiveerMenuKnop(object sender)
         {
-            // Controleer of er een button is
+            // Controleer of button actief is
             if (!(sender is Button actieveBtn)) return;
 
             // Reset knoppen in het navigatiepaneel
@@ -63,10 +63,10 @@ namespace PetCareProApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // 1. Zorg dat het Dashboard scherm direct getoond wordt
+            // Dashboard scherm weergave bij starten applicatie
             ToonScherm(new ucDashboard());
 
-            // 2. Maak de Dashboard knop visueel actief
+            // Maakt Dashboard knop visueel actief
             ActiveerMenuKnop(btnDashboard);
         }
 
