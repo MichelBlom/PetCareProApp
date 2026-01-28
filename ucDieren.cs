@@ -132,7 +132,7 @@ namespace PetCareProApp
                     lijst.RemoveAll(d => d.Chipnummer == gekozenDier.Chipnummer);
 
                     DataManager.SlaDierenOp(lijst);
-                    VerversGrid(); // Ververs de lijst direct zodat het dier verdwijnt
+                    VerversGrid(); 
                 }
             }
             else

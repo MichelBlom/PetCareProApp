@@ -55,6 +55,7 @@
             this.lblOutputOpmerkingenProfielDieren = new System.Windows.Forms.Label();
             this.lblOpmerkingenProfielDieren = new System.Windows.Forms.Label();
             this.pcbFotoProfielDieren = new System.Windows.Forms.PictureBox();
+            this.btnVerwijderenProfielDieren = new System.Windows.Forms.Button();
             this.pnlHeaderProfielDieren.SuspendLayout();
             this.pnlFooterProfielDieren.SuspendLayout();
             this.pnlLeftProfielDieren.SuspendLayout();
@@ -88,6 +89,7 @@
             // pnlFooterProfielDieren
             // 
             this.pnlFooterProfielDieren.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFooterProfielDieren.Controls.Add(this.btnVerwijderenProfielDieren);
             this.pnlFooterProfielDieren.Controls.Add(this.btnBewerkenProfielDieren);
             this.pnlFooterProfielDieren.Controls.Add(this.btnTerugProfielDieren);
             this.pnlFooterProfielDieren.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -104,12 +106,13 @@
             this.btnBewerkenProfielDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBewerkenProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBewerkenProfielDieren.ForeColor = System.Drawing.Color.Black;
-            this.btnBewerkenProfielDieren.Location = new System.Drawing.Point(561, 15);
+            this.btnBewerkenProfielDieren.Location = new System.Drawing.Point(455, 15);
             this.btnBewerkenProfielDieren.Name = "btnBewerkenProfielDieren";
             this.btnBewerkenProfielDieren.Size = new System.Drawing.Size(100, 30);
             this.btnBewerkenProfielDieren.TabIndex = 2;
-            this.btnBewerkenProfielDieren.Text = "Bewerken";
+            this.btnBewerkenProfielDieren.Text = "Bewerk";
             this.btnBewerkenProfielDieren.UseVisualStyleBackColor = false;
+            this.btnBewerkenProfielDieren.Click += new System.EventHandler(this.btnBewerkenProfielDieren_Click);
             // 
             // btnTerugProfielDieren
             // 
@@ -376,6 +379,22 @@
             this.pcbFotoProfielDieren.TabIndex = 1;
             this.pcbFotoProfielDieren.TabStop = false;
             // 
+            // btnVerwijderenProfielDieren
+            // 
+            this.btnVerwijderenProfielDieren.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnVerwijderenProfielDieren.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerwijderenProfielDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnVerwijderenProfielDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerwijderenProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerwijderenProfielDieren.ForeColor = System.Drawing.Color.Black;
+            this.btnVerwijderenProfielDieren.Location = new System.Drawing.Point(561, 15);
+            this.btnVerwijderenProfielDieren.Name = "btnVerwijderenProfielDieren";
+            this.btnVerwijderenProfielDieren.Size = new System.Drawing.Size(100, 30);
+            this.btnVerwijderenProfielDieren.TabIndex = 3;
+            this.btnVerwijderenProfielDieren.Text = "Verwijder";
+            this.btnVerwijderenProfielDieren.UseVisualStyleBackColor = false;
+            this.btnVerwijderenProfielDieren.Click += new System.EventHandler(this.btnVerwijderenProfielDieren_Click);
+            // 
             // ucProfielPaginaDieren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -435,5 +454,6 @@
         private System.Windows.Forms.Label lblOutputOpmerkingenProfielDieren;
         private System.Windows.Forms.Label lblVerblijfDierProfiel;
         private System.Windows.Forms.Label lblVerblijfOutputProfielDieren;
+        private System.Windows.Forms.Button btnVerwijderenProfielDieren;
     }
 }

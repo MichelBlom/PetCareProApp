@@ -14,9 +14,11 @@ namespace PetCareProApp
     {
         private Dier dierOmTeBewerken = null;
 
+        private bool kwamVanProfiel = false;
+
         private string geselecteerdFotoPad = "";
 
-        private string tijdelijkFotoPad = "";
+        
         public ucDierenToevoegen()
         {
             InitializeComponent();
@@ -27,7 +29,18 @@ namespace PetCareProApp
             // Terug naar het overzicht
             if (this.ParentForm is MainForm mainForm)
             {
-                mainForm.ToonScherm(new ucDieren());
+                if (kwamVanProfiel && dierOmTeBewerken != null)
+                {
+                    // Ga terug naar het profiel
+                    ucProfielPaginaDieren profiel = new ucProfielPaginaDieren();
+                    profiel.VulData(dierOmTeBewerken);
+                    mainForm.ToonScherm(profiel);
+                }
+                else
+                {
+                    // Ga naar het overzicht (standaard)
+                    mainForm.ToonScherm(new ucDieren());
+                }
             }
         }
 
@@ -54,77 +67,77 @@ namespace PetCareProApp
 
         private void btnOpslaanDierToevoegen_Click(object sender, EventArgs e)
         {
-            // Maak het object aan
-            Dier nieuwDier = new Dier();
-            nieuwDier.Naam = txbNaamDierToevoegen.Text;
-            nieuwDier.Soort = cmbSoortDierToevoegen.Text;
-            nieuwDier.Ras = txbRasDierToevoegen.Text;
-            nieuwDier.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
-            nieuwDier.Chipnummer = txbChipNrDierToevoegen.Text;
-            nieuwDier.Eigenaar = cmbEigenaarDierToevoegen.Text;
-            nieuwDier.Verblijf = cmbVerblijfDierToevoegen.Text;
-            nieuwDier.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
-            nieuwDier.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
-            
-
-            // Verwerk de foto (kopieer naar de interne map)
-            if (!string.IsNullOrEmpty(geselecteerdFotoPad))
-            {
-                nieuwDier.FotoBestandsnaam = DataManager.KopieerFoto(geselecteerdFotoPad);
-            }
-
-            // Toevoegen aan de lijst en opslaan
-            List<Dier> lijst = DataManager.LaadDieren();
-            lijst.Add(nieuwDier);
-            DataManager.SlaDierenOp(lijst);
-
-            // Ga terug naar het overzicht
-            MainForm parent = (MainForm)this.ParentForm;
-            parent.ToonScherm(new ucDieren());
-
+            // Haal de bestaande lijst op
             List<Dier> lijst = DataManager.LaadDieren();
             Dier dier;
 
             if (dierOmTeBewerken == null)
             {
-                // Nieuw dier
+                // Maak een nieuw object en voeg toe aan de lijst
                 dier = new Dier();
                 lijst.Add(dier);
             }
             else
             {
-                // Zoek het bestaande dier in de lijst op basis van bijvoorbeeld Chipnummer of Naam
+                // BEWERKEN: Zoek het bestaande dier in de lijst op basis van Chipnummer
                 dier = lijst.FirstOrDefault(d => d.Chipnummer == dierOmTeBewerken.Chipnummer);
+
+                // Extra veiligheid: mocht chipnummer gewijzigd zijn of niet gevonden, zoek op naam
+                if (dier == null)
+                {
+                    dier = lijst.FirstOrDefault(d => d.Naam == dierOmTeBewerken.Naam);
+                }
             }
 
-            // Vul/Update de gegevens
-            dier.Naam = txbNaamDierToevoegen.Text;
-            dier.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
-            dier.Ras = txbRasDierToevoegen.Text;
-            dier.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
-            dier.Chipnummer = txbChipNrDierToevoegen.Text;
-            dier.Eigenaar = cmbEigenaarDierToevoegen.Text;
-            dier.Verblijf = cmbVerblijfDierToevoegen.Text;
-            dier.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
-            // ... vul alle andere velden in zoals je al deed ...
-
-            if (!string.IsNullOrEmpty(tijdelijkFotoPad))
+            
+            if (dier != null)
             {
-                dier.FotoBestandsnaam = DataManager.KopieerFoto(tijdelijkFotoPad);
+                dier.Naam = txbNaamDierToevoegen.Text;
+                dier.Soort = cmbSoortDierToevoegen.Text;
+                dier.Ras = txbRasDierToevoegen.Text;
+                dier.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
+                dier.Chipnummer = txbChipNrDierToevoegen.Text;
+                dier.Eigenaar = cmbEigenaarDierToevoegen.Text;
+                dier.Verblijf = cmbVerblijfDierToevoegen.Text;
+                dier.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
+                dier.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
+
+                // Foto verwerken 
+                if (!string.IsNullOrEmpty(geselecteerdFotoPad))
+                {
+                    dier.FotoBestandsnaam = DataManager.KopieerFoto(geselecteerdFotoPad);
+                }
+
+                // De hele lijst weer opslaan in de JSON
+                DataManager.SlaDierenOp(lijst);
             }
 
-            DataManager.SlaDierenOp(lijst);
-            ((MainForm)this.ParentForm).ToonScherm(new ucDieren());
+            // Terug naar het overzicht
+            if (this.ParentForm is MainForm mainForm)
+            {
+                if (kwamVanProfiel && dierOmTeBewerken != null)
+                {
+                    // Ga terug naar het profiel
+                    ucProfielPaginaDieren profiel = new ucProfielPaginaDieren();
+                    profiel.VulData(dierOmTeBewerken);
+                    mainForm.ToonScherm(profiel);
+                }
+                else
+                {
+                    
+                    mainForm.ToonScherm(new ucDieren());
+                }
+            }
         }
-
-        public void LaadDierVoorBewerken(Dier dier)
+        public void LaadDierVoorBewerken(Dier dier, bool vanafProfiel = false)
         {
             dierOmTeBewerken = dier;
 
-            // Verander de header (zorg dat lblHeader de naam is van je label bovenaan)
-            lblHeaderDierenToevoegen.Text = "Dier bewerken";
+            kwamVanProfiel = vanafProfiel; // Hier onthouden we de herkomst
 
-            // Vul de velden
+            // Verander de header
+            lblHeaderDierenToevoegen.Text = "Dier bewerken";
+            
             txbNaamDierToevoegen.Text = dier.Naam;
             cmbSoortDierToevoegen.Text = dier.Soort;
             nmrLeeftijdDierToevoegen.Value = dier.Leeftijd;
