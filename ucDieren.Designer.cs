@@ -142,6 +142,7 @@
             this.btnBewerkenDieren.TabIndex = 2;
             this.btnBewerkenDieren.Text = "Bewerken";
             this.btnBewerkenDieren.UseVisualStyleBackColor = false;
+            this.btnBewerkenDieren.Click += new System.EventHandler(this.btnBewerkenDieren_Click);
             // 
             // btnVerwijderDieren
             // 
@@ -157,6 +158,7 @@
             this.btnVerwijderDieren.TabIndex = 1;
             this.btnVerwijderDieren.Text = "Verwijderen";
             this.btnVerwijderDieren.UseVisualStyleBackColor = false;
+            this.btnVerwijderDieren.Click += new System.EventHandler(this.btnVerwijderDieren_Click);
             // 
             // dgvDieren
             // 
@@ -189,6 +191,7 @@
             this.dgvDieren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDieren.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvDieren.Location = new System.Drawing.Point(10, 60);
+            this.dgvDieren.MultiSelect = false;
             this.dgvDieren.Name = "dgvDieren";
             this.dgvDieren.ReadOnly = true;
             this.dgvDieren.RowHeadersVisible = false;
@@ -197,6 +200,7 @@
             this.dgvDieren.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDieren.Size = new System.Drawing.Size(780, 480);
             this.dgvDieren.TabIndex = 2;
+            this.dgvDieren.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDieren_CellContentClick);
             // 
             // ColumnNaam
             // 
@@ -284,6 +288,11 @@
         private System.Windows.Forms.Label lblHeaderDieren;
         private System.Windows.Forms.Panel pnlFooterDieren;
         private System.Windows.Forms.DataGridView dgvDieren;
+        private System.Windows.Forms.Button btnZoekenDieren;
+        private System.Windows.Forms.TextBox txbZoekenDieren;
+        private System.Windows.Forms.Button btnVerwijderDieren;
+        private System.Windows.Forms.Button btnToevoegenDieren;
+        private System.Windows.Forms.Button btnBewerkenDieren;
         private System.Windows.Forms.DataGridViewLinkColumn ColumnNaam;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSoort;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLeeftijd;
@@ -291,11 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRas;
         private System.Windows.Forms.DataGridViewLinkColumn ColumnEigenaar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnChipnr;
-        private System.Windows.Forms.Button btnZoekenDieren;
-        private System.Windows.Forms.TextBox txbZoekenDieren;
-        private System.Windows.Forms.Button btnVerwijderDieren;
-        private System.Windows.Forms.Button btnToevoegenDieren;
-        private System.Windows.Forms.Button btnBewerkenDieren;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVerblijf;
     }
 }
