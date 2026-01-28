@@ -59,6 +59,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
             this.cmbSoortDierToevoegen = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlHeaderDierenToevoegen.SuspendLayout();
             this.pnlFooterDierenToevoegen.SuspendLayout();
             this.pnlLeftDierenToevoegen.SuspendLayout();
@@ -93,6 +94,7 @@
             // pnlFooterDierenToevoegen
             // 
             this.pnlFooterDierenToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFooterDierenToevoegen.Controls.Add(this.label1);
             this.pnlFooterDierenToevoegen.Controls.Add(this.btnOpslaanDierToevoegen);
             this.pnlFooterDierenToevoegen.Controls.Add(this.btnAnnulerenDierToevoegen);
             this.pnlFooterDierenToevoegen.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -178,7 +180,7 @@
             this.lblChipNrDierToevoegen.Name = "lblChipNrDierToevoegen";
             this.lblChipNrDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblChipNrDierToevoegen.TabIndex = 5;
-            this.lblChipNrDierToevoegen.Text = "Chipnummer:";
+            this.lblChipNrDierToevoegen.Text = "* ChipNr:";
             this.lblChipNrDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblRasDierToevoegen
@@ -198,7 +200,7 @@
             this.lblGeslachtDierToevoegen.Name = "lblGeslachtDierToevoegen";
             this.lblGeslachtDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblGeslachtDierToevoegen.TabIndex = 3;
-            this.lblGeslachtDierToevoegen.Text = "Geslacht:";
+            this.lblGeslachtDierToevoegen.Text = "* Geslacht:";
             this.lblGeslachtDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblLeeftijdDierToevoegen
@@ -208,7 +210,7 @@
             this.lblLeeftijdDierToevoegen.Name = "lblLeeftijdDierToevoegen";
             this.lblLeeftijdDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblLeeftijdDierToevoegen.TabIndex = 2;
-            this.lblLeeftijdDierToevoegen.Text = "Leeftijd:";
+            this.lblLeeftijdDierToevoegen.Text = "* Leeftijd:";
             this.lblLeeftijdDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblSoortDierToevoegen
@@ -218,7 +220,7 @@
             this.lblSoortDierToevoegen.Name = "lblSoortDierToevoegen";
             this.lblSoortDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblSoortDierToevoegen.TabIndex = 1;
-            this.lblSoortDierToevoegen.Text = "Soort:";
+            this.lblSoortDierToevoegen.Text = "* Soort:";
             this.lblSoortDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblSoortDierToevoegen.Click += new System.EventHandler(this.lblSoortDierToevoegen_Click);
             // 
@@ -229,7 +231,7 @@
             this.lblNaamDierToevoegen.Name = "lblNaamDierToevoegen";
             this.lblNaamDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblNaamDierToevoegen.TabIndex = 0;
-            this.lblNaamDierToevoegen.Text = "Naam:";
+            this.lblNaamDierToevoegen.Text = "* Naam:";
             this.lblNaamDierToevoegen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlMiddleDierToevoegen
@@ -257,6 +259,7 @@
             // 
             this.cmbVerblijfDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbVerblijfDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbVerblijfDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVerblijfDierToevoegen.FormattingEnabled = true;
             this.cmbVerblijfDierToevoegen.Location = new System.Drawing.Point(3, 316);
             this.cmbVerblijfDierToevoegen.Name = "cmbVerblijfDierToevoegen";
@@ -277,6 +280,7 @@
             // 
             this.cmbEigenaarDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbEigenaarDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbEigenaarDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEigenaarDierToevoegen.FormattingEnabled = true;
             this.cmbEigenaarDierToevoegen.Location = new System.Drawing.Point(3, 356);
             this.cmbEigenaarDierToevoegen.Name = "cmbEigenaarDierToevoegen";
@@ -379,6 +383,7 @@
             // 
             this.txbOpmerkingenDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbOpmerkingenDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txbOpmerkingenDierToevoegen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbOpmerkingenDierToevoegen.Location = new System.Drawing.Point(10, 277);
             this.txbOpmerkingenDierToevoegen.Multiline = true;
             this.txbOpmerkingenDierToevoegen.Name = "txbOpmerkingenDierToevoegen";
@@ -416,8 +421,8 @@
             // 
             // pcbFotoDierToevoegen
             // 
+            this.pcbFotoDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pcbFotoDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbFotoDierToevoegen.Image = global::PetCareProApp.Properties.Resources.paw_print;
             this.pcbFotoDierToevoegen.Location = new System.Drawing.Point(201, 28);
             this.pcbFotoDierToevoegen.Name = "pcbFotoDierToevoegen";
             this.pcbFotoDierToevoegen.Size = new System.Drawing.Size(150, 150);
@@ -429,11 +434,27 @@
             // 
             this.cmbSoortDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbSoortDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbSoortDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSoortDierToevoegen.FormattingEnabled = true;
+            this.cmbSoortDierToevoegen.Items.AddRange(new object[] {
+            "Hond",
+            "Kat",
+            "Konijn",
+            "Anders"});
             this.cmbSoortDierToevoegen.Location = new System.Drawing.Point(3, 101);
             this.cmbSoortDierToevoegen.Name = "cmbSoortDierToevoegen";
             this.cmbSoortDierToevoegen.Size = new System.Drawing.Size(150, 28);
             this.cmbSoortDierToevoegen.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Velden met een * zijn verplicht!";
             // 
             // ucDierenToevoegen
             // 
@@ -453,9 +474,11 @@
             this.Name = "ucDierenToevoegen";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(800, 610);
+            this.Load += new System.EventHandler(this.ucDierenToevoegen_Load);
             this.pnlHeaderDierenToevoegen.ResumeLayout(false);
             this.pnlHeaderDierenToevoegen.PerformLayout();
             this.pnlFooterDierenToevoegen.ResumeLayout(false);
+            this.pnlFooterDierenToevoegen.PerformLayout();
             this.pnlLeftDierenToevoegen.ResumeLayout(false);
             this.pnlMiddleDierToevoegen.ResumeLayout(false);
             this.pnlMiddleDierToevoegen.PerformLayout();
@@ -500,5 +523,6 @@
         private System.Windows.Forms.Label lblVerblijfDierToevoegen;
         private System.Windows.Forms.ComboBox cmbVerblijfDierToevoegen;
         private System.Windows.Forms.ComboBox cmbSoortDierToevoegen;
+        private System.Windows.Forms.Label label1;
     }
 }

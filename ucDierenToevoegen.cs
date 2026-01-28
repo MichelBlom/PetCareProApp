@@ -67,64 +67,86 @@ namespace PetCareProApp
 
         private void btnOpslaanDierToevoegen_Click(object sender, EventArgs e)
         {
-            // Haal de bestaande lijst op
-            List<Dier> lijst = DataManager.LaadDieren();
-            Dier dier;
+            // 1. INPUT VALIDATIE (Verplichte velden)
+            string foutmelding = "";
+            if (string.IsNullOrWhiteSpace(txbNaamDierToevoegen.Text)) foutmelding += "- Naam\n";
+            if (string.IsNullOrWhiteSpace(txbChipNrDierToevoegen.Text)) foutmelding += "- Chipnummer\n";
+            if (string.IsNullOrWhiteSpace(cmbSoortDierToevoegen.Text)) foutmelding += "- Soort\n";
+            // if (string.IsNullOrWhiteSpace(cmbVerblijfDierToevoegen.Text)) foutmelding += "- Verblijf\n";
+            if (!rdbManDierToevoegen.Checked && !rdbVrouwDierToevoegen.Checked) foutmelding += "- Geslacht\n";
 
+            if (!string.IsNullOrEmpty(foutmelding))
+            {
+                MessageBox.Show("De volgende velden zijn verplicht:\n\n" + foutmelding, "Gegevens incompleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Haal de lijst op voor de volgende checks
+            List<Dier> lijst = DataManager.LaadDieren();
+
+            // 1b. UNIEK CHIPNUMMER CHECK (Alleen bij nieuw dier)
             if (dierOmTeBewerken == null)
             {
-                // Maak een nieuw object en voeg toe aan de lijst
-                dier = new Dier();
-                lijst.Add(dier);
+                if (lijst.Any(d => d.Chipnummer == txbChipNrDierToevoegen.Text))
+                {
+                    MessageBox.Show("Dit chipnummer bestaat al in het systeem.", "Dubbel Chipnummer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // 2. DATA VOORBEREIDEN
+            int leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
+            string gekozenGeslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
+
+            if (dierOmTeBewerken != null)
+            {
+                // BEWERKEN
+                int index = lijst.FindIndex(d => d.Chipnummer == dierOmTeBewerken.Chipnummer);
+                if (index != -1)
+                {
+                    dierOmTeBewerken.Naam = txbNaamDierToevoegen.Text;
+                    dierOmTeBewerken.Eigenaar = cmbEigenaarDierToevoegen.Text;
+                    dierOmTeBewerken.Leeftijd = leeftijd;
+                    dierOmTeBewerken.Soort = cmbSoortDierToevoegen.Text;
+                    dierOmTeBewerken.Ras = txbRasDierToevoegen.Text;
+                    dierOmTeBewerken.Geslacht = gekozenGeslacht;
+                    dierOmTeBewerken.Chipnummer = txbChipNrDierToevoegen.Text;
+                    dierOmTeBewerken.Verblijf = cmbVerblijfDierToevoegen.Text;
+                    dierOmTeBewerken.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
+                    lijst[index] = dierOmTeBewerken;
+                }
             }
             else
             {
-                // BEWERKEN: Zoek het bestaande dier in de lijst op basis van Chipnummer
-                dier = lijst.FirstOrDefault(d => d.Chipnummer == dierOmTeBewerken.Chipnummer);
-
-                // Extra veiligheid: mocht chipnummer gewijzigd zijn of niet gevonden, zoek op naam
-                if (dier == null)
+                // NIEUW
+                dierOmTeBewerken = new Dier
                 {
-                    dier = lijst.FirstOrDefault(d => d.Naam == dierOmTeBewerken.Naam);
-                }
+                    Naam = txbNaamDierToevoegen.Text,
+                    Eigenaar = cmbEigenaarDierToevoegen.Text,
+                    Leeftijd = leeftijd,
+                    Soort = cmbSoortDierToevoegen.Text,
+                    Ras = txbRasDierToevoegen.Text,
+                    Geslacht = gekozenGeslacht,
+                    Chipnummer = txbChipNrDierToevoegen.Text,
+                    Verblijf = cmbVerblijfDierToevoegen.Text,
+                    Opmerkingen = txbOpmerkingenDierToevoegen.Text
+                };
+                lijst.Add(dierOmTeBewerken);
             }
 
-            
-            if (dier != null)
-            {
-                dier.Naam = txbNaamDierToevoegen.Text;
-                dier.Soort = cmbSoortDierToevoegen.Text;
-                dier.Ras = txbRasDierToevoegen.Text;
-                dier.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
-                dier.Chipnummer = txbChipNrDierToevoegen.Text;
-                dier.Eigenaar = cmbEigenaarDierToevoegen.Text;
-                dier.Verblijf = cmbVerblijfDierToevoegen.Text;
-                dier.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
-                dier.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
+            // 3. OPSLAAN EN NAVIGEREN
+            DataManager.SlaDierenOp(lijst);
 
-                // Foto verwerken 
-                if (!string.IsNullOrEmpty(geselecteerdFotoPad))
-                {
-                    dier.FotoBestandsnaam = DataManager.KopieerFoto(geselecteerdFotoPad);
-                }
-
-                // De hele lijst weer opslaan in de JSON
-                DataManager.SlaDierenOp(lijst);
-            }
-
-            // Terug naar het overzicht
             if (this.ParentForm is MainForm mainForm)
             {
-                if (kwamVanProfiel && dierOmTeBewerken != null)
+                if (kwamVanProfiel)
                 {
-                    // Ga terug naar het profiel
-                    ucProfielPaginaDieren profiel = new ucProfielPaginaDieren();
-                    profiel.VulData(dierOmTeBewerken);
-                    mainForm.ToonScherm(profiel);
+                    ucProfielPaginaDieren profielPagina = new ucProfielPaginaDieren();
+                    profielPagina.VulData(dierOmTeBewerken);
+                    mainForm.ToonScherm(profielPagina);
                 }
                 else
                 {
-                    
                     mainForm.ToonScherm(new ucDieren());
                 }
             }
@@ -132,19 +154,32 @@ namespace PetCareProApp
         public void LaadDierVoorBewerken(Dier dier, bool vanafProfiel = false)
         {
             dierOmTeBewerken = dier;
-
-            kwamVanProfiel = vanafProfiel; // Hier onthouden we de herkomst
+            kwamVanProfiel = vanafProfiel;
 
             // Verander de header
             lblHeaderDierenToevoegen.Text = "Dier bewerken";
-            
+
+            // Vul de combobox met vrije hokken + het hok waar hij nu al in zit
+            cmbVerblijfDierToevoegen.DataSource = DataManager.KrijgBeschikbareHokken(dier.Verblijf);
+
+            // Selecteer het huidige hok in de combobox. Als het leeg is, pakt hij automatisch de eerste: (Geen)
+            if (!string.IsNullOrEmpty(dier.Verblijf) && cmbVerblijfDierToevoegen.Items.Contains(dier.Verblijf))
+            {
+                cmbVerblijfDierToevoegen.SelectedItem = dier.Verblijf;
+            }
+            else
+            {
+                cmbVerblijfDierToevoegen.SelectedIndex = 0; // Dit is (Geen)
+            }
+
+            cmbSoortDierToevoegen.SelectedItem = dier.Soort; // Selecteer de huidige soort in de combobox
+
             txbNaamDierToevoegen.Text = dier.Naam;
             cmbSoortDierToevoegen.Text = dier.Soort;
             nmrLeeftijdDierToevoegen.Value = dier.Leeftijd;
             txbRasDierToevoegen.Text = dier.Ras;
             txbChipNrDierToevoegen.Text = dier.Chipnummer;
             cmbEigenaarDierToevoegen.Text = dier.Eigenaar;
-            cmbVerblijfDierToevoegen.Text = dier.Verblijf;
             txbOpmerkingenDierToevoegen.Text = dier.Opmerkingen;
 
             if (dier.Geslacht == "Man") rdbManDierToevoegen.Checked = true; else rdbVrouwDierToevoegen.Checked = true;
@@ -153,6 +188,21 @@ namespace PetCareProApp
             if (!string.IsNullOrEmpty(dier.FotoBestandsnaam))
             {
                 pcbFotoDierToevoegen.ImageLocation = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
+            }
+        }
+
+        private void ucDierenToevoegen_Load(object sender, EventArgs e)
+        {
+            // Als we een nieuw dier toevoegen, zijn alle vrije hokken beschikbaar
+            if (dierOmTeBewerken == null)
+            {
+                cmbVerblijfDierToevoegen.DataSource = DataManager.KrijgBeschikbareHokken();
+
+                // Forceer de selectie op het eerste item ("(Geen)")
+                if (cmbVerblijfDierToevoegen.Items.Count > 0)
+                {
+                    cmbVerblijfDierToevoegen.SelectedIndex = 0;
+                }
             }
         }
     }

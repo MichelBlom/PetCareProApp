@@ -53,5 +53,35 @@ namespace PetCareProApp
             if (string.IsNullOrEmpty(bestandsnaam)) return "";
             return Path.Combine(fotosPad, bestandsnaam);
         }
+
+        public static List<string> KrijgBeschikbareHokken(string huidigHokDier = null)
+        {
+            // 1. Maak de uiteindelijke lijst aan en voeg (Geen) als eerste toe
+            List<string> lijstOmTerugTeGeven = new List<string>();
+            lijstOmTerugTeGeven.Add("(Geen)");
+
+            // 2. Haal alle dieren op om de bezette hokken te bepalen
+            List<Dier> alleDieren = LaadDieren();
+
+            // 3. We kijken welke hokken bezet zijn (behalve het hok waar het huidige dier al in zit)
+            // We negeren "(Geen)" in deze check omdat die nooit 'bezet' kan zijn
+            List<string> bezetteHokken = alleDieren
+                .Where(d => !string.IsNullOrEmpty(d.Verblijf) && d.Verblijf != "(Geen)" && d.Verblijf != huidigHokDier)
+                .Select(d => d.Verblijf)
+                .ToList();
+
+            // 4. Maak de lijst van Hok 1 t/m Hok 100 en voeg ze toe als ze niet bezet zijn
+            for (int i = 1; i <= 100; i++)
+            {
+                string hokNaam = "Hok " + i;
+                if (!bezetteHokken.Contains(hokNaam))
+                {
+                    lijstOmTerugTeGeven.Add(hokNaam);
+                }
+            }
+
+            return lijstOmTerugTeGeven;
+        }
     }
 }
+

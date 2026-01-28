@@ -74,6 +74,8 @@
             this.txbZoekenDieren.Name = "txbZoekenDieren";
             this.txbZoekenDieren.Size = new System.Drawing.Size(200, 27);
             this.txbZoekenDieren.TabIndex = 1;
+            this.txbZoekenDieren.TextChanged += new System.EventHandler(this.txbZoekenDieren_TextChanged);
+            this.txbZoekenDieren.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbZoekenDieren_KeyDown);
             // 
             // lblHeaderDieren
             // 
@@ -99,6 +101,7 @@
             this.btnZoekenDieren.TabIndex = 0;
             this.btnZoekenDieren.Text = "Zoeken";
             this.btnZoekenDieren.UseVisualStyleBackColor = false;
+            this.btnZoekenDieren.Click += new System.EventHandler(this.btnZoekenDieren_Click);
             // 
             // pnlFooterDieren
             // 
@@ -213,7 +216,7 @@
             // 
             // ColumnNaam
             // 
-            this.ColumnNaam.HeaderText = "Naam";
+            this.ColumnNaam.HeaderText = "Naam dier";
             this.ColumnNaam.MinimumWidth = 6;
             this.ColumnNaam.Name = "ColumnNaam";
             this.ColumnNaam.ReadOnly = true;

@@ -31,6 +31,9 @@ namespace PetCareProApp
         {
             DataManager.Initialiseer(); // Zorgt dat de mappen bestaan
             VerversGrid();
+
+            txbZoekenDieren.Text = "Typ naam dier of eigenaar...";
+            txbZoekenDieren.ForeColor = Color.Gray;
         }
 
         private void VerversGrid()
@@ -138,6 +141,47 @@ namespace PetCareProApp
             else
             {
                 MessageBox.Show("Selecteer eerst een dier om te verwijderen.");
+            }
+        }
+
+        private void btnZoekenDieren_Click(object sender, EventArgs e)
+        {
+            string zoekTerm = txbZoekenDieren.Text.ToLower().Trim();
+
+            // Lijst zoekbalk legen
+            if (string.IsNullOrEmpty(zoekTerm))
+            {
+                VerversGrid();
+                return;
+            }
+
+            // Haal de volledige lijst op
+            List<Dier> volledigeLijst = DataManager.LaadDieren();
+
+            // Filter de lijst op Naam OF Eigenaar 
+            var gefilterdeLijst = volledigeLijst.Where(d =>
+                (d.Naam != null && d.Naam.ToLower().Contains(zoekTerm)) ||
+                (d.Eigenaar != null && d.Eigenaar.ToLower().Contains(zoekTerm))
+            ).ToList();
+
+            // Toon de gefilterde resultaten
+            dgvDieren.DataSource = gefilterdeLijst;
+        }
+
+        private void txbZoekenDieren_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txbZoekenDieren.Text))
+            {
+                VerversGrid();
+            }
+        }
+
+        private void txbZoekenDieren_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnZoekenDieren_Click(this, new EventArgs()); // Voert de zoekknop-code uit
+                e.SuppressKeyPress = true; // Stopt het Windows-geluidje
             }
         }
     }
