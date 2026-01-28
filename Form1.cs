@@ -17,12 +17,13 @@ namespace PetCareProApp
             InitializeComponent();
             
         }
+        
 
         public void ToonScherm(UserControl scherm)
         {
-            pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
-            scherm.Dock = DockStyle.Fill;
-            pnlMain.Controls.Add(scherm);
+              pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
+             scherm.Dock = DockStyle.Fill;
+             pnlMain.Controls.Add(scherm);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

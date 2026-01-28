@@ -16,6 +16,8 @@ namespace PetCareProApp
         private static string fotosPad = Path.Combine(mappenPad, "DierFotos");
         private static string jsonBestand = Path.Combine(mappenPad, "dieren.json");
 
+        private static string eigenarenBestand = Path.Combine(mappenPad, "eigenaren.json");
+
         public static void Initialiseer()
         {
             // Maak de mappen aan als ze nog niet bestaan
@@ -81,6 +83,19 @@ namespace PetCareProApp
             }
 
             return lijstOmTerugTeGeven;
+        }
+
+        public static List<Eigenaar> LaadEigenaren()
+        {
+            if (!File.Exists(eigenarenBestand)) return new List<Eigenaar>();
+            string json = File.ReadAllText(eigenarenBestand);
+            return JsonConvert.DeserializeObject<List<Eigenaar>>(json) ?? new List<Eigenaar>();
+        }
+
+        public static void SlaEigenarenOp(List<Eigenaar> lijst)
+        {
+            string json = JsonConvert.SerializeObject(lijst, Formatting.Indented);
+            File.WriteAllText(eigenarenBestand, json);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace PetCareProApp
             DataManager.Initialiseer(); // Zorgt dat de mappen bestaan
             VerversGrid();
 
-            txbZoekenDieren.Text = "Typ naam dier of eigenaar...";
+            txbZoekenDieren.Text = "Typ naam van dier of eigenaar..";
             txbZoekenDieren.ForeColor = Color.Gray;
         }
 
@@ -182,6 +182,23 @@ namespace PetCareProApp
             {
                 btnZoekenDieren_Click(this, new EventArgs()); // Voert de zoekknop-code uit
                 e.SuppressKeyPress = true; // Stopt het Windows-geluidje
+            }
+        }
+        private void txbZoekenDieren_Enter(object sender, EventArgs e)
+        {
+            if (txbZoekenDieren.Text == "Typ naam van dier of eigenaar..")
+            {
+                txbZoekenDieren.Text = "";
+                txbZoekenDieren.ForeColor = Color.Black;
+            }
+        }
+
+        private void txbZoekenDieren_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbZoekenDieren.Text))
+            {
+                txbZoekenDieren.Text = "Typ naam van dier of eigenaar..";
+                txbZoekenDieren.ForeColor = Color.Gray;
             }
         }
     }

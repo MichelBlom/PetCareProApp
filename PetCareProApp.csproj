@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataManager.cs" />
     <Compile Include="Dier.cs" />
+    <Compile Include="Eigenaar.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,12 @@
     <Compile Include="ucDierenToevoegen.Designer.cs">
       <DependentUpon>ucDierenToevoegen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucEigenaarToevoegen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucEigenaarToevoegen.Designer.cs">
+      <DependentUpon>ucEigenaarToevoegen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucEigenaren.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +104,12 @@
     </Compile>
     <Compile Include="ucKalender.Designer.cs">
       <DependentUpon>ucKalender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucProfielEigenaar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProfielEigenaar.Designer.cs">
+      <DependentUpon>ucProfielEigenaar.cs</DependentUpon>
     </Compile>
     <Compile Include="ucProfielPaginaDieren.cs">
       <SubType>UserControl</SubType>
@@ -126,6 +139,9 @@
     <EmbeddedResource Include="ucDierenToevoegen.resx">
       <DependentUpon>ucDierenToevoegen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucEigenaarToevoegen.resx">
+      <DependentUpon>ucEigenaarToevoegen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucEigenaren.resx">
       <DependentUpon>ucEigenaren.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucKalender.resx">
       <DependentUpon>ucKalender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucProfielEigenaar.resx">
+      <DependentUpon>ucProfielEigenaar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucProfielPaginaDieren.resx">
       <DependentUpon>ucProfielPaginaDieren.cs</DependentUpon>

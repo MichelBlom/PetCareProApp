@@ -75,7 +75,9 @@
             this.txbZoekenDieren.Size = new System.Drawing.Size(200, 27);
             this.txbZoekenDieren.TabIndex = 1;
             this.txbZoekenDieren.TextChanged += new System.EventHandler(this.txbZoekenDieren_TextChanged);
+            this.txbZoekenDieren.Enter += new System.EventHandler(this.txbZoekenDieren_Enter);
             this.txbZoekenDieren.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbZoekenDieren_KeyDown);
+            this.txbZoekenDieren.Leave += new System.EventHandler(this.txbZoekenDieren_Leave);
             // 
             // lblHeaderDieren
             // 
