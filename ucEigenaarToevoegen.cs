@@ -8,7 +8,8 @@ namespace PetCareProApp
     public partial class ucEigenaarToevoegen : UserControl
     {
         private Eigenaar _bewerkEigenaar = null;
-        private bool kwamVanDierToevoegen = false; // NIEUW: Houdt de status bij
+        private bool kwamVanDierToevoegen = false;
+        private bool _kwamVanProfiel = false; // Houdt bij of we vanuit het profiel komen
 
         // Constructor voor NIEUW
         public ucEigenaarToevoegen()
@@ -18,15 +19,15 @@ namespace PetCareProApp
         }
 
         // Constructor voor BEWERKEN
-        public ucEigenaarToevoegen(Eigenaar eigenaar)
+        public ucEigenaarToevoegen(Eigenaar eigenaar, bool vanProfiel = false)
         {
             InitializeComponent();
             _bewerkEigenaar = eigenaar;
+            _kwamVanProfiel = vanProfiel;
             lblHeaderEigenaarToevoegen.Text = "Eigenaar bewerken";
             VulVeldenIn();
         }
 
-        // NIEUW: Deze methode lost de error in ucDierenToevoegen op
         public void StelTerugkeerIn(bool status)
         {
             kwamVanDierToevoegen = status;
@@ -55,6 +56,7 @@ namespace PetCareProApp
             try
             {
                 var lijst = DataManager.LaadEigenaren();
+                Eigenaar eigenaarVoorProfiel;
 
                 if (_bewerkEigenaar != null)
                 {
@@ -69,11 +71,13 @@ namespace PetCareProApp
                         lijst[index].Straat = txbStraatEigenaarToevoegen.Text;
                         lijst[index].Postcode = txbPostcodeEigenaarToevoegen.Text;
                         lijst[index].Opmerkingen = txbOpmerkingenEigenaarToevoegen.Text;
+                        eigenaarVoorProfiel = lijst[index];
                     }
+                    else return;
                 }
                 else
                 {
-                    Eigenaar nieuweEigenaar = new Eigenaar
+                    eigenaarVoorProfiel = new Eigenaar
                     {
                         Naam = txbNaamEigenaarToevoegen.Text,
                         Email = txbEmailEigenaarToevoegen.Text,
@@ -84,14 +88,13 @@ namespace PetCareProApp
                         Postcode = txbPostcodeEigenaarToevoegen.Text,
                         Opmerkingen = txbOpmerkingenEigenaarToevoegen.Text
                     };
-                    lijst.Add(nieuweEigenaar);
+                    lijst.Add(eigenaarVoorProfiel);
                 }
 
                 DataManager.SlaEigenarenOp(lijst);
                 MessageBox.Show("Gegevens succesvol opgeslagen!");
 
-                // Na succesvol opslaan navigeren
-                NavigeerNaarOverzicht();
+                NavigeerNaarCorrectScherm(eigenaarVoorProfiel);
             }
             catch (Exception ex)
             {
@@ -99,19 +102,24 @@ namespace PetCareProApp
             }
         }
 
-        private void NavigeerNaarOverzicht()
+        private void NavigeerNaarCorrectScherm(Eigenaar eigenaar = null)
         {
             if (this.ParentForm is MainForm mainForm)
             {
                 if (kwamVanDierToevoegen)
                 {
-                    // Zet indicator terug op Dieren en open dat scherm
                     mainForm.ActiveerMenuKnopInCode("btnDieren");
                     mainForm.ToonScherm(new ucDierenToevoegen());
                 }
+                else if (_kwamVanProfiel || eigenaar != null)
+                {
+                    // Als we van het profiel kwamen OF we hebben net opgeslagen, gaan we naar het profiel
+                    ucProfielEigenaar profiel = new ucProfielEigenaar();
+                    profiel.VulData(eigenaar ?? _bewerkEigenaar, "Overzicht");
+                    mainForm.ToonScherm(profiel);
+                }
                 else
                 {
-                    // Standaard gedrag
                     mainForm.ToonScherm(new ucEigenaren());
                 }
             }
@@ -124,8 +132,9 @@ namespace PetCareProApp
 
         private void btnAnnulerenEigenaarToevoegen_Click(object sender, EventArgs e)
         {
-            NavigeerNaarOverzicht();
+            NavigeerNaarCorrectScherm();
         }
     }
 }
+
 

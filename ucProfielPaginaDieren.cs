@@ -14,20 +14,19 @@ namespace PetCareProApp
     public partial class ucProfielPaginaDieren : UserControl
     {
         private Dier huidigDier = null;
+        private string _bronScherm = "DierenLijst";
 
         public ucProfielPaginaDieren()
         {
             InitializeComponent();
         }
 
-
-        public void VulData(Dier dier)
+        public void VulData(Dier dier, string bron = "DierenLijst")
         {
-            // Sla het object op
             huidigDier = dier;
+            _bronScherm = bron;
 
             lblHeaderProfielDieren.Text = "Profiel van " + dier.Naam;
-
             lblNaamOutputProfielDieren.Text = dier.Naam;
             lblEigenaarOutputProfielDieren.Text = dier.Eigenaar;
             lblOutputOpmerkingenProfielDieren.Text = dier.Opmerkingen;
@@ -49,13 +48,47 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                mainForm.ToonScherm(new ucDieren());
+                // ROUTE A: Terug naar het specifieke Eigenaar Profiel
+                if (_bronScherm == "ProfielEigenaar" && huidigDier != null)
+                {
+                    var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == huidigDier.Eigenaar);
+                    if (eigenaar != null)
+                    {
+                        mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+                        ucProfielEigenaar profiel = new ucProfielEigenaar();
+                        profiel.VulData(eigenaar, "Overzicht");
+                        mainForm.ToonScherm(profiel);
+                    }
+                }
+                // ROUTE B: Terug naar Eigenaren Overzicht (via de tabel)
+                else if (_bronScherm == "EigenarenOverzicht")
+                {
+                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+                    mainForm.ToonScherm(new ucEigenaren());
+                }
+                // ROUTE C: Standaard terug naar de Dierenlijst
+                else
+                {
+                    mainForm.ActiveerMenuKnopInCode("btnDieren");
+                    mainForm.ToonScherm(new ucDieren());
+                }
             }
         }
 
+        // Deze methode laten staan voor de Designer koppeling
         private void lblEigenaarDierProfiel_Click(object sender, EventArgs e)
         {
-
+            if (huidigDier != null && !string.IsNullOrEmpty(huidigDier.Eigenaar))
+            {
+                var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(eig => eig.Naam == huidigDier.Eigenaar);
+                if (eigenaar != null && this.ParentForm is MainForm mainForm)
+                {
+                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+                    ucProfielEigenaar profielEigenaar = new ucProfielEigenaar();
+                    profielEigenaar.VulData(eigenaar, "DierenLijst");
+                    mainForm.ToonScherm(profielEigenaar);
+                }
+            }
         }
 
         private void btnBewerkenProfielDieren_Click(object sender, EventArgs e)
@@ -63,10 +96,7 @@ namespace PetCareProApp
             if (huidigDier != null && this.ParentForm is MainForm mainForm)
             {
                 ucDierenToevoegen bewerkScherm = new ucDierenToevoegen();
-
-                // We geven 'true' mee zodat het scherm weet dat we van het profiel komen
                 bewerkScherm.LaadDierVoorBewerken(huidigDier, true);
-
                 mainForm.ToonScherm(bewerkScherm);
             }
         }
@@ -75,22 +105,15 @@ namespace PetCareProApp
         {
             if (huidigDier != null)
             {
-                // Vraag om bevestiging
                 var resultaat = MessageBox.Show($"Weet je zeker dat je {huidigDier.Naam} wilt verwijderen?",
                                                 "Dier verwijderen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (resultaat == DialogResult.Yes)
                 {
-                    // Laad de huidige lijst
                     List<Dier> lijst = DataManager.LaadDieren();
-
-                    // Verwijder het dier (op uniek Chipnummer)
                     lijst.RemoveAll(d => d.Chipnummer == huidigDier.Chipnummer);
-
-                    // Sla de bijgewerkte lijst op
                     DataManager.SlaDierenOp(lijst);
 
-                    // Ga terug naar het overzicht 
                     if (this.ParentForm is MainForm mainForm)
                     {
                         mainForm.ToonScherm(new ucDieren());

@@ -56,7 +56,6 @@ namespace PetCareProApp
 
         private void txbZoekenDieren_TextChanged(object sender, EventArgs e)
         {
-            // Ververs de lijst direct bij elke wijziging, behalve bij de placeholder
             if (txbZoekenDieren.Text != ZoekPlaceholderDieren)
             {
                 VerversGrid(txbZoekenDieren.Text);
@@ -68,7 +67,7 @@ namespace PetCareProApp
             if (e.KeyCode == Keys.Enter)
             {
                 VerversGrid(txbZoekenDieren.Text);
-                e.SuppressKeyPress = true; // Geen piepje
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -94,8 +93,6 @@ namespace PetCareProApp
                 txbZoekenDieren.ForeColor = Color.Gray;
             }
         }
-
-        // --- Navigatie en andere knoppen ---
 
         private void btnToevoegenDieren_Click(object sender, EventArgs e)
         {
@@ -146,6 +143,7 @@ namespace PetCareProApp
         {
             if (e.RowIndex < 0) return;
 
+            // 1. Klik op Naam van het dier -> Naar Dierprofiel
             if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnNaam")
             {
                 Dier gekozenDier = (Dier)dgvDieren.Rows[e.RowIndex].DataBoundItem;
@@ -157,6 +155,27 @@ namespace PetCareProApp
                     if (this.ParentForm is MainForm mainForm)
                     {
                         mainForm.ToonScherm(profiel);
+                    }
+                }
+            }
+
+            // 2. Klik op Naam van de Eigenaar -> Naar Eigenaarprofiel
+            if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnEigenaar")
+            {
+                string eigenaarNaam = dgvDieren.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(eigenaarNaam))
+                {
+                    var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(eig => eig.Naam == eigenaarNaam);
+
+                    if (eigenaar != null && this.ParentForm is MainForm mainForm)
+                    {
+                        // Activeer de Eigenaren knop in het menu
+                        mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+
+                        ucProfielEigenaar profielEigenaar = new ucProfielEigenaar();
+                        profielEigenaar.VulData(eigenaar, "DierenLijst");
+                        mainForm.ToonScherm(profielEigenaar);
                     }
                 }
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing; // Nodig voor Color
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +16,8 @@ namespace PetCareProApp
             InitializeComponent();
             InstellenPlaceholder();
             VulTabel();
+
+            dgvEigenaren.CellClick += dgvEigenaren_CellClick;
         }
 
         private void InstellenPlaceholder()
@@ -41,7 +43,6 @@ namespace PetCareProApp
                 }
             };
 
-            // Enter-toets afvangen zonder piepje
             txbZoekenEigenaren.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -51,10 +52,8 @@ namespace PetCareProApp
                 }
             };
 
-            // Automatisch verversen bij typen of verwijderen
             txbZoekenEigenaren.TextChanged += (s, e) =>
             {
-                // Alleen verversen als het niet de placeholder is die we zelf zetten
                 if (txbZoekenEigenaren.Text != ZoekPlaceholder)
                 {
                     VulTabel(txbZoekenEigenaren.Text);
@@ -93,6 +92,18 @@ namespace PetCareProApp
 
             dgvEigenaren.DataSource = null;
             dgvEigenaren.DataSource = weergaveLijst;
+
+            // --- STYLING VOOR LINKS ---
+            // We maken de kolommen 'Naam' en 'Huisdier' blauw en onderstreept
+            foreach (DataGridViewColumn col in dgvEigenaren.Columns)
+            {
+                if (col.DataPropertyName == "Naam" || col.DataPropertyName == "Huisdier")
+                {
+                    col.DefaultCellStyle.ForeColor = Color.Blue;
+                    Font linkFont = new Font(dgvEigenaren.Font, FontStyle.Underline);
+                    col.DefaultCellStyle.Font = linkFont;
+                }
+            }
         }
 
         private void btnZoekenEigenaren_Click(object sender, EventArgs e)
@@ -158,13 +169,55 @@ namespace PetCareProApp
                 Eigenaar deEigenaar = geselecteerdeView.DeEigenaar;
                 if (this.ParentForm is MainForm mainForm)
                 {
-                    // Dit gaan we zo in orde maken
-                    // mainForm.ToonScherm(new ucEigenaarProfiel(deEigenaar));
+                    ucProfielEigenaar profiel = new ucProfielEigenaar();
+                    profiel.VulData(deEigenaar, "Overzicht");
+                    mainForm.ToonScherm(profiel);
                 }
             }
             else
             {
                 MessageBox.Show("Selecteer eerst een eigenaar om het profiel te bekijken.");
+            }
+        }
+
+        private void dgvEigenaren_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var kolom = dgvEigenaren.Columns[e.ColumnIndex];
+                var cellValue = dgvEigenaren.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+
+                // 1. Klik op Naam -> Naar Eigenaar Profiel
+                if (kolom.Name == "Naam" || kolom.DataPropertyName == "Naam")
+                {
+                    if (dgvEigenaren.Rows[e.RowIndex].DataBoundItem is EigenaarTabelView view)
+                    {
+                        if (this.ParentForm is MainForm mainForm)
+                        {
+                            ucProfielEigenaar profiel = new ucProfielEigenaar();
+                            profiel.VulData(view.DeEigenaar, "Overzicht");
+                            mainForm.ToonScherm(profiel);
+                        }
+                    }
+                }
+                // 2. Klik op Huisdier -> Naar Dier Profiel
+                else if (kolom.Name == "Huisdier" || kolom.DataPropertyName == "Huisdier")
+                {
+                    if (!string.IsNullOrWhiteSpace(cellValue))
+                    {
+                        string eersteDierNaam = cellValue.Split(',')[0].Trim();
+                        var dier = DataManager.LaadDieren().FirstOrDefault(d => d.Naam == eersteDierNaam);
+
+                        if (dier != null && this.ParentForm is MainForm mainForm)
+                        {
+                            mainForm.ActiveerMenuKnopInCode("btnDieren");
+
+                            ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
+                            dierProfiel.VulData(dier, "EigenarenOverzicht");
+                            mainForm.ToonScherm(dierProfiel);
+                        }
+                    }
+                }
             }
         }
     }

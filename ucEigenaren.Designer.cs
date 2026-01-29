@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeaderEIgenaren = new System.Windows.Forms.Panel();
+            this.btnZoekenEigenaren = new System.Windows.Forms.Button();
+            this.txbZoekenEigenaren = new System.Windows.Forms.TextBox();
             this.lblHeaderEigenaren = new System.Windows.Forms.Label();
             this.pnlFooterEigenaren = new System.Windows.Forms.Panel();
-            this.pnlContentEigenaren = new System.Windows.Forms.Panel();
-            this.txbZoekenEigenaren = new System.Windows.Forms.TextBox();
-            this.lblZoekenEigenaren = new System.Windows.Forms.Label();
             this.btnToevoegenEigenaren = new System.Windows.Forms.Button();
             this.btnBewerkenEigenaren = new System.Windows.Forms.Button();
             this.btnVerwijderEigenaren = new System.Windows.Forms.Button();
+            this.pnlContentEigenaren = new System.Windows.Forms.Panel();
             this.dgvEigenaren = new System.Windows.Forms.DataGridView();
             this.colNaam = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colWoonplaats = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,8 +47,7 @@
             this.colPostCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelefoon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHuisdier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnZoekenEigenaren = new System.Windows.Forms.Button();
+            this.colHuisdier = new System.Windows.Forms.DataGridViewLinkColumn();
             this.pnlHeaderEIgenaren.SuspendLayout();
             this.pnlFooterEigenaren.SuspendLayout();
             this.pnlContentEigenaren.SuspendLayout();
@@ -59,7 +58,6 @@
             // 
             this.pnlHeaderEIgenaren.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlHeaderEIgenaren.Controls.Add(this.btnZoekenEigenaren);
-            this.pnlHeaderEIgenaren.Controls.Add(this.lblZoekenEigenaren);
             this.pnlHeaderEIgenaren.Controls.Add(this.txbZoekenEigenaren);
             this.pnlHeaderEIgenaren.Controls.Add(this.lblHeaderEigenaren);
             this.pnlHeaderEIgenaren.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,6 +65,32 @@
             this.pnlHeaderEIgenaren.Name = "pnlHeaderEIgenaren";
             this.pnlHeaderEIgenaren.Size = new System.Drawing.Size(780, 50);
             this.pnlHeaderEIgenaren.TabIndex = 0;
+            // 
+            // btnZoekenEigenaren
+            // 
+            this.btnZoekenEigenaren.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnZoekenEigenaren.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnZoekenEigenaren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnZoekenEigenaren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoekenEigenaren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZoekenEigenaren.ForeColor = System.Drawing.Color.Black;
+            this.btnZoekenEigenaren.Location = new System.Drawing.Point(668, 10);
+            this.btnZoekenEigenaren.Name = "btnZoekenEigenaren";
+            this.btnZoekenEigenaren.Size = new System.Drawing.Size(100, 30);
+            this.btnZoekenEigenaren.TabIndex = 4;
+            this.btnZoekenEigenaren.Text = "Zoeken";
+            this.btnZoekenEigenaren.UseVisualStyleBackColor = false;
+            this.btnZoekenEigenaren.Click += new System.EventHandler(this.btnZoekenEigenaren_Click);
+            // 
+            // txbZoekenEigenaren
+            // 
+            this.txbZoekenEigenaren.BackColor = System.Drawing.Color.White;
+            this.txbZoekenEigenaren.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txbZoekenEigenaren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbZoekenEigenaren.Location = new System.Drawing.Point(462, 13);
+            this.txbZoekenEigenaren.Name = "txbZoekenEigenaren";
+            this.txbZoekenEigenaren.Size = new System.Drawing.Size(200, 27);
+            this.txbZoekenEigenaren.TabIndex = 2;
             // 
             // lblHeaderEigenaren
             // 
@@ -89,37 +113,6 @@
             this.pnlFooterEigenaren.Name = "pnlFooterEigenaren";
             this.pnlFooterEigenaren.Size = new System.Drawing.Size(780, 60);
             this.pnlFooterEigenaren.TabIndex = 2;
-            // 
-            // pnlContentEigenaren
-            // 
-            this.pnlContentEigenaren.Controls.Add(this.dgvEigenaren);
-            this.pnlContentEigenaren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContentEigenaren.Location = new System.Drawing.Point(10, 60);
-            this.pnlContentEigenaren.Name = "pnlContentEigenaren";
-            this.pnlContentEigenaren.Size = new System.Drawing.Size(780, 480);
-            this.pnlContentEigenaren.TabIndex = 3;
-            // 
-            // txbZoekenEigenaren
-            // 
-            this.txbZoekenEigenaren.BackColor = System.Drawing.Color.White;
-            this.txbZoekenEigenaren.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbZoekenEigenaren.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbZoekenEigenaren.Location = new System.Drawing.Point(462, 13);
-            this.txbZoekenEigenaren.Name = "txbZoekenEigenaren";
-            this.txbZoekenEigenaren.Size = new System.Drawing.Size(200, 27);
-            this.txbZoekenEigenaren.TabIndex = 2;
-            // 
-            // lblZoekenEigenaren
-            // 
-            this.lblZoekenEigenaren.AutoSize = true;
-            this.lblZoekenEigenaren.BackColor = System.Drawing.Color.Transparent;
-            this.lblZoekenEigenaren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZoekenEigenaren.Location = new System.Drawing.Point(394, 15);
-            this.lblZoekenEigenaren.Name = "lblZoekenEigenaren";
-            this.lblZoekenEigenaren.Size = new System.Drawing.Size(70, 23);
-            this.lblZoekenEigenaren.TabIndex = 3;
-            this.lblZoekenEigenaren.Text = "Zoeken:";
-            this.lblZoekenEigenaren.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnToevoegenEigenaren
             // 
@@ -169,6 +162,15 @@
             this.btnVerwijderEigenaren.UseVisualStyleBackColor = false;
             this.btnVerwijderEigenaren.Click += new System.EventHandler(this.btnVerwijderEigenaren_Click);
             // 
+            // pnlContentEigenaren
+            // 
+            this.pnlContentEigenaren.Controls.Add(this.dgvEigenaren);
+            this.pnlContentEigenaren.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContentEigenaren.Location = new System.Drawing.Point(10, 60);
+            this.pnlContentEigenaren.Name = "pnlContentEigenaren";
+            this.pnlContentEigenaren.Size = new System.Drawing.Size(780, 480);
+            this.pnlContentEigenaren.TabIndex = 3;
+            // 
             // dgvEigenaren
             // 
             this.dgvEigenaren.AllowUserToAddRows = false;
@@ -178,14 +180,14 @@
             this.dgvEigenaren.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvEigenaren.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEigenaren.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEigenaren.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEigenaren.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEigenaren.ColumnHeadersHeight = 29;
             this.dgvEigenaren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEigenaren.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -197,14 +199,14 @@
             this.colTelefoon,
             this.colEmail,
             this.colHuisdier});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEigenaren.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEigenaren.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEigenaren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEigenaren.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvEigenaren.Location = new System.Drawing.Point(0, 0);
@@ -281,22 +283,8 @@
             this.colHuisdier.MinimumWidth = 6;
             this.colHuisdier.Name = "colHuisdier";
             this.colHuisdier.ReadOnly = true;
-            // 
-            // btnZoekenEigenaren
-            // 
-            this.btnZoekenEigenaren.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnZoekenEigenaren.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnZoekenEigenaren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnZoekenEigenaren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoekenEigenaren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZoekenEigenaren.ForeColor = System.Drawing.Color.Black;
-            this.btnZoekenEigenaren.Location = new System.Drawing.Point(668, 10);
-            this.btnZoekenEigenaren.Name = "btnZoekenEigenaren";
-            this.btnZoekenEigenaren.Size = new System.Drawing.Size(100, 30);
-            this.btnZoekenEigenaren.TabIndex = 4;
-            this.btnZoekenEigenaren.Text = "Zoeken";
-            this.btnZoekenEigenaren.UseVisualStyleBackColor = false;
-            this.btnZoekenEigenaren.Click += new System.EventHandler(this.btnZoekenEigenaren_Click);
+            this.colHuisdier.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colHuisdier.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ucEigenaren
             // 
@@ -328,12 +316,12 @@
         private System.Windows.Forms.Label lblHeaderEigenaren;
         private System.Windows.Forms.Panel pnlFooterEigenaren;
         private System.Windows.Forms.Panel pnlContentEigenaren;
-        private System.Windows.Forms.Label lblZoekenEigenaren;
         private System.Windows.Forms.TextBox txbZoekenEigenaren;
         private System.Windows.Forms.Button btnToevoegenEigenaren;
         private System.Windows.Forms.Button btnBewerkenEigenaren;
         private System.Windows.Forms.Button btnVerwijderEigenaren;
         private System.Windows.Forms.DataGridView dgvEigenaren;
+        private System.Windows.Forms.Button btnZoekenEigenaren;
         private System.Windows.Forms.DataGridViewLinkColumn colNaam;
         private System.Windows.Forms.DataGridViewTextBoxColumn colWoonplaats;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStraat;
@@ -341,7 +329,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPostCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefoon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHuisdier;
-        private System.Windows.Forms.Button btnZoekenEigenaren;
+        private System.Windows.Forms.DataGridViewLinkColumn colHuisdier;
     }
 }
