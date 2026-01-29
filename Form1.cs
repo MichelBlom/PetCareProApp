@@ -15,15 +15,43 @@ namespace PetCareProApp
         public MainForm() // Constructor
         {
             InitializeComponent();
-            
         }
-        
 
         public void ToonScherm(UserControl scherm)
         {
-              pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
-             scherm.Dock = DockStyle.Fill;
-             pnlMain.Controls.Add(scherm);
+            pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
+            scherm.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(scherm);
+        }
+
+        /// <summary>
+        /// Deze methode zorgt ervoor dat de navigatie naar de Eigenaren-sectie 
+        /// correct wordt afgehandeld, inclusief de visuele indicator.
+        /// </summary>
+        public void GaNaarEigenarenScherm(UserControl specifiekScherm = null)
+        {
+            // 1. Maak de Eigenaren-knop visueel actief
+            ActiveerMenuKnop(btnEigenaren);
+
+            // 2. Toon het gevraagde scherm (bijv. toevoegen) of het standaard overzicht
+            if (specifiekScherm != null)
+            {
+                ToonScherm(specifiekScherm);
+            }
+            else
+            {
+                ToonScherm(new ucEigenaren());
+            }
+        }
+
+        // NIEUW: Hiermee kunnen we de indicator verplaatsen op basis van de knopnaam
+        public void ActiveerMenuKnopInCode(string knopNaam)
+        {
+            Control[] controls = pnlNavigation.Controls.Find(knopNaam, true);
+            if (controls.Length > 0 && controls[0] is Button btn)
+            {
+                ActiveerMenuKnop(btn);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -50,14 +78,11 @@ namespace PetCareProApp
             actieveBtn.BackColor = Color.White;
             actieveBtn.ForeColor = Color.RoyalBlue;
 
-            // Hover kleur bij actieve knop
-            //actieveBtn.FlatAppearance.MouseOverBackColor = Color.White;
-
             // Verplaats en toon de indicator
-            pnlSelectionIndicator.Height = actieveBtn.Height; // Zorg dat de hoogte matcht
-            pnlSelectionIndicator.Top = actieveBtn.Top;       // Zet hem op dezelfde hoogte
+            pnlSelectionIndicator.Height = actieveBtn.Height;
+            pnlSelectionIndicator.Top = actieveBtn.Top;
             pnlSelectionIndicator.Visible = true;
-            pnlSelectionIndicator.BringToFront();             // Zorg dat hij bovenop ligt
+            pnlSelectionIndicator.BringToFront();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -68,10 +93,7 @@ namespace PetCareProApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Dashboard scherm weergave bij starten applicatie
             ToonScherm(new ucDashboard());
-
-            // Maakt Dashboard knop visueel actief
             ActiveerMenuKnop(btnDashboard);
         }
 

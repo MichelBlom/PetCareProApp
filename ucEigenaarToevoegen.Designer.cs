@@ -315,7 +315,7 @@
             this.grbEigenaarToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.grbEigenaarToevoegen.Controls.Add(this.txbOpmerkingenEigenaarToevoegen);
             this.grbEigenaarToevoegen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbEigenaarToevoegen.Location = new System.Drawing.Point(289, 288);
+            this.grbEigenaarToevoegen.Location = new System.Drawing.Point(236, 288);
             this.grbEigenaarToevoegen.Name = "grbEigenaarToevoegen";
             this.grbEigenaarToevoegen.Size = new System.Drawing.Size(299, 140);
             this.grbEigenaarToevoegen.TabIndex = 41;

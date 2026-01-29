@@ -31,6 +31,7 @@
             this.pnlHeaderDierenToevoegen = new System.Windows.Forms.Panel();
             this.lblHeaderDierenToevoegen = new System.Windows.Forms.Label();
             this.pnlFooterDierenToevoegen = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnOpslaanDierToevoegen = new System.Windows.Forms.Button();
             this.btnAnnulerenDierToevoegen = new System.Windows.Forms.Button();
             this.pnlLeftDierenToevoegen = new System.Windows.Forms.Panel();
@@ -43,6 +44,7 @@
             this.lblSoortDierToevoegen = new System.Windows.Forms.Label();
             this.lblNaamDierToevoegen = new System.Windows.Forms.Label();
             this.pnlMiddleDierToevoegen = new System.Windows.Forms.Panel();
+            this.cmbSoortDierToevoegen = new System.Windows.Forms.ComboBox();
             this.cmbVerblijfDierToevoegen = new System.Windows.Forms.ComboBox();
             this.linkLabelEigenaarDierToevoegen = new System.Windows.Forms.LinkLabel();
             this.cmbEigenaarDierToevoegen = new System.Windows.Forms.ComboBox();
@@ -58,8 +60,6 @@
             this.lblOpmerkingenDierToevoegen = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
-            this.cmbSoortDierToevoegen = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlHeaderDierenToevoegen.SuspendLayout();
             this.pnlFooterDierenToevoegen.SuspendLayout();
             this.pnlLeftDierenToevoegen.SuspendLayout();
@@ -102,6 +102,16 @@
             this.pnlFooterDierenToevoegen.Name = "pnlFooterDierenToevoegen";
             this.pnlFooterDierenToevoegen.Size = new System.Drawing.Size(780, 60);
             this.pnlFooterDierenToevoegen.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Velden met een * zijn verplicht!";
             // 
             // btnOpslaanDierToevoegen
             // 
@@ -255,6 +265,22 @@
             this.pnlMiddleDierToevoegen.Size = new System.Drawing.Size(200, 480);
             this.pnlMiddleDierToevoegen.TabIndex = 3;
             // 
+            // cmbSoortDierToevoegen
+            // 
+            this.cmbSoortDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbSoortDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbSoortDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSoortDierToevoegen.FormattingEnabled = true;
+            this.cmbSoortDierToevoegen.Items.AddRange(new object[] {
+            "Hond",
+            "Kat",
+            "Konijn",
+            "Anders"});
+            this.cmbSoortDierToevoegen.Location = new System.Drawing.Point(3, 101);
+            this.cmbSoortDierToevoegen.Name = "cmbSoortDierToevoegen";
+            this.cmbSoortDierToevoegen.Size = new System.Drawing.Size(150, 28);
+            this.cmbSoortDierToevoegen.TabIndex = 12;
+            // 
             // cmbVerblijfDierToevoegen
             // 
             this.cmbVerblijfDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -275,6 +301,7 @@
             this.linkLabelEigenaarDierToevoegen.TabIndex = 10;
             this.linkLabelEigenaarDierToevoegen.TabStop = true;
             this.linkLabelEigenaarDierToevoegen.Text = "Nieuwe eigenaar toevoegen";
+            this.linkLabelEigenaarDierToevoegen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEigenaarDierToevoegen_LinkClicked);
             // 
             // cmbEigenaarDierToevoegen
             // 
@@ -429,32 +456,6 @@
             this.pcbFotoDierToevoegen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbFotoDierToevoegen.TabIndex = 0;
             this.pcbFotoDierToevoegen.TabStop = false;
-            // 
-            // cmbSoortDierToevoegen
-            // 
-            this.cmbSoortDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cmbSoortDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbSoortDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSoortDierToevoegen.FormattingEnabled = true;
-            this.cmbSoortDierToevoegen.Items.AddRange(new object[] {
-            "Hond",
-            "Kat",
-            "Konijn",
-            "Anders"});
-            this.cmbSoortDierToevoegen.Location = new System.Drawing.Point(3, 101);
-            this.cmbSoortDierToevoegen.Name = "cmbSoortDierToevoegen";
-            this.cmbSoortDierToevoegen.Size = new System.Drawing.Size(150, 28);
-            this.cmbSoortDierToevoegen.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Velden met een * zijn verplicht!";
             // 
             // ucDierenToevoegen
             // 
