@@ -11,29 +11,43 @@ namespace PetCareProApp
     {
         private Eigenaar _huidigeEigenaar;
         private string _bronScherm = "Overzicht";
-        private Dier _bronDier = null; // Nieuw: onthoudt het dier waar we vandaan kwamen
+        private Dier _bronDier = null;
 
         public ucProfielEigenaar()
         {
             InitializeComponent();
         }
 
-        // Aangepaste VulData die ook een Dier kan accepteren
         public void VulData(Eigenaar eigenaar, string bron = "Overzicht", Dier bronDier = null)
         {
             _huidigeEigenaar = eigenaar;
             _bronScherm = bron;
             _bronDier = bronDier;
 
-            // Info invullen
+            // Header en Naam
             lblHeaderProfielEigenaar.Text = $"Profiel van {eigenaar.Naam}";
             lblNaamProfielEigenaar.Text = eigenaar.Naam;
-            lblWoonplaatsProfielEigenaar.Text = eigenaar.Woonplaats;
+
+            // Adresgegevens
+            lblStraatProfielEigenaar.Text = eigenaar.Straat;
+
+            // Oplossing CS0029: .ToString() toegevoegd omdat Huisnummer een int is
+            lblHuisNummerProfielEigenaar.Text = eigenaar.Huisnummer.ToString();
+
             lblPostcodeProfielEigenaar.Text = eigenaar.Postcode;
-            lblStraatProfielEigenaar.Text = $"{eigenaar.Straat} {eigenaar.Huisnummer}";
+            lblWoonplaatsProfielEigenaar.Text = eigenaar.Woonplaats;
+
+            // Contactgegevens
             lblEmailProfielEigenaar.Text = eigenaar.Email;
+
+            // Oplossing CS1061: Veranderd van 'Telefoon' naar 'Telefoonnummer'
+            // Mocht dit nog een fout geven, vervang 'Telefoonnummer' dan door de naam die in Eigenaar.cs staat
+            lblTelefoonProfielEigenaar.Text = eigenaar.Telefoonnummer;
+
+            // Overig
             lblOpmerkingenProfielEigenaar.Text = eigenaar.Opmerkingen;
 
+            // Dierenlijst onderaan verversen
             HerlaadDierenLijst();
         }
 
@@ -122,7 +136,6 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                // ROUTE: Terug naar het specifieke Dier Profiel als we daar vandaan kwamen
                 if (_bronScherm == "DierProfiel" && _bronDier != null)
                 {
                     mainForm.ActiveerMenuKnopInCode("btnDieren");

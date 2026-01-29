@@ -267,9 +267,9 @@
             this.lblVerblijfOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVerblijfOutputProfielDieren.Location = new System.Drawing.Point(3, 357);
             this.lblVerblijfOutputProfielDieren.Name = "lblVerblijfOutputProfielDieren";
-            this.lblVerblijfOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblVerblijfOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblVerblijfOutputProfielDieren.TabIndex = 7;
-            this.lblVerblijfOutputProfielDieren.Text = "hallo";
+            this.lblVerblijfOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblVerblijfOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblEigenaarOutputProfielDieren
@@ -278,9 +278,9 @@
             this.lblEigenaarOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEigenaarOutputProfielDieren.Location = new System.Drawing.Point(3, 314);
             this.lblEigenaarOutputProfielDieren.Name = "lblEigenaarOutputProfielDieren";
-            this.lblEigenaarOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblEigenaarOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblEigenaarOutputProfielDieren.TabIndex = 6;
-            this.lblEigenaarOutputProfielDieren.Text = "hallo";
+            this.lblEigenaarOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblEigenaarOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblEigenaarOutputProfielDieren.Click += new System.EventHandler(this.lblEigenaarOutputProfielDieren_Click);
             // 
@@ -290,9 +290,9 @@
             this.lblChipNrOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChipNrOutputProfielDieren.Location = new System.Drawing.Point(3, 271);
             this.lblChipNrOutputProfielDieren.Name = "lblChipNrOutputProfielDieren";
-            this.lblChipNrOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblChipNrOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblChipNrOutputProfielDieren.TabIndex = 5;
-            this.lblChipNrOutputProfielDieren.Text = "hallo";
+            this.lblChipNrOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblChipNrOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRasOutputProfielDieren
@@ -301,9 +301,9 @@
             this.lblRasOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRasOutputProfielDieren.Location = new System.Drawing.Point(3, 228);
             this.lblRasOutputProfielDieren.Name = "lblRasOutputProfielDieren";
-            this.lblRasOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblRasOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblRasOutputProfielDieren.TabIndex = 4;
-            this.lblRasOutputProfielDieren.Text = "hallo";
+            this.lblRasOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblRasOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblGeslachtOutputProfielDieren
@@ -312,9 +312,9 @@
             this.lblGeslachtOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGeslachtOutputProfielDieren.Location = new System.Drawing.Point(3, 185);
             this.lblGeslachtOutputProfielDieren.Name = "lblGeslachtOutputProfielDieren";
-            this.lblGeslachtOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblGeslachtOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblGeslachtOutputProfielDieren.TabIndex = 3;
-            this.lblGeslachtOutputProfielDieren.Text = "hallo";
+            this.lblGeslachtOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblGeslachtOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblLeeftijdOutputProfielDieren
@@ -323,9 +323,9 @@
             this.lblLeeftijdOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLeeftijdOutputProfielDieren.Location = new System.Drawing.Point(3, 142);
             this.lblLeeftijdOutputProfielDieren.Name = "lblLeeftijdOutputProfielDieren";
-            this.lblLeeftijdOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblLeeftijdOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblLeeftijdOutputProfielDieren.TabIndex = 2;
-            this.lblLeeftijdOutputProfielDieren.Text = "hallo";
+            this.lblLeeftijdOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblLeeftijdOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSoortOutputProfielDieren
@@ -334,9 +334,9 @@
             this.lblSoortOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoortOutputProfielDieren.Location = new System.Drawing.Point(3, 99);
             this.lblSoortOutputProfielDieren.Name = "lblSoortOutputProfielDieren";
-            this.lblSoortOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblSoortOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblSoortOutputProfielDieren.TabIndex = 1;
-            this.lblSoortOutputProfielDieren.Text = "hallo";
+            this.lblSoortOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblSoortOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblNaamOutputProfielDieren
@@ -345,9 +345,9 @@
             this.lblNaamOutputProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNaamOutputProfielDieren.Location = new System.Drawing.Point(3, 56);
             this.lblNaamOutputProfielDieren.Name = "lblNaamOutputProfielDieren";
-            this.lblNaamOutputProfielDieren.Size = new System.Drawing.Size(47, 23);
+            this.lblNaamOutputProfielDieren.Size = new System.Drawing.Size(122, 23);
             this.lblNaamOutputProfielDieren.TabIndex = 0;
-            this.lblNaamOutputProfielDieren.Text = "hallo";
+            this.lblNaamOutputProfielDieren.Text = "(niet ingevuld)";
             this.lblNaamOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // pnlRightProfielDieren

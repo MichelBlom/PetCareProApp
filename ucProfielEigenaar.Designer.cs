@@ -193,9 +193,9 @@
             this.lblEmailProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailProfielEigenaar.Location = new System.Drawing.Point(164, 287);
             this.lblEmailProfielEigenaar.Name = "lblEmailProfielEigenaar";
-            this.lblEmailProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblEmailProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblEmailProfielEigenaar.TabIndex = 24;
-            this.lblEmailProfielEigenaar.Text = "hgt5h";
+            this.lblEmailProfielEigenaar.Text = "(niet ingevuld)";
             this.lblEmailProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTelefoonProfielEigenaar
@@ -204,9 +204,9 @@
             this.lblTelefoonProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefoonProfielEigenaar.Location = new System.Drawing.Point(164, 244);
             this.lblTelefoonProfielEigenaar.Name = "lblTelefoonProfielEigenaar";
-            this.lblTelefoonProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblTelefoonProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblTelefoonProfielEigenaar.TabIndex = 22;
-            this.lblTelefoonProfielEigenaar.Text = "hgt5h";
+            this.lblTelefoonProfielEigenaar.Text = "(niet ingevuld)";
             this.lblTelefoonProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblHuisNummerProfielEigenaar
@@ -215,9 +215,9 @@
             this.lblHuisNummerProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHuisNummerProfielEigenaar.Location = new System.Drawing.Point(164, 201);
             this.lblHuisNummerProfielEigenaar.Name = "lblHuisNummerProfielEigenaar";
-            this.lblHuisNummerProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblHuisNummerProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblHuisNummerProfielEigenaar.TabIndex = 26;
-            this.lblHuisNummerProfielEigenaar.Text = "hgt5h";
+            this.lblHuisNummerProfielEigenaar.Text = "(niet ingevuld)";
             this.lblHuisNummerProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -237,9 +237,9 @@
             this.lblNaamProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNaamProfielEigenaar.Location = new System.Drawing.Point(164, 29);
             this.lblNaamProfielEigenaar.Name = "lblNaamProfielEigenaar";
-            this.lblNaamProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblNaamProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblNaamProfielEigenaar.TabIndex = 21;
-            this.lblNaamProfielEigenaar.Text = "hgt5h";
+            this.lblNaamProfielEigenaar.Text = "(niet ingevuld)";
             this.lblNaamProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblWoonplaatsProfielEigenaar
@@ -248,9 +248,9 @@
             this.lblWoonplaatsProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWoonplaatsProfielEigenaar.Location = new System.Drawing.Point(164, 72);
             this.lblWoonplaatsProfielEigenaar.Name = "lblWoonplaatsProfielEigenaar";
-            this.lblWoonplaatsProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblWoonplaatsProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblWoonplaatsProfielEigenaar.TabIndex = 23;
-            this.lblWoonplaatsProfielEigenaar.Text = "hgt5h";
+            this.lblWoonplaatsProfielEigenaar.Text = "(niet ingevuld)";
             this.lblWoonplaatsProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblStraatProfielEigenaar
@@ -259,9 +259,9 @@
             this.lblStraatProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStraatProfielEigenaar.Location = new System.Drawing.Point(164, 158);
             this.lblStraatProfielEigenaar.Name = "lblStraatProfielEigenaar";
-            this.lblStraatProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblStraatProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblStraatProfielEigenaar.TabIndex = 25;
-            this.lblStraatProfielEigenaar.Text = "hgt5h";
+            this.lblStraatProfielEigenaar.Text = "(niet ingevuld)";
             this.lblStraatProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -281,9 +281,9 @@
             this.lblPostcodeProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPostcodeProfielEigenaar.Location = new System.Drawing.Point(164, 115);
             this.lblPostcodeProfielEigenaar.Name = "lblPostcodeProfielEigenaar";
-            this.lblPostcodeProfielEigenaar.Size = new System.Drawing.Size(55, 23);
+            this.lblPostcodeProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblPostcodeProfielEigenaar.TabIndex = 27;
-            this.lblPostcodeProfielEigenaar.Text = "hgt5h";
+            this.lblPostcodeProfielEigenaar.Text = "(niet ingevuld)";
             this.lblPostcodeProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
@@ -357,7 +357,7 @@
             // 
             this.flpDierenProfielEigenaar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flpDierenProfielEigenaar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(40, 69);
+            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(43, 48);
             this.flpDierenProfielEigenaar.Name = "flpDierenProfielEigenaar";
             this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(305, 342);
             this.flpDierenProfielEigenaar.TabIndex = 0;
@@ -366,7 +366,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(104, 29);
+            this.label8.Location = new System.Drawing.Point(100, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(190, 23);
             this.label8.TabIndex = 1;
@@ -380,7 +380,7 @@
             this.btnHuisdierProfielEigenaar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHuisdierProfielEigenaar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuisdierProfielEigenaar.ForeColor = System.Drawing.Color.Black;
-            this.btnHuisdierProfielEigenaar.Location = new System.Drawing.Point(108, 420);
+            this.btnHuisdierProfielEigenaar.Location = new System.Drawing.Point(108, 396);
             this.btnHuisdierProfielEigenaar.Name = "btnHuisdierProfielEigenaar";
             this.btnHuisdierProfielEigenaar.Size = new System.Drawing.Size(175, 30);
             this.btnHuisdierProfielEigenaar.TabIndex = 3;
