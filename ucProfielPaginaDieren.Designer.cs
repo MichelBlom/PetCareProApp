@@ -31,6 +31,7 @@
             this.pnlHeaderProfielDieren = new System.Windows.Forms.Panel();
             this.lblHeaderProfielDieren = new System.Windows.Forms.Label();
             this.pnlFooterProfielDieren = new System.Windows.Forms.Panel();
+            this.btnVerwijderenProfielDieren = new System.Windows.Forms.Button();
             this.btnBewerkenProfielDieren = new System.Windows.Forms.Button();
             this.btnTerugProfielDieren = new System.Windows.Forms.Button();
             this.pnlLeftProfielDieren = new System.Windows.Forms.Panel();
@@ -55,7 +56,6 @@
             this.lblOutputOpmerkingenProfielDieren = new System.Windows.Forms.Label();
             this.lblOpmerkingenProfielDieren = new System.Windows.Forms.Label();
             this.pcbFotoProfielDieren = new System.Windows.Forms.PictureBox();
-            this.btnVerwijderenProfielDieren = new System.Windows.Forms.Button();
             this.pnlHeaderProfielDieren.SuspendLayout();
             this.pnlFooterProfielDieren.SuspendLayout();
             this.pnlLeftProfielDieren.SuspendLayout();
@@ -97,6 +97,22 @@
             this.pnlFooterProfielDieren.Name = "pnlFooterProfielDieren";
             this.pnlFooterProfielDieren.Size = new System.Drawing.Size(780, 60);
             this.pnlFooterProfielDieren.TabIndex = 1;
+            // 
+            // btnVerwijderenProfielDieren
+            // 
+            this.btnVerwijderenProfielDieren.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnVerwijderenProfielDieren.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerwijderenProfielDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnVerwijderenProfielDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerwijderenProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerwijderenProfielDieren.ForeColor = System.Drawing.Color.Black;
+            this.btnVerwijderenProfielDieren.Location = new System.Drawing.Point(561, 15);
+            this.btnVerwijderenProfielDieren.Name = "btnVerwijderenProfielDieren";
+            this.btnVerwijderenProfielDieren.Size = new System.Drawing.Size(100, 30);
+            this.btnVerwijderenProfielDieren.TabIndex = 3;
+            this.btnVerwijderenProfielDieren.Text = "Verwijder";
+            this.btnVerwijderenProfielDieren.UseVisualStyleBackColor = false;
+            this.btnVerwijderenProfielDieren.Click += new System.EventHandler(this.btnVerwijderenProfielDieren_Click);
             // 
             // btnBewerkenProfielDieren
             // 
@@ -166,7 +182,7 @@
             this.lblEigenaarDierProfiel.TabIndex = 13;
             this.lblEigenaarDierProfiel.Text = "Eigenaar:";
             this.lblEigenaarDierProfiel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lblEigenaarDierProfiel.Click += new System.EventHandler(this.lblEigenaarDierProfiel_Click);
+            this.lblEigenaarDierProfiel.Click += new System.EventHandler(this.lblEigenaarOutputProfielDieren_Click);
             // 
             // lblChipNrDierProfiel
             // 
@@ -266,6 +282,7 @@
             this.lblEigenaarOutputProfielDieren.TabIndex = 6;
             this.lblEigenaarOutputProfielDieren.Text = "hallo";
             this.lblEigenaarOutputProfielDieren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEigenaarOutputProfielDieren.Click += new System.EventHandler(this.lblEigenaarOutputProfielDieren_Click);
             // 
             // lblChipNrOutputProfielDieren
             // 
@@ -378,22 +395,6 @@
             this.pcbFotoProfielDieren.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbFotoProfielDieren.TabIndex = 1;
             this.pcbFotoProfielDieren.TabStop = false;
-            // 
-            // btnVerwijderenProfielDieren
-            // 
-            this.btnVerwijderenProfielDieren.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnVerwijderenProfielDieren.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVerwijderenProfielDieren.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnVerwijderenProfielDieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerwijderenProfielDieren.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerwijderenProfielDieren.ForeColor = System.Drawing.Color.Black;
-            this.btnVerwijderenProfielDieren.Location = new System.Drawing.Point(561, 15);
-            this.btnVerwijderenProfielDieren.Name = "btnVerwijderenProfielDieren";
-            this.btnVerwijderenProfielDieren.Size = new System.Drawing.Size(100, 30);
-            this.btnVerwijderenProfielDieren.TabIndex = 3;
-            this.btnVerwijderenProfielDieren.Text = "Verwijder";
-            this.btnVerwijderenProfielDieren.UseVisualStyleBackColor = false;
-            this.btnVerwijderenProfielDieren.Click += new System.EventHandler(this.btnVerwijderenProfielDieren_Click);
             // 
             // ucProfielPaginaDieren
             // 

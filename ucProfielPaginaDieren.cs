@@ -19,6 +19,9 @@ namespace PetCareProApp
         public ucProfielPaginaDieren()
         {
             InitializeComponent();
+
+            lblEigenaarOutputProfielDieren.Cursor = Cursors.Hand;
+            lblEigenaarOutputProfielDieren.ForeColor = Color.Blue;
         }
 
         public void VulData(Dier dier, string bron = "DierenLijst")
@@ -37,6 +40,11 @@ namespace PetCareProApp
             lblChipNrOutputProfielDieren.Text = dier.Chipnummer;
             lblVerblijfOutputProfielDieren.Text = dier.Verblijf;
 
+            if (!string.IsNullOrEmpty(dier.Eigenaar))
+            {
+                lblEigenaarOutputProfielDieren.Font = new Font(lblEigenaarOutputProfielDieren.Font, FontStyle.Underline);
+            }
+
             string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
             if (System.IO.File.Exists(fotoPad))
             {
@@ -48,7 +56,6 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                // ROUTE A: Terug naar het specifieke Eigenaar Profiel
                 if (_bronScherm == "ProfielEigenaar" && huidigDier != null)
                 {
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == huidigDier.Eigenaar);
@@ -60,13 +67,11 @@ namespace PetCareProApp
                         mainForm.ToonScherm(profiel);
                     }
                 }
-                // ROUTE B: Terug naar Eigenaren Overzicht (via de tabel)
                 else if (_bronScherm == "EigenarenOverzicht")
                 {
                     mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     mainForm.ToonScherm(new ucEigenaren());
                 }
-                // ROUTE C: Standaard terug naar de Dierenlijst
                 else
                 {
                     mainForm.ActiveerMenuKnopInCode("btnDieren");
@@ -75,8 +80,7 @@ namespace PetCareProApp
             }
         }
 
-        // Deze methode laten staan voor de Designer koppeling
-        private void lblEigenaarDierProfiel_Click(object sender, EventArgs e)
+        private void lblEigenaarOutputProfielDieren_Click(object sender, EventArgs e)
         {
             if (huidigDier != null && !string.IsNullOrEmpty(huidigDier.Eigenaar))
             {
@@ -85,7 +89,10 @@ namespace PetCareProApp
                 {
                     mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     ucProfielEigenaar profielEigenaar = new ucProfielEigenaar();
-                    profielEigenaar.VulData(eigenaar, "DierenLijst");
+
+                    // BELANGRIJK: Geef "DierProfiel" en "huidigDier" mee!
+                    profielEigenaar.VulData(eigenaar, "DierProfiel", huidigDier);
+
                     mainForm.ToonScherm(profielEigenaar);
                 }
             }

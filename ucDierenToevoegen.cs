@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PetCareProApp
 {
@@ -15,10 +16,24 @@ namespace PetCareProApp
         private Dier dierOmTeBewerken = null;
         private bool kwamVanProfiel = false;
         private string geselecteerdFotoPad = "";
+        private string _bronEigenaarNaam = "";
 
         public ucDierenToevoegen()
         {
             InitializeComponent();
+        }
+
+        public void PrepareerVoorNieuwDierVanafEigenaar(string eigenaarNaam)
+        {
+            _bronEigenaarNaam = eigenaarNaam;
+            kwamVanProfiel = true;
+
+            VulEigenaren();
+
+            if (cmbEigenaarDierToevoegen.Items.Contains(eigenaarNaam))
+            {
+                cmbEigenaarDierToevoegen.SelectedItem = eigenaarNaam;
+            }
         }
 
         private void VulEigenaren()
@@ -31,7 +46,10 @@ namespace PetCareProApp
 
         private void ucDierenToevoegen_Load(object sender, EventArgs e)
         {
-            VulEigenaren();
+            if (string.IsNullOrEmpty(_bronEigenaarNaam))
+            {
+                VulEigenaren();
+            }
 
             if (dierOmTeBewerken == null)
             {
@@ -40,22 +58,11 @@ namespace PetCareProApp
                 {
                     cmbVerblijfDierToevoegen.SelectedIndex = 0;
                 }
-                cmbEigenaarDierToevoegen.SelectedIndex = 0;
-            }
-        }
 
-        private void linkLabelEigenaarDierToevoegen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (this.ParentForm is MainForm mainForm)
-            {
-                // We maken het scherm aan
-                ucEigenaarToevoegen eigenaarScherm = new ucEigenaarToevoegen();
-
-                // We vertellen het scherm dat we van hier komen (zorg dat deze methode in ucEigenaarToevoegen staat!)
-                eigenaarScherm.StelTerugkeerIn(true);
-
-                // Navigeer via de speciale methode op MainForm
-                mainForm.GaNaarEigenarenScherm(eigenaarScherm);
+                if (string.IsNullOrEmpty(_bronEigenaarNaam))
+                {
+                    cmbEigenaarDierToevoegen.SelectedIndex = 0;
+                }
             }
         }
 
@@ -63,6 +70,8 @@ namespace PetCareProApp
         {
             dierOmTeBewerken = dier;
             kwamVanProfiel = vanafProfiel;
+            _bronEigenaarNaam = dier.Eigenaar;
+
             VulEigenaren();
 
             lblHeaderDierenToevoegen.Text = "Dier bewerken";
@@ -96,82 +105,117 @@ namespace PetCareProApp
             string foutmelding = "";
             if (string.IsNullOrWhiteSpace(txbNaamDierToevoegen.Text)) foutmelding += "- Naam\n";
             if (string.IsNullOrWhiteSpace(txbChipNrDierToevoegen.Text)) foutmelding += "- Chipnummer\n";
-            if (string.IsNullOrWhiteSpace(cmbSoortDierToevoegen.Text)) foutmelding += "- Soort\n";
-            if (!rdbManDierToevoegen.Checked && !rdbVrouwDierToevoegen.Checked) foutmelding += "- Geslacht\n";
 
             if (!string.IsNullOrEmpty(foutmelding))
             {
-                MessageBox.Show("De volgende velden zijn verplicht:\n\n" + foutmelding, "Gegevens incompleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Velden verplicht:\n" + foutmelding);
                 return;
             }
 
             List<Dier> lijst = DataManager.LaadDieren();
-            if (dierOmTeBewerken == null && lijst.Any(d => d.Chipnummer == txbChipNrDierToevoegen.Text))
+            string gekozenEigenaar = cmbEigenaarDierToevoegen.SelectedIndex == 0 ? "" : cmbEigenaarDierToevoegen.Text;
+
+            // Foto logica behouden
+            string fotoBestandsnaam = (dierOmTeBewerken != null) ? dierOmTeBewerken.FotoBestandsnaam : "";
+            if (!string.IsNullOrEmpty(geselecteerdFotoPad))
             {
-                MessageBox.Show("Dit chipnummer bestaat al in het systeem.", "Dubbel Chipnummer", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                string extensie = Path.GetExtension(geselecteerdFotoPad);
+                fotoBestandsnaam = txbChipNrDierToevoegen.Text + extensie;
+                string doelPad = DataManager.KrijgFotoPad(fotoBestandsnaam);
+                try
+                {
+                    string map = Path.GetDirectoryName(doelPad);
+                    if (!Directory.Exists(map)) Directory.CreateDirectory(map);
+                    File.Copy(geselecteerdFotoPad, doelPad, true);
+                }
+                catch (Exception ex) { MessageBox.Show("Fout bij opslaan foto: " + ex.Message); }
             }
 
-            string gekozenEigenaar = cmbEigenaarDierToevoegen.Text;
-            if (cmbEigenaarDierToevoegen.SelectedIndex == 0) gekozenEigenaar = "";
+            bool wasBewerking = (dierOmTeBewerken != null);
 
-            if (dierOmTeBewerken != null)
+            if (wasBewerking)
             {
                 int index = lijst.FindIndex(d => d.Chipnummer == dierOmTeBewerken.Chipnummer);
                 if (index != -1)
                 {
-                    dierOmTeBewerken.Naam = txbNaamDierToevoegen.Text;
-                    dierOmTeBewerken.Eigenaar = gekozenEigenaar;
-                    dierOmTeBewerken.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
-                    dierOmTeBewerken.Soort = cmbSoortDierToevoegen.Text;
-                    dierOmTeBewerken.Ras = txbRasDierToevoegen.Text;
-                    dierOmTeBewerken.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
-                    dierOmTeBewerken.Chipnummer = txbChipNrDierToevoegen.Text;
-                    dierOmTeBewerken.Verblijf = cmbVerblijfDierToevoegen.Text;
-                    dierOmTeBewerken.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
+                    UpdateDierVelden(dierOmTeBewerken, gekozenEigenaar);
+                    dierOmTeBewerken.FotoBestandsnaam = fotoBestandsnaam;
                     lijst[index] = dierOmTeBewerken;
                 }
             }
             else
             {
-                dierOmTeBewerken = new Dier
-                {
-                    Naam = txbNaamDierToevoegen.Text,
-                    Eigenaar = gekozenEigenaar,
-                    Leeftijd = (int)nmrLeeftijdDierToevoegen.Value,
-                    Soort = cmbSoortDierToevoegen.Text,
-                    Ras = txbRasDierToevoegen.Text,
-                    Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw",
-                    Chipnummer = txbChipNrDierToevoegen.Text,
-                    Verblijf = cmbVerblijfDierToevoegen.Text,
-                    Opmerkingen = txbOpmerkingenDierToevoegen.Text
-                };
+                dierOmTeBewerken = new Dier();
+                UpdateDierVelden(dierOmTeBewerken, gekozenEigenaar);
+                dierOmTeBewerken.FotoBestandsnaam = fotoBestandsnaam;
                 lijst.Add(dierOmTeBewerken);
             }
 
             DataManager.SlaDierenOp(lijst);
 
+            // NAVIGATIE LOGICA
             if (this.ParentForm is MainForm mainForm)
             {
-                if (kwamVanProfiel)
+                if (wasBewerking)
                 {
-                    ucProfielPaginaDieren profielPagina = new ucProfielPaginaDieren();
-                    profielPagina.VulData(dierOmTeBewerken);
-                    mainForm.ToonScherm(profielPagina);
+                    // Altijd terug naar het dierprofiel na een bewerking
+                    ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
+                    string bronVoorTerugknop = kwamVanProfiel ? "ProfielEigenaar" : "Overzicht";
+                    dierProfiel.VulData(dierOmTeBewerken, bronVoorTerugknop);
+                    mainForm.ToonScherm(dierProfiel);
                 }
-                else mainForm.ToonScherm(new ucDieren());
+                else if (kwamVanProfiel && !string.IsNullOrEmpty(gekozenEigenaar))
+                {
+                    // Nieuw dier vanaf eigenaar -> Terug naar eigenaar
+                    var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == gekozenEigenaar);
+                    if (eigenaar != null)
+                    {
+                        ucProfielEigenaar profiel = new ucProfielEigenaar();
+                        profiel.VulData(eigenaar);
+                        mainForm.ToonScherm(profiel);
+                    }
+                    else mainForm.ToonScherm(new ucDieren());
+                }
+                else
+                {
+                    mainForm.ToonScherm(new ucDieren());
+                }
             }
+        }
+
+        private void UpdateDierVelden(Dier d, string eigenaar)
+        {
+            d.Naam = txbNaamDierToevoegen.Text;
+            d.Eigenaar = eigenaar;
+            d.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
+            d.Soort = cmbSoortDierToevoegen.Text;
+            d.Ras = txbRasDierToevoegen.Text;
+            d.Geslacht = rdbManDierToevoegen.Checked ? "Man" : "Vrouw";
+            d.Chipnummer = txbChipNrDierToevoegen.Text;
+            d.Verblijf = cmbVerblijfDierToevoegen.Text;
+            d.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
         }
 
         private void btnAnnulerenDierToevoegen_Click(object sender, EventArgs e)
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                if (kwamVanProfiel && dierOmTeBewerken != null)
+                if (dierOmTeBewerken != null)
                 {
-                    ucProfielPaginaDieren profiel = new ucProfielPaginaDieren();
-                    profiel.VulData(dierOmTeBewerken);
-                    mainForm.ToonScherm(profiel);
+                    ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
+                    dierProfiel.VulData(dierOmTeBewerken, kwamVanProfiel ? "ProfielEigenaar" : "Overzicht");
+                    mainForm.ToonScherm(dierProfiel);
+                }
+                else if (kwamVanProfiel)
+                {
+                    var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == _bronEigenaarNaam);
+                    if (eigenaar != null)
+                    {
+                        ucProfielEigenaar profiel = new ucProfielEigenaar();
+                        profiel.VulData(eigenaar);
+                        mainForm.ToonScherm(profiel);
+                    }
+                    else mainForm.ToonScherm(new ucDieren());
                 }
                 else mainForm.ToonScherm(new ucDieren());
             }
@@ -179,8 +223,7 @@ namespace PetCareProApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Afbeeldingen|*.jpg;*.jpeg;*.png";
+            OpenFileDialog ofd = new OpenFileDialog { Filter = "Afbeeldingen|*.jpg;*.jpeg;*.png" };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 geselecteerdFotoPad = ofd.FileName;
@@ -188,8 +231,19 @@ namespace PetCareProApp
             }
         }
 
-        private void lblSoortDierToevoegen_Click(object sender, EventArgs e) { }
+        private void linkLabelEigenaarDierToevoegen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.ParentForm is MainForm mainForm)
+            {
+                ucEigenaarToevoegen eigenaarScherm = new ucEigenaarToevoegen();
+                eigenaarScherm.StelTerugkeerIn(true);
+                mainForm.GaNaarEigenarenScherm(eigenaarScherm);
+            }
+        }
 
+        private void lblSoortDierToevoegen_Click(object sender, EventArgs e) { }
         private void lblOpmerkingenDierToevoegen_Click(object sender, EventArgs e) { }
     }
 }
+
+

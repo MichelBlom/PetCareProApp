@@ -11,18 +11,21 @@ namespace PetCareProApp
     {
         private Eigenaar _huidigeEigenaar;
         private string _bronScherm = "Overzicht";
+        private Dier _bronDier = null; // Nieuw: onthoudt het dier waar we vandaan kwamen
 
         public ucProfielEigenaar()
         {
             InitializeComponent();
         }
 
-        public void VulData(Eigenaar eigenaar, string bron = "Overzicht")
+        // Aangepaste VulData die ook een Dier kan accepteren
+        public void VulData(Eigenaar eigenaar, string bron = "Overzicht", Dier bronDier = null)
         {
             _huidigeEigenaar = eigenaar;
             _bronScherm = bron;
+            _bronDier = bronDier;
 
-            // Linkerkolom: Info
+            // Info invullen
             lblHeaderProfielEigenaar.Text = $"Profiel van {eigenaar.Naam}";
             lblNaamProfielEigenaar.Text = eigenaar.Naam;
             lblWoonplaatsProfielEigenaar.Text = eigenaar.Woonplaats;
@@ -73,8 +76,10 @@ namespace PetCareProApp
                 };
 
                 string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
-                if (File.Exists(fotoPad))
+
+                if (!string.IsNullOrEmpty(dier.FotoBestandsnaam) && File.Exists(fotoPad))
                 {
+                    pcbDier.ImageLocation = null;
                     pcbDier.ImageLocation = fotoPad;
                 }
                 else
@@ -92,17 +97,13 @@ namespace PetCareProApp
                     BackColor = Color.FromArgb(240, 240, 240)
                 };
 
-                // NAVIGATIE LOGICA AANGEPAST
                 EventHandler gaNaarDier = (s, e) =>
                 {
                     if (this.ParentForm is MainForm mainForm)
                     {
                         mainForm.ActiveerMenuKnopInCode("btnDieren");
                         ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
-
-                        // HIER ZAT DE FOUT: We geven nu "ProfielEigenaar" mee
                         dierProfiel.VulData(dier, "ProfielEigenaar");
-
                         mainForm.ToonScherm(dierProfiel);
                     }
                 };
@@ -121,7 +122,15 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                if (_bronScherm == "DierenLijst")
+                // ROUTE: Terug naar het specifieke Dier Profiel als we daar vandaan kwamen
+                if (_bronScherm == "DierProfiel" && _bronDier != null)
+                {
+                    mainForm.ActiveerMenuKnopInCode("btnDieren");
+                    ucProfielPaginaDieren dierScherm = new ucProfielPaginaDieren();
+                    dierScherm.VulData(_bronDier, "ProfielEigenaar");
+                    mainForm.ToonScherm(dierScherm);
+                }
+                else if (_bronScherm == "DierenLijst")
                 {
                     mainForm.ActiveerMenuKnopInCode("btnDieren");
                     mainForm.ToonScherm(new ucDieren());
@@ -163,13 +172,11 @@ namespace PetCareProApp
 
         private void btnHuisdierProfielEigenaar_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is MainForm mainForm)
+            if (this.ParentForm is MainForm mainForm && _huidigeEigenaar != null)
             {
                 mainForm.ActiveerMenuKnopInCode("btnDieren");
                 ucDierenToevoegen toevoegScherm = new ucDierenToevoegen();
-
-                // Optioneel: Je kunt hier de eigenaarnaam alvast "klaarzetten" 
-                // als ucDierenToevoegen daar een methode voor heeft.
+                toevoegScherm.PrepareerVoorNieuwDierVanafEigenaar(_huidigeEigenaar.Naam);
                 mainForm.ToonScherm(toevoegScherm);
             }
         }

@@ -357,9 +357,9 @@
             // 
             this.flpDierenProfielEigenaar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flpDierenProfielEigenaar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(50, 72);
+            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(40, 69);
             this.flpDierenProfielEigenaar.Name = "flpDierenProfielEigenaar";
-            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(290, 320);
+            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(305, 342);
             this.flpDierenProfielEigenaar.TabIndex = 0;
             // 
             // label8
@@ -380,12 +380,13 @@
             this.btnHuisdierProfielEigenaar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHuisdierProfielEigenaar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuisdierProfielEigenaar.ForeColor = System.Drawing.Color.Black;
-            this.btnHuisdierProfielEigenaar.Location = new System.Drawing.Point(108, 398);
+            this.btnHuisdierProfielEigenaar.Location = new System.Drawing.Point(108, 420);
             this.btnHuisdierProfielEigenaar.Name = "btnHuisdierProfielEigenaar";
             this.btnHuisdierProfielEigenaar.Size = new System.Drawing.Size(175, 30);
             this.btnHuisdierProfielEigenaar.TabIndex = 3;
             this.btnHuisdierProfielEigenaar.Text = "Huisdier toevoegen";
             this.btnHuisdierProfielEigenaar.UseVisualStyleBackColor = false;
+            this.btnHuisdierProfielEigenaar.Click += new System.EventHandler(this.btnHuisdierProfielEigenaar_Click);
             // 
             // ucProfielEigenaar
             // 
