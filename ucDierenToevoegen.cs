@@ -21,6 +21,10 @@ namespace PetCareProApp
         public ucDierenToevoegen()
         {
             InitializeComponent();
+
+            // Zet de minimale datum op vandaag voor beide pickers
+            dtpIcheckenToevoegenDieren.MinDate = DateTime.Today;
+            dtpUitcheckenToevoegenDieren.MinDate = DateTime.Today;
         }
 
         public void PrepareerVoorNieuwDierVanafEigenaar(string eigenaarNaam)
@@ -243,6 +247,16 @@ namespace PetCareProApp
 
         private void lblSoortDierToevoegen_Click(object sender, EventArgs e) { }
         private void lblOpmerkingenDierToevoegen_Click(object sender, EventArgs e) { }
+
+        private void pnlLeftDierenToevoegen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

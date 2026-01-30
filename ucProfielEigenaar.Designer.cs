@@ -52,9 +52,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.flpDierenProfielEigenaar = new System.Windows.Forms.FlowLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnHuisdierProfielEigenaar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.flpDierenProfielEigenaar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHeaderProfielEigenaar.SuspendLayout();
             this.pnlFooterProfielEigenaar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -189,31 +189,28 @@
             // 
             // lblEmailProfielEigenaar
             // 
-            this.lblEmailProfielEigenaar.AutoSize = true;
             this.lblEmailProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailProfielEigenaar.Location = new System.Drawing.Point(164, 287);
+            this.lblEmailProfielEigenaar.Location = new System.Drawing.Point(161, 287);
             this.lblEmailProfielEigenaar.Name = "lblEmailProfielEigenaar";
-            this.lblEmailProfielEigenaar.Size = new System.Drawing.Size(119, 23);
+            this.lblEmailProfielEigenaar.Size = new System.Drawing.Size(223, 23);
             this.lblEmailProfielEigenaar.TabIndex = 24;
             this.lblEmailProfielEigenaar.Text = "(niet ingevuld)";
             this.lblEmailProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTelefoonProfielEigenaar
             // 
-            this.lblTelefoonProfielEigenaar.AutoSize = true;
             this.lblTelefoonProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefoonProfielEigenaar.Location = new System.Drawing.Point(164, 244);
+            this.lblTelefoonProfielEigenaar.Location = new System.Drawing.Point(161, 244);
             this.lblTelefoonProfielEigenaar.Name = "lblTelefoonProfielEigenaar";
-            this.lblTelefoonProfielEigenaar.Size = new System.Drawing.Size(119, 23);
+            this.lblTelefoonProfielEigenaar.Size = new System.Drawing.Size(170, 23);
             this.lblTelefoonProfielEigenaar.TabIndex = 22;
             this.lblTelefoonProfielEigenaar.Text = "(niet ingevuld)";
             this.lblTelefoonProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblHuisNummerProfielEigenaar
             // 
-            this.lblHuisNummerProfielEigenaar.AutoSize = true;
             this.lblHuisNummerProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHuisNummerProfielEigenaar.Location = new System.Drawing.Point(164, 201);
+            this.lblHuisNummerProfielEigenaar.Location = new System.Drawing.Point(161, 201);
             this.lblHuisNummerProfielEigenaar.Name = "lblHuisNummerProfielEigenaar";
             this.lblHuisNummerProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblHuisNummerProfielEigenaar.TabIndex = 26;
@@ -222,9 +219,8 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(86, 115);
+            this.label1.Location = new System.Drawing.Point(81, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 23);
             this.label1.TabIndex = 34;
@@ -233,42 +229,38 @@
             // 
             // lblNaamProfielEigenaar
             // 
-            this.lblNaamProfielEigenaar.AutoSize = true;
             this.lblNaamProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaamProfielEigenaar.Location = new System.Drawing.Point(164, 29);
+            this.lblNaamProfielEigenaar.Location = new System.Drawing.Point(161, 29);
             this.lblNaamProfielEigenaar.Name = "lblNaamProfielEigenaar";
-            this.lblNaamProfielEigenaar.Size = new System.Drawing.Size(119, 23);
+            this.lblNaamProfielEigenaar.Size = new System.Drawing.Size(223, 23);
             this.lblNaamProfielEigenaar.TabIndex = 21;
             this.lblNaamProfielEigenaar.Text = "(niet ingevuld)";
             this.lblNaamProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblWoonplaatsProfielEigenaar
             // 
-            this.lblWoonplaatsProfielEigenaar.AutoSize = true;
             this.lblWoonplaatsProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWoonplaatsProfielEigenaar.Location = new System.Drawing.Point(164, 72);
+            this.lblWoonplaatsProfielEigenaar.Location = new System.Drawing.Point(161, 72);
             this.lblWoonplaatsProfielEigenaar.Name = "lblWoonplaatsProfielEigenaar";
-            this.lblWoonplaatsProfielEigenaar.Size = new System.Drawing.Size(119, 23);
+            this.lblWoonplaatsProfielEigenaar.Size = new System.Drawing.Size(223, 23);
             this.lblWoonplaatsProfielEigenaar.TabIndex = 23;
             this.lblWoonplaatsProfielEigenaar.Text = "(niet ingevuld)";
             this.lblWoonplaatsProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblStraatProfielEigenaar
             // 
-            this.lblStraatProfielEigenaar.AutoSize = true;
             this.lblStraatProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStraatProfielEigenaar.Location = new System.Drawing.Point(164, 158);
+            this.lblStraatProfielEigenaar.Location = new System.Drawing.Point(161, 158);
             this.lblStraatProfielEigenaar.Name = "lblStraatProfielEigenaar";
-            this.lblStraatProfielEigenaar.Size = new System.Drawing.Size(119, 23);
+            this.lblStraatProfielEigenaar.Size = new System.Drawing.Size(223, 23);
             this.lblStraatProfielEigenaar.TabIndex = 25;
             this.lblStraatProfielEigenaar.Text = "(niet ingevuld)";
             this.lblStraatProfielEigenaar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(55, 201);
+            this.label2.Location = new System.Drawing.Point(50, 201);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 23);
             this.label2.TabIndex = 33;
@@ -277,9 +269,8 @@
             // 
             // lblPostcodeProfielEigenaar
             // 
-            this.lblPostcodeProfielEigenaar.AutoSize = true;
             this.lblPostcodeProfielEigenaar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostcodeProfielEigenaar.Location = new System.Drawing.Point(164, 115);
+            this.lblPostcodeProfielEigenaar.Location = new System.Drawing.Point(161, 115);
             this.lblPostcodeProfielEigenaar.Name = "lblPostcodeProfielEigenaar";
             this.lblPostcodeProfielEigenaar.Size = new System.Drawing.Size(119, 23);
             this.lblPostcodeProfielEigenaar.TabIndex = 27;
@@ -288,9 +279,8 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(110, 158);
+            this.label3.Location = new System.Drawing.Point(105, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 23);
             this.label3.TabIndex = 32;
@@ -299,9 +289,8 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(66, 287);
+            this.label4.Location = new System.Drawing.Point(61, 287);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 23);
             this.label4.TabIndex = 31;
@@ -310,9 +299,8 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 72);
+            this.label5.Location = new System.Drawing.Point(59, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 23);
             this.label5.TabIndex = 30;
@@ -321,9 +309,8 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(71, 244);
+            this.label6.Location = new System.Drawing.Point(66, 244);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 23);
             this.label6.TabIndex = 29;
@@ -332,9 +319,8 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(109, 29);
+            this.label7.Location = new System.Drawing.Point(104, 29);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 23);
             this.label7.TabIndex = 28;
@@ -353,25 +339,6 @@
             this.panel2.Size = new System.Drawing.Size(390, 480);
             this.panel2.TabIndex = 4;
             // 
-            // flpDierenProfielEigenaar
-            // 
-            this.flpDierenProfielEigenaar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.flpDierenProfielEigenaar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(43, 48);
-            this.flpDierenProfielEigenaar.Name = "flpDierenProfielEigenaar";
-            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(305, 342);
-            this.flpDierenProfielEigenaar.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(100, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(190, 23);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Gekoppelde huisdieren:";
-            // 
             // btnHuisdierProfielEigenaar
             // 
             this.btnHuisdierProfielEigenaar.BackColor = System.Drawing.Color.Gainsboro;
@@ -387,6 +354,25 @@
             this.btnHuisdierProfielEigenaar.Text = "Huisdier toevoegen";
             this.btnHuisdierProfielEigenaar.UseVisualStyleBackColor = false;
             this.btnHuisdierProfielEigenaar.Click += new System.EventHandler(this.btnHuisdierProfielEigenaar_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(100, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(190, 23);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Gekoppelde huisdieren:";
+            // 
+            // flpDierenProfielEigenaar
+            // 
+            this.flpDierenProfielEigenaar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flpDierenProfielEigenaar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(43, 48);
+            this.flpDierenProfielEigenaar.Name = "flpDierenProfielEigenaar";
+            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(305, 342);
+            this.flpDierenProfielEigenaar.TabIndex = 0;
             // 
             // ucProfielEigenaar
             // 

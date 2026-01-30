@@ -15,8 +15,8 @@ namespace PetCareProApp
         private static string mappenPad = Path.Combine(Application.StartupPath, "PetCareData");
         private static string fotosPad = Path.Combine(mappenPad, "DierFotos");
         private static string jsonBestand = Path.Combine(mappenPad, "dieren.json");
-
         private static string eigenarenBestand = Path.Combine(mappenPad, "eigenaren.json");
+        private static string reserveringenBestand = Path.Combine(mappenPad, "reserveringen.json");
 
         public static void Initialiseer()
         {
@@ -29,7 +29,7 @@ namespace PetCareProApp
         {
             if (!File.Exists(jsonBestand)) return new List<Dier>();
             string json = File.ReadAllText(jsonBestand);
-            return JsonConvert.DeserializeObject<List<Dier>>(json);
+            return JsonConvert.DeserializeObject<List<Dier>>(json) ?? new List<Dier>();
         }
 
         public static void SlaDierenOp(List<Dier> lijst)
@@ -96,6 +96,21 @@ namespace PetCareProApp
         {
             string json = JsonConvert.SerializeObject(lijst, Formatting.Indented);
             File.WriteAllText(eigenarenBestand, json);
+        }
+
+        // --- Nieuwe Reservering Methoden ---
+
+        public static List<Reservering> LaadReserveringen()
+        {
+            if (!File.Exists(reserveringenBestand)) return new List<Reservering>();
+            string json = File.ReadAllText(reserveringenBestand);
+            return JsonConvert.DeserializeObject<List<Reservering>>(json) ?? new List<Reservering>();
+        }
+
+        public static void SlaReserveringenOp(List<Reservering> lijst)
+        {
+            string json = JsonConvert.SerializeObject(lijst, Formatting.Indented);
+            File.WriteAllText(reserveringenBestand, json);
         }
     }
 }

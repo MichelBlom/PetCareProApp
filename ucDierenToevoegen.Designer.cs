@@ -60,6 +60,10 @@
             this.lblOpmerkingenDierToevoegen = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pcbFotoDierToevoegen = new System.Windows.Forms.PictureBox();
+            this.dtpIcheckenToevoegenDieren = new System.Windows.Forms.DateTimePicker();
+            this.dtpUitcheckenToevoegenDieren = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlHeaderDierenToevoegen.SuspendLayout();
             this.pnlFooterDierenToevoegen.SuspendLayout();
             this.pnlLeftDierenToevoegen.SuspendLayout();
@@ -107,7 +111,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 20);
             this.label1.TabIndex = 2;
@@ -148,6 +152,8 @@
             // pnlLeftDierenToevoegen
             // 
             this.pnlLeftDierenToevoegen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlLeftDierenToevoegen.Controls.Add(this.label3);
+            this.pnlLeftDierenToevoegen.Controls.Add(this.label2);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblVerblijfDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblEigenaarDierToevoegen);
             this.pnlLeftDierenToevoegen.Controls.Add(this.lblChipNrDierToevoegen);
@@ -162,11 +168,12 @@
             this.pnlLeftDierenToevoegen.Name = "pnlLeftDierenToevoegen";
             this.pnlLeftDierenToevoegen.Size = new System.Drawing.Size(120, 480);
             this.pnlLeftDierenToevoegen.TabIndex = 2;
+            this.pnlLeftDierenToevoegen.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeftDierenToevoegen_Paint);
             // 
             // lblVerblijfDierToevoegen
             // 
             this.lblVerblijfDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVerblijfDierToevoegen.Location = new System.Drawing.Point(0, 307);
+            this.lblVerblijfDierToevoegen.Location = new System.Drawing.Point(0, 322);
             this.lblVerblijfDierToevoegen.Name = "lblVerblijfDierToevoegen";
             this.lblVerblijfDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblVerblijfDierToevoegen.TabIndex = 7;
@@ -176,7 +183,7 @@
             // lblEigenaarDierToevoegen
             // 
             this.lblEigenaarDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEigenaarDierToevoegen.Location = new System.Drawing.Point(0, 347);
+            this.lblEigenaarDierToevoegen.Location = new System.Drawing.Point(0, 356);
             this.lblEigenaarDierToevoegen.Name = "lblEigenaarDierToevoegen";
             this.lblEigenaarDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblEigenaarDierToevoegen.TabIndex = 6;
@@ -186,7 +193,7 @@
             // lblChipNrDierToevoegen
             // 
             this.lblChipNrDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChipNrDierToevoegen.Location = new System.Drawing.Point(0, 264);
+            this.lblChipNrDierToevoegen.Location = new System.Drawing.Point(0, 287);
             this.lblChipNrDierToevoegen.Name = "lblChipNrDierToevoegen";
             this.lblChipNrDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblChipNrDierToevoegen.TabIndex = 5;
@@ -196,7 +203,7 @@
             // lblRasDierToevoegen
             // 
             this.lblRasDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRasDierToevoegen.Location = new System.Drawing.Point(0, 221);
+            this.lblRasDierToevoegen.Location = new System.Drawing.Point(0, 255);
             this.lblRasDierToevoegen.Name = "lblRasDierToevoegen";
             this.lblRasDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblRasDierToevoegen.TabIndex = 4;
@@ -206,7 +213,7 @@
             // lblGeslachtDierToevoegen
             // 
             this.lblGeslachtDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGeslachtDierToevoegen.Location = new System.Drawing.Point(0, 178);
+            this.lblGeslachtDierToevoegen.Location = new System.Drawing.Point(0, 153);
             this.lblGeslachtDierToevoegen.Name = "lblGeslachtDierToevoegen";
             this.lblGeslachtDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblGeslachtDierToevoegen.TabIndex = 3;
@@ -216,7 +223,7 @@
             // lblLeeftijdDierToevoegen
             // 
             this.lblLeeftijdDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLeeftijdDierToevoegen.Location = new System.Drawing.Point(0, 135);
+            this.lblLeeftijdDierToevoegen.Location = new System.Drawing.Point(0, 117);
             this.lblLeeftijdDierToevoegen.Name = "lblLeeftijdDierToevoegen";
             this.lblLeeftijdDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblLeeftijdDierToevoegen.TabIndex = 2;
@@ -226,7 +233,7 @@
             // lblSoortDierToevoegen
             // 
             this.lblSoortDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoortDierToevoegen.Location = new System.Drawing.Point(0, 92);
+            this.lblSoortDierToevoegen.Location = new System.Drawing.Point(0, 84);
             this.lblSoortDierToevoegen.Name = "lblSoortDierToevoegen";
             this.lblSoortDierToevoegen.Size = new System.Drawing.Size(120, 43);
             this.lblSoortDierToevoegen.TabIndex = 1;
@@ -247,6 +254,8 @@
             // pnlMiddleDierToevoegen
             // 
             this.pnlMiddleDierToevoegen.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlMiddleDierToevoegen.Controls.Add(this.dtpUitcheckenToevoegenDieren);
+            this.pnlMiddleDierToevoegen.Controls.Add(this.dtpIcheckenToevoegenDieren);
             this.pnlMiddleDierToevoegen.Controls.Add(this.cmbSoortDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.cmbVerblijfDierToevoegen);
             this.pnlMiddleDierToevoegen.Controls.Add(this.linkLabelEigenaarDierToevoegen);
@@ -276,7 +285,7 @@
             "Kat",
             "Konijn",
             "Anders"});
-            this.cmbSoortDierToevoegen.Location = new System.Drawing.Point(3, 101);
+            this.cmbSoortDierToevoegen.Location = new System.Drawing.Point(5, 97);
             this.cmbSoortDierToevoegen.Name = "cmbSoortDierToevoegen";
             this.cmbSoortDierToevoegen.Size = new System.Drawing.Size(150, 28);
             this.cmbSoortDierToevoegen.TabIndex = 12;
@@ -287,7 +296,7 @@
             this.cmbVerblijfDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbVerblijfDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVerblijfDierToevoegen.FormattingEnabled = true;
-            this.cmbVerblijfDierToevoegen.Location = new System.Drawing.Point(3, 316);
+            this.cmbVerblijfDierToevoegen.Location = new System.Drawing.Point(5, 335);
             this.cmbVerblijfDierToevoegen.Name = "cmbVerblijfDierToevoegen";
             this.cmbVerblijfDierToevoegen.Size = new System.Drawing.Size(150, 28);
             this.cmbVerblijfDierToevoegen.TabIndex = 11;
@@ -295,7 +304,7 @@
             // linkLabelEigenaarDierToevoegen
             // 
             this.linkLabelEigenaarDierToevoegen.AutoSize = true;
-            this.linkLabelEigenaarDierToevoegen.Location = new System.Drawing.Point(-2, 387);
+            this.linkLabelEigenaarDierToevoegen.Location = new System.Drawing.Point(0, 399);
             this.linkLabelEigenaarDierToevoegen.Name = "linkLabelEigenaarDierToevoegen";
             this.linkLabelEigenaarDierToevoegen.Size = new System.Drawing.Size(196, 20);
             this.linkLabelEigenaarDierToevoegen.TabIndex = 10;
@@ -309,7 +318,7 @@
             this.cmbEigenaarDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbEigenaarDierToevoegen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEigenaarDierToevoegen.FormattingEnabled = true;
-            this.cmbEigenaarDierToevoegen.Location = new System.Drawing.Point(3, 356);
+            this.cmbEigenaarDierToevoegen.Location = new System.Drawing.Point(5, 369);
             this.cmbEigenaarDierToevoegen.Name = "cmbEigenaarDierToevoegen";
             this.cmbEigenaarDierToevoegen.Size = new System.Drawing.Size(150, 28);
             this.cmbEigenaarDierToevoegen.TabIndex = 9;
@@ -318,7 +327,7 @@
             // 
             this.rdbVrouwDierToevoegen.AutoSize = true;
             this.rdbVrouwDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbVrouwDierToevoegen.Location = new System.Drawing.Point(71, 189);
+            this.rdbVrouwDierToevoegen.Location = new System.Drawing.Point(70, 167);
             this.rdbVrouwDierToevoegen.Name = "rdbVrouwDierToevoegen";
             this.rdbVrouwDierToevoegen.Size = new System.Drawing.Size(71, 24);
             this.rdbVrouwDierToevoegen.TabIndex = 8;
@@ -331,7 +340,7 @@
             this.rdbManDierToevoegen.AutoSize = true;
             this.rdbManDierToevoegen.Checked = true;
             this.rdbManDierToevoegen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbManDierToevoegen.Location = new System.Drawing.Point(6, 189);
+            this.rdbManDierToevoegen.Location = new System.Drawing.Point(8, 166);
             this.rdbManDierToevoegen.Name = "rdbManDierToevoegen";
             this.rdbManDierToevoegen.Size = new System.Drawing.Size(59, 24);
             this.rdbManDierToevoegen.TabIndex = 7;
@@ -342,7 +351,7 @@
             // nmrLeeftijdDierToevoegen
             // 
             this.nmrLeeftijdDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.nmrLeeftijdDierToevoegen.Location = new System.Drawing.Point(3, 145);
+            this.nmrLeeftijdDierToevoegen.Location = new System.Drawing.Point(5, 131);
             this.nmrLeeftijdDierToevoegen.Maximum = new decimal(new int[] {
             30,
             0,
@@ -357,7 +366,7 @@
             this.txbChipNrDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbChipNrDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbChipNrDierToevoegen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbChipNrDierToevoegen.Location = new System.Drawing.Point(3, 272);
+            this.txbChipNrDierToevoegen.Location = new System.Drawing.Point(5, 299);
             this.txbChipNrDierToevoegen.Name = "txbChipNrDierToevoegen";
             this.txbChipNrDierToevoegen.Size = new System.Drawing.Size(150, 30);
             this.txbChipNrDierToevoegen.TabIndex = 5;
@@ -367,7 +376,7 @@
             this.txbRasDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbRasDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbRasDierToevoegen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbRasDierToevoegen.Location = new System.Drawing.Point(3, 229);
+            this.txbRasDierToevoegen.Location = new System.Drawing.Point(5, 263);
             this.txbRasDierToevoegen.Name = "txbRasDierToevoegen";
             this.txbRasDierToevoegen.Size = new System.Drawing.Size(150, 30);
             this.txbRasDierToevoegen.TabIndex = 4;
@@ -377,7 +386,7 @@
             this.txbNaamDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbNaamDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbNaamDierToevoegen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbNaamDierToevoegen.Location = new System.Drawing.Point(3, 59);
+            this.txbNaamDierToevoegen.Location = new System.Drawing.Point(5, 61);
             this.txbNaamDierToevoegen.Name = "txbNaamDierToevoegen";
             this.txbNaamDierToevoegen.Size = new System.Drawing.Size(150, 30);
             this.txbNaamDierToevoegen.TabIndex = 2;
@@ -386,7 +395,7 @@
             // 
             this.lblHuisdierDierenToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHuisdierDierenToevoegen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblHuisdierDierenToevoegen.Location = new System.Drawing.Point(-2, 19);
+            this.lblHuisdierDierenToevoegen.Location = new System.Drawing.Point(3, 28);
             this.lblHuisdierDierenToevoegen.Name = "lblHuisdierDierenToevoegen";
             this.lblHuisdierDierenToevoegen.Size = new System.Drawing.Size(191, 30);
             this.lblHuisdierDierenToevoegen.TabIndex = 1;
@@ -411,7 +420,7 @@
             this.txbOpmerkingenDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txbOpmerkingenDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbOpmerkingenDierToevoegen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbOpmerkingenDierToevoegen.Location = new System.Drawing.Point(10, 277);
+            this.txbOpmerkingenDierToevoegen.Location = new System.Drawing.Point(60, 313);
             this.txbOpmerkingenDierToevoegen.Multiline = true;
             this.txbOpmerkingenDierToevoegen.Name = "txbOpmerkingenDierToevoegen";
             this.txbOpmerkingenDierToevoegen.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -422,7 +431,7 @@
             // 
             this.lblOpmerkingenDierToevoegen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOpmerkingenDierToevoegen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblOpmerkingenDierToevoegen.Location = new System.Drawing.Point(6, 244);
+            this.lblOpmerkingenDierToevoegen.Location = new System.Drawing.Point(56, 280);
             this.lblOpmerkingenDierToevoegen.Name = "lblOpmerkingenDierToevoegen";
             this.lblOpmerkingenDierToevoegen.Size = new System.Drawing.Size(150, 30);
             this.lblOpmerkingenDierToevoegen.TabIndex = 3;
@@ -438,7 +447,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(201, 183);
+            this.button1.Location = new System.Drawing.Point(251, 216);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 30);
             this.button1.TabIndex = 2;
@@ -450,12 +459,51 @@
             // 
             this.pcbFotoDierToevoegen.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pcbFotoDierToevoegen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbFotoDierToevoegen.Location = new System.Drawing.Point(201, 28);
+            this.pcbFotoDierToevoegen.Location = new System.Drawing.Point(251, 61);
             this.pcbFotoDierToevoegen.Name = "pcbFotoDierToevoegen";
             this.pcbFotoDierToevoegen.Size = new System.Drawing.Size(150, 150);
             this.pcbFotoDierToevoegen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbFotoDierToevoegen.TabIndex = 0;
             this.pcbFotoDierToevoegen.TabStop = false;
+            // 
+            // dtpIcheckenToevoegenDieren
+            // 
+            this.dtpIcheckenToevoegenDieren.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpIcheckenToevoegenDieren.Location = new System.Drawing.Point(4, 196);
+            this.dtpIcheckenToevoegenDieren.MinDate = new System.DateTime(2026, 1, 30, 0, 0, 0, 0);
+            this.dtpIcheckenToevoegenDieren.Name = "dtpIcheckenToevoegenDieren";
+            this.dtpIcheckenToevoegenDieren.Size = new System.Drawing.Size(151, 27);
+            this.dtpIcheckenToevoegenDieren.TabIndex = 13;
+            this.dtpIcheckenToevoegenDieren.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // dtpUitcheckenToevoegenDieren
+            // 
+            this.dtpUitcheckenToevoegenDieren.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpUitcheckenToevoegenDieren.Location = new System.Drawing.Point(4, 229);
+            this.dtpUitcheckenToevoegenDieren.MinDate = new System.DateTime(2026, 1, 30, 0, 0, 0, 0);
+            this.dtpUitcheckenToevoegenDieren.Name = "dtpUitcheckenToevoegenDieren";
+            this.dtpUitcheckenToevoegenDieren.Size = new System.Drawing.Size(151, 27);
+            this.dtpUitcheckenToevoegenDieren.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 196);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 27);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Inchecken:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 228);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 27);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Uitchecken:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ucDierenToevoegen
             // 
@@ -525,5 +573,9 @@
         private System.Windows.Forms.ComboBox cmbVerblijfDierToevoegen;
         private System.Windows.Forms.ComboBox cmbSoortDierToevoegen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpIcheckenToevoegenDieren;
+        private System.Windows.Forms.DateTimePicker dtpUitcheckenToevoegenDieren;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
