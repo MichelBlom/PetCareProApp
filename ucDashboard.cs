@@ -20,40 +20,45 @@ namespace PetCareProApp
         }
 
         /// <summary>
-        /// Deze methode haalt de data op via de DataManager en vult alle velden op het dashboard.
+        /// Haalt data op en ververst het volledige dashboard.
         /// </summary>
         public void RefreshDashboard()
         {
-            // 1. Data ophalen uit de DataManager
+            // We zorgen dat de mappen bestaan voordat we gaan laden
+            DataManager.Initialiseer();
+
             List<Reservering> alleReserveringen = DataManager.LaadReserveringen();
             List<Eigenaar> alleEigenaren = DataManager.LaadEigenaren();
             List<Dier> alleDieren = DataManager.LaadDieren();
 
-            // 2. Statistieken (Labels) bijwerken
             UpdateStatistieken(alleReserveringen, alleEigenaren);
-
-            // 3. Grids vullen met data voor vandaag
             VulGrids(alleReserveringen, alleDieren);
         }
 
         private void UpdateStatistieken(List<Reservering> reserveringen, List<Eigenaar> eigenaren)
         {
-            // Huidige gasten: dieren die nu op dit moment de status "Ingecheckt" hebben
-            int huidigeGastenCount = reserveringen.Count(r => r.Status == "Ingecheckt");
-            lblHuidigeGastenDashboard.Text = huidigeGastenCount.ToString();
+            // AANGEPAST: We tellen nu dieren met status "Ingecheckt" OF "Gepland" als gasten
+            var huidigeGastenLijst = reserveringen.Where(r =>
+                !string.IsNullOrEmpty(r.Status) &&
+                (r.Status.Trim().Equals("Ingecheckt", StringComparison.OrdinalIgnoreCase) ||
+                 r.Status.Trim().Equals("Gepland", StringComparison.OrdinalIgnoreCase))).ToList();
 
-            // Vrije hokken: 100 min het aantal unieke hokken dat momenteel bezet is
-            int bezetteHokkenCount = reserveringen
-                .Where(r => r.Status == "Ingecheckt")
+            // 1. Huidige Gasten Label
+            lblHuidigeGastenDashboard.Text = huidigeGastenLijst.Count.ToString();
+
+            // 2. Vrije Hokken Label (100 - bezette hokken)
+            int bezetteHokkenCount = huidigeGastenLijst
                 .Select(r => r.Verblijf)
+                .Where(v => !string.IsNullOrEmpty(v) && v != "(Geen)")
                 .Distinct()
                 .Count();
+
             lblVrijeHokkenDashboard.Text = (TOTAAL_HOKKEN - bezetteHokkenCount).ToString();
 
-            // Aantal klanten: Totaal aantal eigenaren in de lijst
+            // 3. Aantal Klanten Label
             lblAantalKlantenDashboard.Text = eigenaren.Count.ToString();
 
-            // Aantal Check-ins: Het totaal aantal reserveringen ooit gemaakt
+            // 4. Totaal aantal Check-ins (Alle reserveringen ooit)
             lblAantalCheckInsDashboard.Text = reserveringen.Count.ToString();
         }
 
@@ -63,22 +68,18 @@ namespace PetCareProApp
             dgvCheckOutDashboard.Rows.Clear();
             DateTime vandaag = DateTime.Today;
 
-            // Filter reserveringen voor vandaag
+            // Alleen reserveringen die exact vandaag starten of eindigen
             var aankomstVandaag = reserveringen.Where(r => r.StartDatum.Date == vandaag).ToList();
             var vertrekVandaag = reserveringen.Where(r => r.EindDatum.Date == vandaag).ToList();
 
-            // Vul Aankomst Grid
             foreach (var res in aankomstVandaag)
             {
-                string eigenaarNaam = ZoekEigenaarNaam(res.DierChipnummer, dieren);
-                dgvCkeckInDashboard.Rows.Add(res.Verblijf, res.DierNaam, eigenaarNaam);
+                dgvCkeckInDashboard.Rows.Add(res.Verblijf, res.DierNaam, ZoekEigenaarNaam(res.DierChipnummer, dieren));
             }
 
-            // Vul Vertrek Grid
             foreach (var res in vertrekVandaag)
             {
-                string eigenaarNaam = ZoekEigenaarNaam(res.DierChipnummer, dieren);
-                dgvCheckOutDashboard.Rows.Add(res.Verblijf, res.DierNaam, eigenaarNaam);
+                dgvCheckOutDashboard.Rows.Add(res.Verblijf, res.DierNaam, ZoekEigenaarNaam(res.DierChipnummer, dieren));
             }
         }
 

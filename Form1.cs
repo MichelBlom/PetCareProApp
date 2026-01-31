@@ -23,17 +23,21 @@ namespace PetCareProApp
             scherm.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(scherm);
 
+            // AUTOMATISCHE DATA REFRESH VOOR DASHBOARD
+            if (scherm is ucDashboard dashboard)
+            {
+                dashboard.RefreshDashboard();
+            }
+
             // AUTOMATISCHE MENU ACTIVATIE op basis van de schermnaam
             string typeNaam = scherm.GetType().Name;
 
             if (typeNaam.Contains("Dier"))
             {
-                // Activeert btnDieren voor: ucDieren, ucDierenToevoegen, ucProfielPaginaDieren
                 ActiveerMenuKnopInCode("btnDieren");
             }
             else if (typeNaam.Contains("Eigen"))
             {
-                // Activeert btnEigenaren voor: ucEigenaren, ucEigenaarToevoegen, ucProfielEigenaar
                 ActiveerMenuKnopInCode("btnEigenaren");
             }
             else if (typeNaam.Contains("Kalender") || typeNaam.Contains("Planning"))
