@@ -150,7 +150,6 @@
             // 
             // pnlKleurBezet
             // 
-            // Aangepast naar de nieuwe groentint (100, 220, 100)
             this.pnlKleurBezet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(220)))), ((int)(((byte)(100)))));
             this.pnlKleurBezet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlKleurBezet.Location = new System.Drawing.Point(20, 15);
@@ -235,12 +234,12 @@
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpGridPlanning.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpGridPlanning.Location = new System.Drawing.Point(10, 40);
             this.tlpGridPlanning.Name = "tlpGridPlanning";
             this.tlpGridPlanning.RowCount = 1;
-            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tlpGridPlanning.Size = new System.Drawing.Size(760, 100);
             this.tlpGridPlanning.TabIndex = 1;
             // 
@@ -256,7 +255,7 @@
             this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpHeaderDagenPlanning.Controls.Add(this.lblZoPlanning, 7, 0);
             this.tlpHeaderDagenPlanning.Controls.Add(this.lblZaPlanning, 6, 0);
             this.tlpHeaderDagenPlanning.Controls.Add(this.lblVrPlanning, 5, 0);
@@ -279,10 +278,10 @@
             this.lblZoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblZoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblZoPlanning.Location = new System.Drawing.Point(662, 1);
+            this.lblZoPlanning.Location = new System.Drawing.Point(664, 1);
             this.lblZoPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblZoPlanning.Name = "lblZoPlanning";
-            this.lblZoPlanning.Size = new System.Drawing.Size(97, 31);
+            this.lblZoPlanning.Size = new System.Drawing.Size(95, 31);
             this.lblZoPlanning.TabIndex = 7;
             this.lblZoPlanning.Text = "Zo 00/00";
             this.lblZoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -293,7 +292,7 @@
             this.lblZaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZaPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblZaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblZaPlanning.Location = new System.Drawing.Point(566, 1);
+            this.lblZaPlanning.Location = new System.Drawing.Point(568, 1);
             this.lblZaPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblZaPlanning.Name = "lblZaPlanning";
             this.lblZaPlanning.Size = new System.Drawing.Size(95, 31);
@@ -307,7 +306,7 @@
             this.lblVrPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblVrPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblVrPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblVrPlanning.Location = new System.Drawing.Point(470, 1);
+            this.lblVrPlanning.Location = new System.Drawing.Point(472, 1);
             this.lblVrPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblVrPlanning.Name = "lblVrPlanning";
             this.lblVrPlanning.Size = new System.Drawing.Size(95, 31);
@@ -321,7 +320,7 @@
             this.lblDoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblDoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDoPlanning.Location = new System.Drawing.Point(374, 1);
+            this.lblDoPlanning.Location = new System.Drawing.Point(376, 1);
             this.lblDoPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblDoPlanning.Name = "lblDoPlanning";
             this.lblDoPlanning.Size = new System.Drawing.Size(95, 31);
@@ -335,7 +334,7 @@
             this.lblWoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblWoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblWoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblWoPlanning.Location = new System.Drawing.Point(278, 1);
+            this.lblWoPlanning.Location = new System.Drawing.Point(280, 1);
             this.lblWoPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblWoPlanning.Name = "lblWoPlanning";
             this.lblWoPlanning.Size = new System.Drawing.Size(95, 31);
@@ -349,7 +348,7 @@
             this.lblDiPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDiPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblDiPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDiPlanning.Location = new System.Drawing.Point(182, 1);
+            this.lblDiPlanning.Location = new System.Drawing.Point(184, 1);
             this.lblDiPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblDiPlanning.Name = "lblDiPlanning";
             this.lblDiPlanning.Size = new System.Drawing.Size(95, 31);
@@ -363,7 +362,7 @@
             this.lblMaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMaPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblMaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblMaPlanning.Location = new System.Drawing.Point(86, 1);
+            this.lblMaPlanning.Location = new System.Drawing.Point(88, 1);
             this.lblMaPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblMaPlanning.Name = "lblMaPlanning";
             this.lblMaPlanning.Size = new System.Drawing.Size(95, 31);
@@ -380,7 +379,7 @@
             this.lblHokHeaderPlanning.Location = new System.Drawing.Point(1, 1);
             this.lblHokHeaderPlanning.Margin = new System.Windows.Forms.Padding(0);
             this.lblHokHeaderPlanning.Name = "lblHokHeaderPlanning";
-            this.lblHokHeaderPlanning.Size = new System.Drawing.Size(84, 31);
+            this.lblHokHeaderPlanning.Size = new System.Drawing.Size(86, 31);
             this.lblHokHeaderPlanning.TabIndex = 0;
             this.lblHokHeaderPlanning.Text = "Hok Nr.";
             this.lblHokHeaderPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
