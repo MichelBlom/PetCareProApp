@@ -29,6 +29,8 @@
             this.lblLegendaBezet = new System.Windows.Forms.Label();
             this.pnlKleurCheckout = new System.Windows.Forms.Panel();
             this.lblLegendaCheckout = new System.Windows.Forms.Label();
+            this.pnlKleurOverbezet = new System.Windows.Forms.Panel();
+            this.lblLegendaOverbezet = new System.Windows.Forms.Label();
             this.pnlContentPlanning = new System.Windows.Forms.Panel();
             this.tlpGridPlanning = new System.Windows.Forms.TableLayoutPanel();
             this.tlpHeaderDagenPlanning = new System.Windows.Forms.TableLayoutPanel();
@@ -137,6 +139,8 @@
             this.flpLegendaPlanning.Controls.Add(this.lblLegendaBezet);
             this.flpLegendaPlanning.Controls.Add(this.pnlKleurCheckout);
             this.flpLegendaPlanning.Controls.Add(this.lblLegendaCheckout);
+            this.flpLegendaPlanning.Controls.Add(this.pnlKleurOverbezet);
+            this.flpLegendaPlanning.Controls.Add(this.lblLegendaOverbezet);
             this.flpLegendaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpLegendaPlanning.Location = new System.Drawing.Point(0, 0);
             this.flpLegendaPlanning.Name = "flpLegendaPlanning";
@@ -146,7 +150,8 @@
             // 
             // pnlKleurBezet
             // 
-            this.pnlKleurBezet.BackColor = System.Drawing.Color.LightGreen;
+            // Aangepast naar de nieuwe groentint (100, 220, 100)
+            this.pnlKleurBezet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(220)))), ((int)(((byte)(100)))));
             this.pnlKleurBezet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlKleurBezet.Location = new System.Drawing.Point(20, 15);
             this.pnlKleurBezet.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
@@ -166,7 +171,7 @@
             // 
             // pnlKleurCheckout
             // 
-            this.pnlKleurCheckout.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlKleurCheckout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
             this.pnlKleurCheckout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlKleurCheckout.Location = new System.Drawing.Point(111, 15);
             this.pnlKleurCheckout.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
@@ -183,6 +188,27 @@
             this.lblLegendaCheckout.Size = new System.Drawing.Size(137, 20);
             this.lblLegendaCheckout.TabIndex = 3;
             this.lblLegendaCheckout.Text = "Check-out vandaag";
+            // 
+            // pnlKleurOverbezet
+            // 
+            this.pnlKleurOverbezet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(107)))));
+            this.pnlKleurOverbezet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlKleurOverbezet.Location = new System.Drawing.Point(293, 15);
+            this.pnlKleurOverbezet.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pnlKleurOverbezet.Name = "pnlKleurOverbezet";
+            this.pnlKleurOverbezet.Size = new System.Drawing.Size(20, 20);
+            this.pnlKleurOverbezet.TabIndex = 4;
+            // 
+            // lblLegendaOverbezet
+            // 
+            this.lblLegendaOverbezet.AutoSize = true;
+            this.lblLegendaOverbezet.ForeColor = System.Drawing.Color.Black;
+            this.lblLegendaOverbezet.Location = new System.Drawing.Point(318, 18);
+            this.lblLegendaOverbezet.Margin = new System.Windows.Forms.Padding(0, 3, 20, 0);
+            this.lblLegendaOverbezet.Name = "lblLegendaOverbezet";
+            this.lblLegendaOverbezet.Size = new System.Drawing.Size(104, 20);
+            this.lblLegendaOverbezet.TabIndex = 5;
+            this.lblLegendaOverbezet.Text = "Overschrijding";
             // 
             // pnlContentPlanning
             // 
@@ -209,12 +235,12 @@
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tlpGridPlanning.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpGridPlanning.Location = new System.Drawing.Point(10, 40);
             this.tlpGridPlanning.Name = "tlpGridPlanning";
             this.tlpGridPlanning.RowCount = 1;
-            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpGridPlanning.Size = new System.Drawing.Size(760, 100);
             this.tlpGridPlanning.TabIndex = 1;
             // 
@@ -408,5 +434,7 @@
         private System.Windows.Forms.Label lblLegendaBezet;
         private System.Windows.Forms.Panel pnlKleurCheckout;
         private System.Windows.Forms.Label lblLegendaCheckout;
+        private System.Windows.Forms.Panel pnlKleurOverbezet;
+        private System.Windows.Forms.Label lblLegendaOverbezet;
     }
 }

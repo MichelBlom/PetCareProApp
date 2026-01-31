@@ -13,7 +13,7 @@ namespace PetCareProApp
     public partial class ucKalender : UserControl
     {
         private DateTime huidigeMaandag;
-        private const int RijHoogte = 30; // Aangepast naar 30px voor een compacter overzicht
+        private const int RijHoogte = 30;
 
         public ucKalender()
         {
@@ -23,7 +23,6 @@ namespace PetCareProApp
             btnVolgendePlanning.Click += BtnVolgendePlanning_Click;
             dtpWeekPlanning.ValueChanged += DtpWeekPlanning_ValueChanged;
 
-            // Reset basisinstellingen voor een strak grid
             tlpGridPlanning.Padding = new Padding(0);
             tlpGridPlanning.Margin = new Padding(0);
         }
@@ -61,8 +60,6 @@ namespace PetCareProApp
         private void VulPlanningGrid()
         {
             tlpGridPlanning.SuspendLayout();
-
-            // 1. Alles grondig opschonen
             tlpGridPlanning.Controls.Clear();
             tlpGridPlanning.RowStyles.Clear();
             tlpGridPlanning.RowCount = 0;
@@ -74,7 +71,7 @@ namespace PetCareProApp
                 .Where(r => !string.IsNullOrEmpty(r.Verblijf) &&
                             r.Verblijf != "(Geen)" &&
                             r.StartDatum.Date <= eindeWeek &&
-                            r.EindDatum.Date >= huidigeMaandag)
+                            (r.EindDatum.Date >= huidigeMaandag || (r.EindDatum.Date < huidigeMaandag && DateTime.Today >= r.EindDatum.Date)))
                 .Select(r => r.Verblijf)
                 .Distinct()
                 .OrderBy(h => h.Length).ThenBy(h => h)
@@ -87,16 +84,12 @@ namespace PetCareProApp
                 return;
             }
 
-            // 2. Rijen opbouwen
             for (int i = 0; i < toegewezenHokken.Count; i++)
             {
                 string hokNaam = toegewezenHokken[i];
-
-                // Voeg rij toe en forceer de hoogte (nu 30px)
                 tlpGridPlanning.RowCount++;
                 tlpGridPlanning.RowStyles.Add(new RowStyle(SizeType.Absolute, RijHoogte));
 
-                // Hok Nummer label
                 Label lblHok = new Label
                 {
                     Text = hokNaam.Replace("Hok ", ""),
@@ -107,22 +100,39 @@ namespace PetCareProApp
                 };
                 tlpGridPlanning.Controls.Add(lblHok, 0, i);
 
-                // Vul de dagen
                 for (int dag = 0; dag < 7; dag++)
                 {
                     DateTime datumCheck = huidigeMaandag.AddDays(dag);
+
                     var res = reserveringen.FirstOrDefault(r =>
                         r.Verblijf == hokNaam &&
-                        datumCheck >= r.StartDatum.Date &&
-                        datumCheck <= r.EindDatum.Date);
+                        ((datumCheck >= r.StartDatum.Date && datumCheck <= r.EindDatum.Date) ||
+                         (datumCheck > r.EindDatum.Date && datumCheck <= DateTime.Today)));
 
                     if (res != null)
                     {
+                        Color achtergrondKleur;
+                        if (datumCheck > res.EindDatum.Date)
+                        {
+                            // Koraalrood (Overbezet/Overschrijding)
+                            achtergrondKleur = Color.FromArgb(255, 107, 107);
+                        }
+                        else if (datumCheck == res.EindDatum.Date)
+                        {
+                            // CornflowerBlue (Check-out vandaag)
+                            achtergrondKleur = Color.FromArgb(100, 149, 237);
+                        }
+                        else
+                        {
+                            // Nu aangepast naar een donkerdere, frisse groentint
+                            achtergrondKleur = Color.FromArgb(100, 220, 100);
+                        }
+
                         Panel pnlBezet = new Panel
                         {
                             Dock = DockStyle.Fill,
                             Margin = new Padding(1),
-                            BackColor = datumCheck == res.EindDatum.Date ? Color.LightBlue : Color.LightGreen
+                            BackColor = achtergrondKleur
                         };
 
                         Label lblDier = new Label
@@ -142,7 +152,6 @@ namespace PetCareProApp
                 }
             }
 
-            // 3. Totale hoogte berekening
             int extraVoorBorders = (tlpGridPlanning.CellBorderStyle == TableLayoutPanelCellBorderStyle.None) ? 0 : toegewezenHokken.Count + 1;
             tlpGridPlanning.Height = (toegewezenHokken.Count * RijHoogte) + extraVoorBorders;
 
