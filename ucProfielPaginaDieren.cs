@@ -19,7 +19,6 @@ namespace PetCareProApp
         public ucProfielPaginaDieren()
         {
             InitializeComponent();
-
             lblEigenaarOutputProfielDieren.Cursor = Cursors.Hand;
             lblEigenaarOutputProfielDieren.ForeColor = Color.Blue;
         }
@@ -28,7 +27,6 @@ namespace PetCareProApp
         {
             huidigDier = dier;
             _bronScherm = bron;
-
             lblHeaderProfielDieren.Text = "Profiel van " + dier.Naam;
             lblNaamOutputProfielDieren.Text = dier.Naam;
             lblEigenaarOutputProfielDieren.Text = dier.Eigenaar;
@@ -41,64 +39,41 @@ namespace PetCareProApp
             lblVerblijfOutputProfielDieren.Text = dier.Verblijf;
 
             if (!string.IsNullOrEmpty(dier.Eigenaar))
-            {
                 lblEigenaarOutputProfielDieren.Font = new Font(lblEigenaarOutputProfielDieren.Font, FontStyle.Underline);
-            }
 
             string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
-            if (System.IO.File.Exists(fotoPad))
-            {
-                pcbFotoProfielDieren.ImageLocation = fotoPad;
-            }
+            if (File.Exists(fotoPad)) pcbFotoProfielDieren.ImageLocation = fotoPad;
         }
 
         private void btnTerugProfielDieren_Click(object sender, EventArgs e)
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                if (_bronScherm == "ProfielEigenaar" && huidigDier != null)
+                if ((_bronScherm == "ProfielEigenaar" || _bronScherm == "EigenarenOverzicht") && huidigDier != null)
                 {
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == huidigDier.Eigenaar);
                     if (eigenaar != null)
                     {
-                        mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                         ucProfielEigenaar profiel = new ucProfielEigenaar();
                         profiel.VulData(eigenaar, "Overzicht");
                         mainForm.ToonScherm(profiel);
                     }
+                    else mainForm.ToonScherm(new ucEigenaren());
                 }
-                else if (_bronScherm == "EigenarenOverzicht")
-                {
-                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
-                    mainForm.ToonScherm(new ucEigenaren());
-                }
-                else if (_bronScherm == "Kalender")
-                {
-                    // De nieuwe voetafdruk: Terug naar de planning
-                    mainForm.ActiveerMenuKnopInCode("btnPlanning"); // Zorg dat deze naam matcht met je MainForm knop
-                    mainForm.ToonScherm(new ucKalender());
-                }
-                else
-                {
-                    mainForm.ActiveerMenuKnopInCode("btnDieren");
-                    mainForm.ToonScherm(new ucDieren());
-                }
+                else if (_bronScherm == "Kalender") mainForm.ToonScherm(new ucKalender());
+                else mainForm.ToonScherm(new ucDieren());
             }
         }
 
         private void lblEigenaarOutputProfielDieren_Click(object sender, EventArgs e)
         {
-            if (huidigDier != null && !string.IsNullOrEmpty(huidigDier.Eigenaar))
+            if (huidigDier != null && !string.IsNullOrEmpty(huidigDier.Eigenaar) && this.ParentForm is MainForm mainForm)
             {
                 var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(eig => eig.Naam == huidigDier.Eigenaar);
-                if (eigenaar != null && this.ParentForm is MainForm mainForm)
+                if (eigenaar != null)
                 {
-                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     ucProfielEigenaar profielEigenaar = new ucProfielEigenaar();
-
-                    // BELANGRIJK: Geef "DierProfiel" en "huidigDier" mee!
                     profielEigenaar.VulData(eigenaar, "DierProfiel", huidigDier);
-
                     mainForm.ToonScherm(profielEigenaar);
                 }
             }
@@ -109,7 +84,7 @@ namespace PetCareProApp
             if (huidigDier != null && this.ParentForm is MainForm mainForm)
             {
                 ucDierenToevoegen bewerkScherm = new ucDierenToevoegen();
-                bewerkScherm.LaadDierVoorBewerken(huidigDier, true);
+                bewerkScherm.LaadDierVoorBewerken(huidigDier, true, _bronScherm);
                 mainForm.ToonScherm(bewerkScherm);
             }
         }
@@ -118,19 +93,13 @@ namespace PetCareProApp
         {
             if (huidigDier != null)
             {
-                var resultaat = MessageBox.Show($"Weet je zeker dat je {huidigDier.Naam} wilt verwijderen?",
-                                                "Dier verwijderen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
+                var resultaat = MessageBox.Show($"Weet je zeker dat je {huidigDier.Naam} wilt verwijderen?", "Dier verwijderen", MessageBoxButtons.YesNo);
                 if (resultaat == DialogResult.Yes)
                 {
                     List<Dier> lijst = DataManager.LaadDieren();
                     lijst.RemoveAll(d => d.Chipnummer == huidigDier.Chipnummer);
                     DataManager.SlaDierenOp(lijst);
-
-                    if (this.ParentForm is MainForm mainForm)
-                    {
-                        mainForm.ToonScherm(new ucDieren());
-                    }
+                    if (this.ParentForm is MainForm mainForm) mainForm.ToonScherm(new ucDieren());
                 }
             }
         }

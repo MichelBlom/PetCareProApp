@@ -17,12 +17,11 @@ namespace PetCareProApp
         private bool kwamVanProfiel = false;
         private string geselecteerdFotoPad = "";
         private string _bronEigenaarNaam = "";
+        private string _herkomst = "Overzicht";
 
         public ucDierenToevoegen()
         {
             InitializeComponent();
-
-            // Zet de minimale datum op vandaag voor beide pickers
             dtpIcheckenToevoegenDieren.MinDate = DateTime.Today;
             dtpUitcheckenToevoegenDieren.MinDate = DateTime.Today;
         }
@@ -31,7 +30,7 @@ namespace PetCareProApp
         {
             _bronEigenaarNaam = eigenaarNaam;
             kwamVanProfiel = true;
-
+            _herkomst = "ProfielEigenaar";
             VulEigenaren();
 
             if (cmbEigenaarDierToevoegen.Items.Contains(eigenaarNaam))
@@ -50,30 +49,20 @@ namespace PetCareProApp
 
         private void ucDierenToevoegen_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_bronEigenaarNaam))
-            {
-                VulEigenaren();
-            }
-
+            if (string.IsNullOrEmpty(_bronEigenaarNaam)) VulEigenaren();
             if (dierOmTeBewerken == null)
             {
                 cmbVerblijfDierToevoegen.DataSource = DataManager.KrijgBeschikbareHokken();
-                if (cmbVerblijfDierToevoegen.Items.Count > 0)
-                {
-                    cmbVerblijfDierToevoegen.SelectedIndex = 0;
-                }
-
-                if (string.IsNullOrEmpty(_bronEigenaarNaam))
-                {
-                    cmbEigenaarDierToevoegen.SelectedIndex = 0;
-                }
+                if (cmbVerblijfDierToevoegen.Items.Count > 0) cmbVerblijfDierToevoegen.SelectedIndex = 0;
+                if (string.IsNullOrEmpty(_bronEigenaarNaam)) cmbEigenaarDierToevoegen.SelectedIndex = 0;
             }
         }
 
-        public void LaadDierVoorBewerken(Dier dier, bool vanafProfiel = false)
+        public void LaadDierVoorBewerken(Dier dier, bool vanafProfiel = false, string herkomst = "Overzicht")
         {
             dierOmTeBewerken = dier;
             kwamVanProfiel = vanafProfiel;
+            _herkomst = herkomst;
             _bronEigenaarNaam = dier.Eigenaar;
 
             VulEigenaren();
@@ -103,7 +92,6 @@ namespace PetCareProApp
                 pcbFotoDierToevoegen.ImageLocation = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
             }
 
-            // Laad bestaande reserveringsdata in de pickers
             var reserveringen = DataManager.LaadReserveringen();
             var bestaandeRes = reserveringen.FirstOrDefault(r => r.DierChipnummer == dier.Chipnummer);
             if (bestaandeRes != null)
@@ -134,7 +122,6 @@ namespace PetCareProApp
             string oudChipnummer = dierOmTeBewerken?.Chipnummer;
             string nieuwChipnummer = txbChipNrDierToevoegen.Text;
 
-            // Foto logica behouden
             string fotoBestandsnaam = (dierOmTeBewerken != null) ? dierOmTeBewerken.FotoBestandsnaam : "";
             if (!string.IsNullOrEmpty(geselecteerdFotoPad))
             {
@@ -168,11 +155,9 @@ namespace PetCareProApp
 
             DataManager.SlaDierenOp(lijstDieren);
 
-            // --- Update Reservering Logica (met Chipnummer check) ---
             Reservering bestaandeRes = null;
             if (wasBewerking)
             {
-                // Zoek eerst op het oude chipnummer voor het geval dat het gewijzigd is
                 bestaandeRes = lijstReserveringen.FirstOrDefault(r => r.DierChipnummer == oudChipnummer);
             }
 
@@ -182,7 +167,6 @@ namespace PetCareProApp
                 lijstReserveringen.Add(bestaandeRes);
             }
 
-            // Werk de reservering bij met de nieuwste gegevens
             bestaandeRes.DierChipnummer = nieuwChipnummer;
             bestaandeRes.DierNaam = opTeSlaanDier.Naam;
             bestaandeRes.StartDatum = dtpIcheckenToevoegenDieren.Value.Date;
@@ -192,18 +176,22 @@ namespace PetCareProApp
 
             DataManager.SlaReserveringenOp(lijstReserveringen);
 
-            // NAVIGATIE LOGICA
             if (this.ParentForm is MainForm mainForm)
             {
                 if (wasBewerking)
                 {
+                    // Update de knop op basis van herkomst
+                    if (_herkomst == "Kalender") mainForm.ActiveerMenuKnopInCode("btnPlanning");
+                    else if (_herkomst == "ProfielEigenaar") mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+                    else mainForm.ActiveerMenuKnopInCode("btnDieren");
+
                     ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
-                    string bronVoorTerugknop = kwamVanProfiel ? "ProfielEigenaar" : "Overzicht";
-                    dierProfiel.VulData(opTeSlaanDier, bronVoorTerugknop);
+                    dierProfiel.VulData(opTeSlaanDier, _herkomst);
                     mainForm.ToonScherm(dierProfiel);
                 }
                 else if (kwamVanProfiel && !string.IsNullOrEmpty(gekozenEigenaar))
                 {
+                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == gekozenEigenaar);
                     if (eigenaar != null)
                     {
@@ -215,6 +203,7 @@ namespace PetCareProApp
                 }
                 else
                 {
+                    mainForm.ActiveerMenuKnopInCode("btnDieren");
                     mainForm.ToonScherm(new ucDieren());
                 }
             }
@@ -239,12 +228,18 @@ namespace PetCareProApp
             {
                 if (dierOmTeBewerken != null)
                 {
+                    // Activeer juiste knop bij terugkeer
+                    if (_herkomst == "Kalender") mainForm.ActiveerMenuKnopInCode("btnPlanning");
+                    else if (_herkomst == "ProfielEigenaar") mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+                    else mainForm.ActiveerMenuKnopInCode("btnDieren");
+
                     ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
-                    dierProfiel.VulData(dierOmTeBewerken, kwamVanProfiel ? "ProfielEigenaar" : "Overzicht");
+                    dierProfiel.VulData(dierOmTeBewerken, _herkomst);
                     mainForm.ToonScherm(dierProfiel);
                 }
                 else if (kwamVanProfiel)
                 {
+                    mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == _bronEigenaarNaam);
                     if (eigenaar != null)
                     {
@@ -254,7 +249,11 @@ namespace PetCareProApp
                     }
                     else mainForm.ToonScherm(new ucDieren());
                 }
-                else mainForm.ToonScherm(new ucDieren());
+                else
+                {
+                    mainForm.ActiveerMenuKnopInCode("btnDieren");
+                    mainForm.ToonScherm(new ucDieren());
+                }
             }
         }
 

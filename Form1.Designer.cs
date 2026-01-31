@@ -135,7 +135,7 @@
             this.btnInstellingen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInstellingen.Image = global::PetCareProApp.Properties.Resources.customize;
             this.btnInstellingen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInstellingen.Location = new System.Drawing.Point(0, 347);
+            this.btnInstellingen.Location = new System.Drawing.Point(0, 378);
             this.btnInstellingen.Margin = new System.Windows.Forms.Padding(0);
             this.btnInstellingen.Name = "btnInstellingen";
             this.btnInstellingen.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
@@ -156,7 +156,7 @@
             this.btnKalender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKalender.Image = global::PetCareProApp.Properties.Resources.calendar;
             this.btnKalender.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKalender.Location = new System.Drawing.Point(0, 301);
+            this.btnKalender.Location = new System.Drawing.Point(0, 332);
             this.btnKalender.Margin = new System.Windows.Forms.Padding(0);
             this.btnKalender.Name = "btnKalender";
             this.btnKalender.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
@@ -177,7 +177,7 @@
             this.btnEigenaren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEigenaren.Image = global::PetCareProApp.Properties.Resources.employees_woman_man;
             this.btnEigenaren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEigenaren.Location = new System.Drawing.Point(0, 255);
+            this.btnEigenaren.Location = new System.Drawing.Point(0, 286);
             this.btnEigenaren.Margin = new System.Windows.Forms.Padding(0);
             this.btnEigenaren.Name = "btnEigenaren";
             this.btnEigenaren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
@@ -198,7 +198,7 @@
             this.btnDieren.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDieren.Image = global::PetCareProApp.Properties.Resources.paw;
             this.btnDieren.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDieren.Location = new System.Drawing.Point(0, 209);
+            this.btnDieren.Location = new System.Drawing.Point(0, 240);
             this.btnDieren.Margin = new System.Windows.Forms.Padding(0);
             this.btnDieren.Name = "btnDieren";
             this.btnDieren.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
@@ -220,7 +220,7 @@
             this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.Image = global::PetCareProApp.Properties.Resources.home__4_;
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 163);
+            this.btnDashboard.Location = new System.Drawing.Point(0, 194);
             this.btnDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);

@@ -20,7 +20,6 @@ namespace PetCareProApp
         {
             DataManager.Initialiseer();
             VerversGrid();
-
             txbZoekenDieren.Text = ZoekPlaceholderDieren;
             txbZoekenDieren.ForeColor = Color.Gray;
         }
@@ -29,8 +28,6 @@ namespace PetCareProApp
         {
             List<Dier> lijst = DataManager.LaadDieren();
             dgvDieren.AutoGenerateColumns = false;
-
-            // Kolomkoppelingen
             ColumnNaam.DataPropertyName = "Naam";
             ColumnSoort.DataPropertyName = "Soort";
             ColumnLeeftijd.DataPropertyName = "Leeftijd";
@@ -40,7 +37,6 @@ namespace PetCareProApp
             ColumnEigenaar.DataPropertyName = "Eigenaar";
             ColumnVerblijf.DataPropertyName = "Verblijf";
 
-            // Filter toepassen als er tekst is
             if (!string.IsNullOrWhiteSpace(filter) && filter != ZoekPlaceholderDieren)
             {
                 string zoekTerm = filter.ToLower().Trim();
@@ -49,57 +45,19 @@ namespace PetCareProApp
                     (d.Eigenaar != null && d.Eigenaar.ToLower().Contains(zoekTerm))
                 ).ToList();
             }
-
             dgvDieren.DataSource = null;
             dgvDieren.DataSource = lijst;
         }
 
-        private void txbZoekenDieren_TextChanged(object sender, EventArgs e)
-        {
-            if (txbZoekenDieren.Text != ZoekPlaceholderDieren)
-            {
-                VerversGrid(txbZoekenDieren.Text);
-            }
-        }
-
-        private void txbZoekenDieren_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                VerversGrid(txbZoekenDieren.Text);
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void btnZoekenDieren_Click(object sender, EventArgs e)
-        {
-            VerversGrid(txbZoekenDieren.Text);
-        }
-
-        private void txbZoekenDieren_Enter(object sender, EventArgs e)
-        {
-            if (txbZoekenDieren.Text == ZoekPlaceholderDieren)
-            {
-                txbZoekenDieren.Text = "";
-                txbZoekenDieren.ForeColor = Color.Black;
-            }
-        }
-
-        private void txbZoekenDieren_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txbZoekenDieren.Text))
-            {
-                txbZoekenDieren.Text = ZoekPlaceholderDieren;
-                txbZoekenDieren.ForeColor = Color.Gray;
-            }
-        }
+        private void txbZoekenDieren_TextChanged(object sender, EventArgs e) { if (txbZoekenDieren.Text != ZoekPlaceholderDieren) VerversGrid(txbZoekenDieren.Text); }
+        private void txbZoekenDieren_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { VerversGrid(txbZoekenDieren.Text); e.SuppressKeyPress = true; } }
+        private void btnZoekenDieren_Click(object sender, EventArgs e) => VerversGrid(txbZoekenDieren.Text);
+        private void txbZoekenDieren_Enter(object sender, EventArgs e) { if (txbZoekenDieren.Text == ZoekPlaceholderDieren) { txbZoekenDieren.Text = ""; txbZoekenDieren.ForeColor = Color.Black; } }
+        private void txbZoekenDieren_Leave(object sender, EventArgs e) { if (string.IsNullOrWhiteSpace(txbZoekenDieren.Text)) { txbZoekenDieren.Text = ZoekPlaceholderDieren; txbZoekenDieren.ForeColor = Color.Gray; } }
 
         private void btnToevoegenDieren_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is MainForm mainForm)
-            {
-                mainForm.ToonScherm(new ucDierenToevoegen());
-            }
+            if (this.ParentForm is MainForm mainForm) mainForm.ToonScherm(new ucDierenToevoegen());
         }
 
         private void btnBewerkenDieren_Click(object sender, EventArgs e)
@@ -109,16 +67,9 @@ namespace PetCareProApp
                 Dier gekozenDier = (Dier)dgvDieren.SelectedRows[0].DataBoundItem;
                 ucDierenToevoegen bewerkScherm = new ucDierenToevoegen();
                 bewerkScherm.LaadDierVoorBewerken(gekozenDier);
-
-                if (this.ParentForm is MainForm mainForm)
-                {
-                    mainForm.ToonScherm(bewerkScherm);
-                }
+                if (this.ParentForm is MainForm mainForm) mainForm.ToonScherm(bewerkScherm);
             }
-            else
-            {
-                MessageBox.Show("Selecteer eerst een dier uit de lijst om te bewerken.");
-            }
+            else MessageBox.Show("Selecteer eerst een dier uit de lijst om te bewerken.");
         }
 
         private void btnVerwijderDieren_Click(object sender, EventArgs e)
@@ -126,9 +77,7 @@ namespace PetCareProApp
             if (dgvDieren.SelectedRows.Count > 0)
             {
                 Dier gekozenDier = (Dier)dgvDieren.SelectedRows[0].DataBoundItem;
-                var resultaat = MessageBox.Show($"Weet je zeker dat je {gekozenDier.Naam} wilt verwijderen?",
-                                                "Bevestig Verwijderen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
+                var resultaat = MessageBox.Show($"Weet je zeker dat je {gekozenDier.Naam} wilt verwijderen?", "Bevestig", MessageBoxButtons.YesNo);
                 if (resultaat == DialogResult.Yes)
                 {
                     List<Dier> lijst = DataManager.LaadDieren();
@@ -142,37 +91,24 @@ namespace PetCareProApp
         private void dgvDieren_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-
-            // 1. Klik op Naam van het dier -> Naar Dierprofiel
             if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnNaam")
             {
                 Dier gekozenDier = (Dier)dgvDieren.Rows[e.RowIndex].DataBoundItem;
-                if (gekozenDier != null)
+                if (gekozenDier != null && this.ParentForm is MainForm mainForm)
                 {
                     ucProfielPaginaDieren profiel = new ucProfielPaginaDieren();
                     profiel.VulData(gekozenDier);
-
-                    if (this.ParentForm is MainForm mainForm)
-                    {
-                        mainForm.ToonScherm(profiel);
-                    }
+                    mainForm.ToonScherm(profiel);
                 }
             }
-
-            // 2. Klik op Naam van de Eigenaar -> Naar Eigenaarprofiel
             if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnEigenaar")
             {
                 string eigenaarNaam = dgvDieren.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
-
                 if (!string.IsNullOrEmpty(eigenaarNaam))
                 {
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(eig => eig.Naam == eigenaarNaam);
-
                     if (eigenaar != null && this.ParentForm is MainForm mainForm)
                     {
-                        // Activeer de Eigenaren knop in het menu
-                        mainForm.ActiveerMenuKnopInCode("btnEigenaren");
-
                         ucProfielEigenaar profielEigenaar = new ucProfielEigenaar();
                         profielEigenaar.VulData(eigenaar, "DierenLijst");
                         mainForm.ToonScherm(profielEigenaar);

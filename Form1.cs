@@ -19,32 +19,43 @@ namespace PetCareProApp
 
         public void ToonScherm(UserControl scherm)
         {
-            pnlMain.Controls.Clear(); // Maak het hoofdvak leeg
+            pnlMain.Controls.Clear();
             scherm.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(scherm);
+
+            // AUTOMATISCHE MENU ACTIVATIE op basis van de schermnaam
+            string typeNaam = scherm.GetType().Name;
+
+            if (typeNaam.Contains("Dier"))
+            {
+                // Activeert btnDieren voor: ucDieren, ucDierenToevoegen, ucProfielPaginaDieren
+                ActiveerMenuKnopInCode("btnDieren");
+            }
+            else if (typeNaam.Contains("Eigen"))
+            {
+                // Activeert btnEigenaren voor: ucEigenaren, ucEigenaarToevoegen, ucProfielEigenaar
+                ActiveerMenuKnopInCode("btnEigenaren");
+            }
+            else if (typeNaam.Contains("Kalender") || typeNaam.Contains("Planning"))
+            {
+                ActiveerMenuKnopInCode("btnKalender");
+            }
+            else if (typeNaam.Contains("Dashboard"))
+            {
+                ActiveerMenuKnopInCode("btnDashboard");
+            }
+            else if (typeNaam.Contains("Instellingen"))
+            {
+                ActiveerMenuKnopInCode("btnInstellingen");
+            }
         }
 
-        /// <summary>
-        /// Deze methode zorgt ervoor dat de navigatie naar de Eigenaren-sectie 
-        /// correct wordt afgehandeld, inclusief de visuele indicator.
-        /// </summary>
         public void GaNaarEigenarenScherm(UserControl specifiekScherm = null)
         {
-            // 1. Maak de Eigenaren-knop visueel actief
-            ActiveerMenuKnop(btnEigenaren);
-
-            // 2. Toon het gevraagde scherm (bijv. toevoegen) of het standaard overzicht
-            if (specifiekScherm != null)
-            {
-                ToonScherm(specifiekScherm);
-            }
-            else
-            {
-                ToonScherm(new ucEigenaren());
-            }
+            if (specifiekScherm != null) ToonScherm(specifiekScherm);
+            else ToonScherm(new ucEigenaren());
         }
 
-        // NIEUW: Hiermee kunnen we de indicator verplaatsen op basis van de knopnaam
         public void ActiveerMenuKnopInCode(string knopNaam)
         {
             Control[] controls = pnlNavigation.Controls.Find(knopNaam, true);
@@ -54,17 +65,12 @@ namespace PetCareProApp
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
 
         private void ActiveerMenuKnop(object sender)
         {
-            // Controleer of button actief is
             if (!(sender is Button actieveBtn)) return;
 
-            // Reset knoppen in het navigatiepaneel
             foreach (Control c in pnlNavigation.Controls)
             {
                 if (c is Button btn)
@@ -74,51 +80,20 @@ namespace PetCareProApp
                 }
             }
 
-            // Stijl geklikte knop
             actieveBtn.BackColor = Color.White;
             actieveBtn.ForeColor = Color.RoyalBlue;
 
-            // Verplaats en toon de indicator
             pnlSelectionIndicator.Height = actieveBtn.Height;
             pnlSelectionIndicator.Top = actieveBtn.Top;
             pnlSelectionIndicator.Visible = true;
             pnlSelectionIndicator.BringToFront();
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            ActiveerMenuKnop(sender);
-            ToonScherm(new ucDashboard());
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ToonScherm(new ucDashboard());
-            ActiveerMenuKnop(btnDashboard);
-        }
-
-        private void btnDieren_Click(object sender, EventArgs e)
-        {
-            ActiveerMenuKnop(sender);
-            ToonScherm(new ucDieren());
-        }
-
-        private void btnEigenaren_Click(object sender, EventArgs e)
-        {
-            ActiveerMenuKnop(sender);
-            ToonScherm(new ucEigenaren());
-        }
-
-        private void btnKalender_Click(object sender, EventArgs e)
-        {
-            ActiveerMenuKnop(sender);
-            ToonScherm(new ucKalender());
-        }
-
-        private void btnInstellingen_Click(object sender, EventArgs e)
-        {
-            ActiveerMenuKnop(sender);
-            ToonScherm(new ucInstellingen());
-        }
+        private void btnDashboard_Click(object sender, EventArgs e) => ToonScherm(new ucDashboard());
+        private void MainForm_Load(object sender, EventArgs e) => ToonScherm(new ucDashboard());
+        private void btnDieren_Click(object sender, EventArgs e) => ToonScherm(new ucDieren());
+        private void btnEigenaren_Click(object sender, EventArgs e) => ToonScherm(new ucEigenaren());
+        private void btnKalender_Click(object sender, EventArgs e) => ToonScherm(new ucKalender());
+        private void btnInstellingen_Click(object sender, EventArgs e) => ToonScherm(new ucInstellingen());
     }
 }
