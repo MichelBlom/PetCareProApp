@@ -72,6 +72,12 @@ namespace PetCareProApp
                     mainForm.ActiveerMenuKnopInCode("btnEigenaren");
                     mainForm.ToonScherm(new ucEigenaren());
                 }
+                else if (_bronScherm == "Kalender")
+                {
+                    // De nieuwe voetafdruk: Terug naar de planning
+                    mainForm.ActiveerMenuKnopInCode("btnPlanning"); // Zorg dat deze naam matcht met je MainForm knop
+                    mainForm.ToonScherm(new ucKalender());
+                }
                 else
                 {
                     mainForm.ActiveerMenuKnopInCode("btnDieren");

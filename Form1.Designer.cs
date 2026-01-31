@@ -162,7 +162,7 @@
             this.btnKalender.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnKalender.Size = new System.Drawing.Size(200, 40);
             this.btnKalender.TabIndex = 1;
-            this.btnKalender.Text = "  KALENDER";
+            this.btnKalender.Text = "  PLANNING";
             this.btnKalender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKalender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnKalender.UseVisualStyleBackColor = false;

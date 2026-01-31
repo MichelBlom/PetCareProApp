@@ -102,6 +102,15 @@ namespace PetCareProApp
             {
                 pcbFotoDierToevoegen.ImageLocation = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
             }
+
+            // Laad bestaande reserveringsdata in de pickers
+            var reserveringen = DataManager.LaadReserveringen();
+            var bestaandeRes = reserveringen.FirstOrDefault(r => r.DierChipnummer == dier.Chipnummer);
+            if (bestaandeRes != null)
+            {
+                dtpIcheckenToevoegenDieren.Value = bestaandeRes.StartDatum >= dtpIcheckenToevoegenDieren.MinDate ? bestaandeRes.StartDatum : DateTime.Today;
+                dtpUitcheckenToevoegenDieren.Value = bestaandeRes.EindDatum >= dtpUitcheckenToevoegenDieren.MinDate ? bestaandeRes.EindDatum : DateTime.Today;
+            }
         }
 
         private void btnOpslaanDierToevoegen_Click(object sender, EventArgs e)
@@ -109,22 +118,28 @@ namespace PetCareProApp
             string foutmelding = "";
             if (string.IsNullOrWhiteSpace(txbNaamDierToevoegen.Text)) foutmelding += "- Naam\n";
             if (string.IsNullOrWhiteSpace(txbChipNrDierToevoegen.Text)) foutmelding += "- Chipnummer\n";
+            if (dtpUitcheckenToevoegenDieren.Value.Date < dtpIcheckenToevoegenDieren.Value.Date)
+                foutmelding += "- Check-out datum kan niet vóór Check-in liggen\n";
 
             if (!string.IsNullOrEmpty(foutmelding))
             {
-                MessageBox.Show("Velden verplicht:\n" + foutmelding);
+                MessageBox.Show("Velden verplicht of onjuist:\n" + foutmelding);
                 return;
             }
 
-            List<Dier> lijst = DataManager.LaadDieren();
+            List<Dier> lijstDieren = DataManager.LaadDieren();
+            List<Reservering> lijstReserveringen = DataManager.LaadReserveringen();
+
             string gekozenEigenaar = cmbEigenaarDierToevoegen.SelectedIndex == 0 ? "" : cmbEigenaarDierToevoegen.Text;
+            string oudChipnummer = dierOmTeBewerken?.Chipnummer;
+            string nieuwChipnummer = txbChipNrDierToevoegen.Text;
 
             // Foto logica behouden
             string fotoBestandsnaam = (dierOmTeBewerken != null) ? dierOmTeBewerken.FotoBestandsnaam : "";
             if (!string.IsNullOrEmpty(geselecteerdFotoPad))
             {
                 string extensie = Path.GetExtension(geselecteerdFotoPad);
-                fotoBestandsnaam = txbChipNrDierToevoegen.Text + extensie;
+                fotoBestandsnaam = nieuwChipnummer + extensie;
                 string doelPad = DataManager.KrijgFotoPad(fotoBestandsnaam);
                 try
                 {
@@ -136,41 +151,59 @@ namespace PetCareProApp
             }
 
             bool wasBewerking = (dierOmTeBewerken != null);
+            Dier opTeSlaanDier = wasBewerking ? dierOmTeBewerken : new Dier();
+
+            UpdateDierVelden(opTeSlaanDier, gekozenEigenaar);
+            opTeSlaanDier.FotoBestandsnaam = fotoBestandsnaam;
 
             if (wasBewerking)
             {
-                int index = lijst.FindIndex(d => d.Chipnummer == dierOmTeBewerken.Chipnummer);
-                if (index != -1)
-                {
-                    UpdateDierVelden(dierOmTeBewerken, gekozenEigenaar);
-                    dierOmTeBewerken.FotoBestandsnaam = fotoBestandsnaam;
-                    lijst[index] = dierOmTeBewerken;
-                }
+                int index = lijstDieren.FindIndex(d => d.Chipnummer == oudChipnummer);
+                if (index != -1) lijstDieren[index] = opTeSlaanDier;
             }
             else
             {
-                dierOmTeBewerken = new Dier();
-                UpdateDierVelden(dierOmTeBewerken, gekozenEigenaar);
-                dierOmTeBewerken.FotoBestandsnaam = fotoBestandsnaam;
-                lijst.Add(dierOmTeBewerken);
+                lijstDieren.Add(opTeSlaanDier);
             }
 
-            DataManager.SlaDierenOp(lijst);
+            DataManager.SlaDierenOp(lijstDieren);
+
+            // --- Update Reservering Logica (met Chipnummer check) ---
+            Reservering bestaandeRes = null;
+            if (wasBewerking)
+            {
+                // Zoek eerst op het oude chipnummer voor het geval dat het gewijzigd is
+                bestaandeRes = lijstReserveringen.FirstOrDefault(r => r.DierChipnummer == oudChipnummer);
+            }
+
+            if (bestaandeRes == null)
+            {
+                bestaandeRes = new Reservering { ReserveringId = Guid.NewGuid().ToString() };
+                lijstReserveringen.Add(bestaandeRes);
+            }
+
+            // Werk de reservering bij met de nieuwste gegevens
+            bestaandeRes.DierChipnummer = nieuwChipnummer;
+            bestaandeRes.DierNaam = opTeSlaanDier.Naam;
+            bestaandeRes.StartDatum = dtpIcheckenToevoegenDieren.Value.Date;
+            bestaandeRes.EindDatum = dtpUitcheckenToevoegenDieren.Value.Date;
+            bestaandeRes.Verblijf = opTeSlaanDier.Verblijf;
+            bestaandeRes.Status = "Gepland";
+
+            DataManager.SlaReserveringenOp(lijstReserveringen);
 
             // NAVIGATIE LOGICA
             if (this.ParentForm is MainForm mainForm)
             {
                 if (wasBewerking)
                 {
-                    // Altijd terug naar het dierprofiel na een bewerking
                     ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
                     string bronVoorTerugknop = kwamVanProfiel ? "ProfielEigenaar" : "Overzicht";
-                    dierProfiel.VulData(dierOmTeBewerken, bronVoorTerugknop);
+                    dierProfiel.VulData(opTeSlaanDier, bronVoorTerugknop);
                     mainForm.ToonScherm(dierProfiel);
                 }
                 else if (kwamVanProfiel && !string.IsNullOrEmpty(gekozenEigenaar))
                 {
-                    // Nieuw dier vanaf eigenaar -> Terug naar eigenaar
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == gekozenEigenaar);
                     if (eigenaar != null)
                     {
@@ -247,16 +280,8 @@ namespace PetCareProApp
 
         private void lblSoortDierToevoegen_Click(object sender, EventArgs e) { }
         private void lblOpmerkingenDierToevoegen_Click(object sender, EventArgs e) { }
-
-        private void pnlLeftDierenToevoegen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void pnlLeftDierenToevoegen_Paint(object sender, PaintEventArgs e) { }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) { }
     }
 }
 

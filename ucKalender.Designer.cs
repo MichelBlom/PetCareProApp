@@ -2,15 +2,8 @@
 {
     partial class ucKalender
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,41 +15,37 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.pnlHeaderPlanning = new System.Windows.Forms.Panel();
-            this.lblTitelPlanning = new System.Windows.Forms.Label();
-            this.pnlFooterPlanning = new System.Windows.Forms.Panel();
-            this.pnlContentPlanning = new System.Windows.Forms.Panel();
             this.tlpNavigatiePlanning = new System.Windows.Forms.TableLayoutPanel();
+            this.btnVolgendePlanning = new System.Windows.Forms.Button();
             this.dtpWeekPlanning = new System.Windows.Forms.DateTimePicker();
             this.btnVorigePlanning = new System.Windows.Forms.Button();
-            this.btnVolgendePlanning = new System.Windows.Forms.Button();
-            this.tlpHeaderDagenPlanning = new System.Windows.Forms.TableLayoutPanel();
-            this.lblHokHeaderPlanning = new System.Windows.Forms.Label();
-            this.lblMaPlanning = new System.Windows.Forms.Label();
-            this.lblDiPlanning = new System.Windows.Forms.Label();
-            this.lblWoPlanning = new System.Windows.Forms.Label();
-            this.lblDoPlanning = new System.Windows.Forms.Label();
-            this.lblVrPlanning = new System.Windows.Forms.Label();
-            this.lblZaPlanning = new System.Windows.Forms.Label();
-            this.lblZoPlanning = new System.Windows.Forms.Label();
-            this.tlpGridPlanning = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTitelPlanning = new System.Windows.Forms.Label();
+            this.pnlFooterPlanning = new System.Windows.Forms.Panel();
             this.flpLegendaPlanning = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlKleurBezet = new System.Windows.Forms.Panel();
             this.lblLegendaBezet = new System.Windows.Forms.Label();
             this.pnlKleurCheckout = new System.Windows.Forms.Panel();
             this.lblLegendaCheckout = new System.Windows.Forms.Label();
+            this.pnlContentPlanning = new System.Windows.Forms.Panel();
+            this.tlpGridPlanning = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpHeaderDagenPlanning = new System.Windows.Forms.TableLayoutPanel();
+            this.lblZoPlanning = new System.Windows.Forms.Label();
+            this.lblZaPlanning = new System.Windows.Forms.Label();
+            this.lblVrPlanning = new System.Windows.Forms.Label();
+            this.lblDoPlanning = new System.Windows.Forms.Label();
+            this.lblWoPlanning = new System.Windows.Forms.Label();
+            this.lblDiPlanning = new System.Windows.Forms.Label();
+            this.lblMaPlanning = new System.Windows.Forms.Label();
+            this.lblHokHeaderPlanning = new System.Windows.Forms.Label();
             this.pnlHeaderPlanning.SuspendLayout();
-            this.pnlFooterPlanning.SuspendLayout();
-            this.pnlContentPlanning.SuspendLayout();
             this.tlpNavigatiePlanning.SuspendLayout();
-            this.tlpHeaderDagenPlanning.SuspendLayout();
+            this.pnlFooterPlanning.SuspendLayout();
             this.flpLegendaPlanning.SuspendLayout();
+            this.pnlContentPlanning.SuspendLayout();
+            this.tlpHeaderDagenPlanning.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeaderPlanning
@@ -69,38 +58,6 @@
             this.pnlHeaderPlanning.Name = "pnlHeaderPlanning";
             this.pnlHeaderPlanning.Size = new System.Drawing.Size(780, 50);
             this.pnlHeaderPlanning.TabIndex = 0;
-            // 
-            // lblTitelPlanning
-            // 
-            this.lblTitelPlanning.AutoSize = true;
-            this.lblTitelPlanning.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitelPlanning.Location = new System.Drawing.Point(8, 10);
-            this.lblTitelPlanning.Name = "lblTitelPlanning";
-            this.lblTitelPlanning.Size = new System.Drawing.Size(110, 31);
-            this.lblTitelPlanning.TabIndex = 0;
-            this.lblTitelPlanning.Text = "Planning";
-            // 
-            // pnlFooterPlanning
-            // 
-            this.pnlFooterPlanning.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFooterPlanning.Controls.Add(this.flpLegendaPlanning);
-            this.pnlFooterPlanning.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooterPlanning.Location = new System.Drawing.Point(10, 540);
-            this.pnlFooterPlanning.Name = "pnlFooterPlanning";
-            this.pnlFooterPlanning.Size = new System.Drawing.Size(780, 60);
-            this.pnlFooterPlanning.TabIndex = 1;
-            // 
-            // pnlContentPlanning
-            // 
-            this.pnlContentPlanning.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlContentPlanning.Controls.Add(this.tlpGridPlanning);
-            this.pnlContentPlanning.Controls.Add(this.tlpHeaderDagenPlanning);
-            this.pnlContentPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContentPlanning.Location = new System.Drawing.Point(10, 60);
-            this.pnlContentPlanning.Name = "pnlContentPlanning";
-            this.pnlContentPlanning.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlContentPlanning.Size = new System.Drawing.Size(780, 480);
-            this.pnlContentPlanning.TabIndex = 2;
             // 
             // tlpNavigatiePlanning
             // 
@@ -122,6 +79,18 @@
             this.tlpNavigatiePlanning.Size = new System.Drawing.Size(280, 27);
             this.tlpNavigatiePlanning.TabIndex = 1;
             // 
+            // btnVolgendePlanning
+            // 
+            this.btnVolgendePlanning.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnVolgendePlanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolgendePlanning.Location = new System.Drawing.Point(240, 0);
+            this.btnVolgendePlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.btnVolgendePlanning.Name = "btnVolgendePlanning";
+            this.btnVolgendePlanning.Size = new System.Drawing.Size(40, 23);
+            this.btnVolgendePlanning.TabIndex = 2;
+            this.btnVolgendePlanning.Text = ">";
+            this.btnVolgendePlanning.UseVisualStyleBackColor = false;
+            // 
             // dtpWeekPlanning
             // 
             this.dtpWeekPlanning.Location = new System.Drawing.Point(40, 0);
@@ -133,8 +102,6 @@
             // btnVorigePlanning
             // 
             this.btnVorigePlanning.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnVorigePlanning.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVorigePlanning.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnVorigePlanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVorigePlanning.Location = new System.Drawing.Point(0, 0);
             this.btnVorigePlanning.Margin = new System.Windows.Forms.Padding(0);
@@ -144,175 +111,25 @@
             this.btnVorigePlanning.Text = "<";
             this.btnVorigePlanning.UseVisualStyleBackColor = false;
             // 
-            // btnVolgendePlanning
+            // lblTitelPlanning
             // 
-            this.btnVolgendePlanning.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnVolgendePlanning.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVolgendePlanning.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnVolgendePlanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolgendePlanning.Location = new System.Drawing.Point(240, 0);
-            this.btnVolgendePlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.btnVolgendePlanning.Name = "btnVolgendePlanning";
-            this.btnVolgendePlanning.Size = new System.Drawing.Size(40, 23);
-            this.btnVolgendePlanning.TabIndex = 2;
-            this.btnVolgendePlanning.Text = ">";
-            this.btnVolgendePlanning.UseVisualStyleBackColor = false;
+            this.lblTitelPlanning.AutoSize = true;
+            this.lblTitelPlanning.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitelPlanning.Location = new System.Drawing.Point(8, 10);
+            this.lblTitelPlanning.Name = "lblTitelPlanning";
+            this.lblTitelPlanning.Size = new System.Drawing.Size(110, 31);
+            this.lblTitelPlanning.TabIndex = 0;
+            this.lblTitelPlanning.Text = "Planning";
             // 
-            // tlpHeaderDagenPlanning
+            // pnlFooterPlanning
             // 
-            this.tlpHeaderDagenPlanning.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tlpHeaderDagenPlanning.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tlpHeaderDagenPlanning.ColumnCount = 8;
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblZoPlanning, 7, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblZaPlanning, 6, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblVrPlanning, 5, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblDoPlanning, 4, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblWoPlanning, 3, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblDiPlanning, 2, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblMaPlanning, 1, 0);
-            this.tlpHeaderDagenPlanning.Controls.Add(this.lblHokHeaderPlanning, 0, 0);
-            this.tlpHeaderDagenPlanning.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpHeaderDagenPlanning.Location = new System.Drawing.Point(10, 10);
-            this.tlpHeaderDagenPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpHeaderDagenPlanning.Name = "tlpHeaderDagenPlanning";
-            this.tlpHeaderDagenPlanning.RowCount = 1;
-            this.tlpHeaderDagenPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpHeaderDagenPlanning.Size = new System.Drawing.Size(760, 30);
-            this.tlpHeaderDagenPlanning.TabIndex = 0;
-            // 
-            // lblHokHeaderPlanning
-            // 
-            this.lblHokHeaderPlanning.AutoSize = true;
-            this.lblHokHeaderPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHokHeaderPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHokHeaderPlanning.Location = new System.Drawing.Point(1, 1);
-            this.lblHokHeaderPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblHokHeaderPlanning.Name = "lblHokHeaderPlanning";
-            this.lblHokHeaderPlanning.Size = new System.Drawing.Size(85, 28);
-            this.lblHokHeaderPlanning.TabIndex = 0;
-            this.lblHokHeaderPlanning.Text = "Hok Nr.";
-            this.lblHokHeaderPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblMaPlanning
-            // 
-            this.lblMaPlanning.AutoSize = true;
-            this.lblMaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaPlanning.Location = new System.Drawing.Point(87, 1);
-            this.lblMaPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblMaPlanning.Name = "lblMaPlanning";
-            this.lblMaPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblMaPlanning.TabIndex = 1;
-            this.lblMaPlanning.Text = "Ma 00/00";
-            this.lblMaPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDiPlanning
-            // 
-            this.lblDiPlanning.AutoSize = true;
-            this.lblDiPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDiPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiPlanning.Location = new System.Drawing.Point(183, 1);
-            this.lblDiPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDiPlanning.Name = "lblDiPlanning";
-            this.lblDiPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblDiPlanning.TabIndex = 2;
-            this.lblDiPlanning.Text = "Di 00/00";
-            this.lblDiPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblWoPlanning
-            // 
-            this.lblWoPlanning.AutoSize = true;
-            this.lblWoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWoPlanning.Location = new System.Drawing.Point(279, 1);
-            this.lblWoPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblWoPlanning.Name = "lblWoPlanning";
-            this.lblWoPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblWoPlanning.TabIndex = 3;
-            this.lblWoPlanning.Text = "Wo 00/00";
-            this.lblWoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDoPlanning
-            // 
-            this.lblDoPlanning.AutoSize = true;
-            this.lblDoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoPlanning.Location = new System.Drawing.Point(375, 1);
-            this.lblDoPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblDoPlanning.Name = "lblDoPlanning";
-            this.lblDoPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblDoPlanning.TabIndex = 4;
-            this.lblDoPlanning.Text = "Do 00/00";
-            this.lblDoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblVrPlanning
-            // 
-            this.lblVrPlanning.AutoSize = true;
-            this.lblVrPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblVrPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVrPlanning.Location = new System.Drawing.Point(471, 1);
-            this.lblVrPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblVrPlanning.Name = "lblVrPlanning";
-            this.lblVrPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblVrPlanning.TabIndex = 5;
-            this.lblVrPlanning.Text = "Vr 00/00";
-            this.lblVrPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblZaPlanning
-            // 
-            this.lblZaPlanning.AutoSize = true;
-            this.lblZaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblZaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZaPlanning.Location = new System.Drawing.Point(567, 1);
-            this.lblZaPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblZaPlanning.Name = "lblZaPlanning";
-            this.lblZaPlanning.Size = new System.Drawing.Size(95, 28);
-            this.lblZaPlanning.TabIndex = 6;
-            this.lblZaPlanning.Text = "Za 00/00";
-            this.lblZaPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblZoPlanning
-            // 
-            this.lblZoPlanning.AutoSize = true;
-            this.lblZoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblZoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZoPlanning.Location = new System.Drawing.Point(663, 1);
-            this.lblZoPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.lblZoPlanning.Name = "lblZoPlanning";
-            this.lblZoPlanning.Size = new System.Drawing.Size(96, 28);
-            this.lblZoPlanning.TabIndex = 7;
-            this.lblZoPlanning.Text = "Zo 00/00";
-            this.lblZoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tlpGridPlanning
-            // 
-            this.tlpGridPlanning.AutoScroll = true;
-            this.tlpGridPlanning.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tlpGridPlanning.ColumnCount = 8;
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tlpGridPlanning.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpGridPlanning.Location = new System.Drawing.Point(10, 40);
-            this.tlpGridPlanning.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpGridPlanning.Name = "tlpGridPlanning";
-            this.tlpGridPlanning.RowCount = 1;
-            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGridPlanning.Size = new System.Drawing.Size(760, 100);
-            this.tlpGridPlanning.TabIndex = 1;
+            this.pnlFooterPlanning.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFooterPlanning.Controls.Add(this.flpLegendaPlanning);
+            this.pnlFooterPlanning.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooterPlanning.Location = new System.Drawing.Point(10, 540);
+            this.pnlFooterPlanning.Name = "pnlFooterPlanning";
+            this.pnlFooterPlanning.Size = new System.Drawing.Size(780, 60);
+            this.pnlFooterPlanning.TabIndex = 1;
             // 
             // flpLegendaPlanning
             // 
@@ -367,6 +184,181 @@
             this.lblLegendaCheckout.TabIndex = 3;
             this.lblLegendaCheckout.Text = "Check-out vandaag";
             // 
+            // pnlContentPlanning
+            // 
+            this.pnlContentPlanning.AutoScroll = true;
+            this.pnlContentPlanning.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlContentPlanning.Controls.Add(this.tlpGridPlanning);
+            this.pnlContentPlanning.Controls.Add(this.tlpHeaderDagenPlanning);
+            this.pnlContentPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContentPlanning.Location = new System.Drawing.Point(10, 60);
+            this.pnlContentPlanning.Name = "pnlContentPlanning";
+            this.pnlContentPlanning.Padding = new System.Windows.Forms.Padding(10);
+            this.pnlContentPlanning.Size = new System.Drawing.Size(780, 480);
+            this.pnlContentPlanning.TabIndex = 2;
+            // 
+            // tlpGridPlanning
+            // 
+            this.tlpGridPlanning.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tlpGridPlanning.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tlpGridPlanning.ColumnCount = 8;
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpGridPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpGridPlanning.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpGridPlanning.Location = new System.Drawing.Point(10, 40);
+            this.tlpGridPlanning.Name = "tlpGridPlanning";
+            this.tlpGridPlanning.RowCount = 1;
+            this.tlpGridPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tlpGridPlanning.Size = new System.Drawing.Size(760, 100);
+            this.tlpGridPlanning.TabIndex = 1;
+            // 
+            // tlpHeaderDagenPlanning
+            // 
+            this.tlpHeaderDagenPlanning.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tlpHeaderDagenPlanning.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tlpHeaderDagenPlanning.ColumnCount = 8;
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tlpHeaderDagenPlanning.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblZoPlanning, 7, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblZaPlanning, 6, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblVrPlanning, 5, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblDoPlanning, 4, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblWoPlanning, 3, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblDiPlanning, 2, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblMaPlanning, 1, 0);
+            this.tlpHeaderDagenPlanning.Controls.Add(this.lblHokHeaderPlanning, 0, 0);
+            this.tlpHeaderDagenPlanning.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpHeaderDagenPlanning.Location = new System.Drawing.Point(10, 10);
+            this.tlpHeaderDagenPlanning.Name = "tlpHeaderDagenPlanning";
+            this.tlpHeaderDagenPlanning.RowCount = 1;
+            this.tlpHeaderDagenPlanning.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpHeaderDagenPlanning.Size = new System.Drawing.Size(760, 30);
+            this.tlpHeaderDagenPlanning.TabIndex = 0;
+            // 
+            // lblZoPlanning
+            // 
+            this.lblZoPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblZoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblZoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblZoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblZoPlanning.Location = new System.Drawing.Point(662, 1);
+            this.lblZoPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblZoPlanning.Name = "lblZoPlanning";
+            this.lblZoPlanning.Size = new System.Drawing.Size(97, 31);
+            this.lblZoPlanning.TabIndex = 7;
+            this.lblZoPlanning.Text = "Zo 00/00";
+            this.lblZoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblZaPlanning
+            // 
+            this.lblZaPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblZaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblZaPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblZaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblZaPlanning.Location = new System.Drawing.Point(566, 1);
+            this.lblZaPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblZaPlanning.Name = "lblZaPlanning";
+            this.lblZaPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblZaPlanning.TabIndex = 6;
+            this.lblZaPlanning.Text = "Za 00/00";
+            this.lblZaPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVrPlanning
+            // 
+            this.lblVrPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblVrPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVrPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblVrPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblVrPlanning.Location = new System.Drawing.Point(470, 1);
+            this.lblVrPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblVrPlanning.Name = "lblVrPlanning";
+            this.lblVrPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblVrPlanning.TabIndex = 5;
+            this.lblVrPlanning.Text = "Vr 00/00";
+            this.lblVrPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDoPlanning
+            // 
+            this.lblDoPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblDoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblDoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDoPlanning.Location = new System.Drawing.Point(374, 1);
+            this.lblDoPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDoPlanning.Name = "lblDoPlanning";
+            this.lblDoPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblDoPlanning.TabIndex = 4;
+            this.lblDoPlanning.Text = "Do 00/00";
+            this.lblDoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblWoPlanning
+            // 
+            this.lblWoPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblWoPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblWoPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblWoPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblWoPlanning.Location = new System.Drawing.Point(278, 1);
+            this.lblWoPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblWoPlanning.Name = "lblWoPlanning";
+            this.lblWoPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblWoPlanning.TabIndex = 3;
+            this.lblWoPlanning.Text = "Wo 00/00";
+            this.lblWoPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDiPlanning
+            // 
+            this.lblDiPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblDiPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDiPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblDiPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDiPlanning.Location = new System.Drawing.Point(182, 1);
+            this.lblDiPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblDiPlanning.Name = "lblDiPlanning";
+            this.lblDiPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblDiPlanning.TabIndex = 2;
+            this.lblDiPlanning.Text = "Di 00/00";
+            this.lblDiPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblMaPlanning
+            // 
+            this.lblMaPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblMaPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMaPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblMaPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMaPlanning.Location = new System.Drawing.Point(86, 1);
+            this.lblMaPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblMaPlanning.Name = "lblMaPlanning";
+            this.lblMaPlanning.Size = new System.Drawing.Size(95, 31);
+            this.lblMaPlanning.TabIndex = 1;
+            this.lblMaPlanning.Text = "Ma 00/00";
+            this.lblMaPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblHokHeaderPlanning
+            // 
+            this.lblHokHeaderPlanning.BackColor = System.Drawing.Color.Transparent;
+            this.lblHokHeaderPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHokHeaderPlanning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblHokHeaderPlanning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHokHeaderPlanning.Location = new System.Drawing.Point(1, 1);
+            this.lblHokHeaderPlanning.Margin = new System.Windows.Forms.Padding(0);
+            this.lblHokHeaderPlanning.Name = "lblHokHeaderPlanning";
+            this.lblHokHeaderPlanning.Size = new System.Drawing.Size(84, 31);
+            this.lblHokHeaderPlanning.TabIndex = 0;
+            this.lblHokHeaderPlanning.Text = "Hok Nr.";
+            this.lblHokHeaderPlanning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ucKalender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -376,21 +368,17 @@
             this.Controls.Add(this.pnlFooterPlanning);
             this.Controls.Add(this.pnlHeaderPlanning);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(800, 610);
-            this.MinimumSize = new System.Drawing.Size(800, 610);
             this.Name = "ucKalender";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(800, 610);
             this.pnlHeaderPlanning.ResumeLayout(false);
             this.pnlHeaderPlanning.PerformLayout();
-            this.pnlFooterPlanning.ResumeLayout(false);
-            this.pnlContentPlanning.ResumeLayout(false);
             this.tlpNavigatiePlanning.ResumeLayout(false);
-            this.tlpHeaderDagenPlanning.ResumeLayout(false);
-            this.tlpHeaderDagenPlanning.PerformLayout();
+            this.pnlFooterPlanning.ResumeLayout(false);
             this.flpLegendaPlanning.ResumeLayout(false);
             this.flpLegendaPlanning.PerformLayout();
+            this.pnlContentPlanning.ResumeLayout(false);
+            this.tlpHeaderDagenPlanning.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
