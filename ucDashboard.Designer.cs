@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeaderDashboard = new System.Windows.Forms.Panel();
             this.lblHeaderDashboard = new System.Windows.Forms.Label();
             this.pnlFooterDashboard = new System.Windows.Forms.Panel();
@@ -64,7 +64,10 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlKleurOverbezet = new System.Windows.Forms.Panel();
+            this.lblLegendaOverbezet = new System.Windows.Forms.Label();
             this.pnlHeaderDashboard.SuspendLayout();
+            this.pnlFooterDashboard.SuspendLayout();
             this.pnlContentDashboard.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -94,15 +97,17 @@
             // 
             this.lblHeaderDashboard.AutoSize = true;
             this.lblHeaderDashboard.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderDashboard.Location = new System.Drawing.Point(3, 10);
+            this.lblHeaderDashboard.Location = new System.Drawing.Point(8, 10);
             this.lblHeaderDashboard.Name = "lblHeaderDashboard";
-            this.lblHeaderDashboard.Size = new System.Drawing.Size(158, 31);
+            this.lblHeaderDashboard.Size = new System.Drawing.Size(130, 31);
             this.lblHeaderDashboard.TabIndex = 0;
-            this.lblHeaderDashboard.Text = "DASHBOARD";
+            this.lblHeaderDashboard.Text = "Dashboard";
             // 
             // pnlFooterDashboard
             // 
             this.pnlFooterDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFooterDashboard.Controls.Add(this.pnlKleurOverbezet);
+            this.pnlFooterDashboard.Controls.Add(this.lblLegendaOverbezet);
             this.pnlFooterDashboard.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooterDashboard.Location = new System.Drawing.Point(10, 540);
             this.pnlFooterDashboard.Name = "pnlFooterDashboard";
@@ -348,28 +353,28 @@
             this.dgvCkeckInDashboard.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCkeckInDashboard.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCkeckInDashboard.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCkeckInDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCkeckInDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvCkeckInDashboard.ColumnHeadersHeight = 30;
             this.dgvCkeckInDashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCkeckInDashboard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHokDashboard,
             this.colDierDashboard,
             this.colEigenaarDashbord});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCkeckInDashboard.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCkeckInDashboard.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgvCkeckInDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCkeckInDashboard.EnableHeadersVisualStyles = false;
             this.dgvCkeckInDashboard.GridColor = System.Drawing.Color.Gainsboro;
@@ -408,37 +413,37 @@
             // 
             this.dgvCheckOutDashboard.AllowUserToAddRows = false;
             this.dgvCheckOutDashboard.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvCheckOutDashboard.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvCheckOutDashboard.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvCheckOutDashboard.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCheckOutDashboard.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvCheckOutDashboard.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCheckOutDashboard.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCheckOutDashboard.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCheckOutDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCheckOutDashboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvCheckOutDashboard.ColumnHeadersHeight = 30;
             this.dgvCheckOutDashboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCheckOutDashboard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCheckOutDashboard.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCheckOutDashboard.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvCheckOutDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCheckOutDashboard.EnableHeadersVisualStyles = false;
             this.dgvCheckOutDashboard.GridColor = System.Drawing.Color.Gainsboro;
@@ -473,6 +478,27 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // pnlKleurOverbezet
+            // 
+            this.pnlKleurOverbezet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(107)))));
+            this.pnlKleurOverbezet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlKleurOverbezet.Location = new System.Drawing.Point(396, 16);
+            this.pnlKleurOverbezet.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pnlKleurOverbezet.Name = "pnlKleurOverbezet";
+            this.pnlKleurOverbezet.Size = new System.Drawing.Size(20, 20);
+            this.pnlKleurOverbezet.TabIndex = 6;
+            // 
+            // lblLegendaOverbezet
+            // 
+            this.lblLegendaOverbezet.AutoSize = true;
+            this.lblLegendaOverbezet.ForeColor = System.Drawing.Color.Black;
+            this.lblLegendaOverbezet.Location = new System.Drawing.Point(421, 19);
+            this.lblLegendaOverbezet.Margin = new System.Windows.Forms.Padding(0, 3, 20, 0);
+            this.lblLegendaOverbezet.Name = "lblLegendaOverbezet";
+            this.lblLegendaOverbezet.Size = new System.Drawing.Size(209, 20);
+            this.lblLegendaOverbezet.TabIndex = 7;
+            this.lblLegendaOverbezet.Text = "Overschrijding uitcheck datum";
+            // 
             // ucDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -490,6 +516,8 @@
             this.Size = new System.Drawing.Size(800, 610);
             this.pnlHeaderDashboard.ResumeLayout(false);
             this.pnlHeaderDashboard.PerformLayout();
+            this.pnlFooterDashboard.ResumeLayout(false);
+            this.pnlFooterDashboard.PerformLayout();
             this.pnlContentDashboard.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -541,5 +569,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Panel pnlKleurOverbezet;
+        private System.Windows.Forms.Label lblLegendaOverbezet;
     }
 }

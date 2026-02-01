@@ -96,7 +96,7 @@
             // 
             this.lblHeaderEigenaren.AutoSize = true;
             this.lblHeaderEigenaren.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderEigenaren.Location = new System.Drawing.Point(3, 10);
+            this.lblHeaderEigenaren.Location = new System.Drawing.Point(8, 10);
             this.lblHeaderEigenaren.Name = "lblHeaderEigenaren";
             this.lblHeaderEigenaren.Size = new System.Drawing.Size(228, 31);
             this.lblHeaderEigenaren.TabIndex = 0;

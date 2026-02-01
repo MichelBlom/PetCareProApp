@@ -367,11 +367,12 @@
             // 
             // flpDierenProfielEigenaar
             // 
+            this.flpDierenProfielEigenaar.AutoScroll = true;
             this.flpDierenProfielEigenaar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flpDierenProfielEigenaar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(43, 48);
+            this.flpDierenProfielEigenaar.Location = new System.Drawing.Point(35, 48);
             this.flpDierenProfielEigenaar.Name = "flpDierenProfielEigenaar";
-            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(305, 342);
+            this.flpDierenProfielEigenaar.Size = new System.Drawing.Size(320, 342);
             this.flpDierenProfielEigenaar.TabIndex = 0;
             // 
             // ucProfielEigenaar

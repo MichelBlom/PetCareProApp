@@ -23,6 +23,12 @@ namespace PetCareProApp
             lblEigenaarOutputProfielDieren.ForeColor = Color.Blue;
         }
 
+        // NIEUWE CONSTRUCTOR: Lost de CS1729 error op in ucDashboard
+        public ucProfielPaginaDieren(Dier dier) : this()
+        {
+            VulData(dier, "Dashboard");
+        }
+
         public void VulData(Dier dier, string bron = "DierenLijst")
         {
             huidigDier = dier;
@@ -49,7 +55,12 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                if ((_bronScherm == "ProfielEigenaar" || _bronScherm == "EigenarenOverzicht") && huidigDier != null)
+                // Aangepast: Terug naar dashboard als dat de bron was
+                if (_bronScherm == "Dashboard")
+                {
+                    mainForm.ToonScherm(new ucDashboard());
+                }
+                else if ((_bronScherm == "ProfielEigenaar" || _bronScherm == "EigenarenOverzicht") && huidigDier != null)
                 {
                     var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(x => x.Naam == huidigDier.Eigenaar);
                     if (eigenaar != null)

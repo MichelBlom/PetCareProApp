@@ -18,98 +18,54 @@ namespace PetCareProApp
             InitializeComponent();
         }
 
+        // NIEUWE CONSTRUCTOR: Lost de CS1729 error op in ucDashboard
+        public ucProfielEigenaar(Eigenaar eigenaar) : this()
+        {
+            VulData(eigenaar, "Dashboard");
+        }
+
         public void VulData(Eigenaar eigenaar, string bron = "Overzicht", Dier bronDier = null)
         {
             _huidigeEigenaar = eigenaar;
             _bronScherm = bron;
             _bronDier = bronDier;
 
-            // Header en Naam
             lblHeaderProfielEigenaar.Text = $"Profiel van {eigenaar.Naam}";
             lblNaamProfielEigenaar.Text = eigenaar.Naam;
-
-            // Adresgegevens
             lblStraatProfielEigenaar.Text = eigenaar.Straat;
-
-            // Oplossing CS0029: .ToString() toegevoegd omdat Huisnummer een int is
             lblHuisNummerProfielEigenaar.Text = eigenaar.Huisnummer.ToString();
-
             lblPostcodeProfielEigenaar.Text = eigenaar.Postcode;
             lblWoonplaatsProfielEigenaar.Text = eigenaar.Woonplaats;
-
-            // Contactgegevens
             lblEmailProfielEigenaar.Text = eigenaar.Email;
-
-            // Oplossing CS1061: Veranderd van 'Telefoon' naar 'Telefoonnummer'
-            // Mocht dit nog een fout geven, vervang 'Telefoonnummer' dan door de naam die in Eigenaar.cs staat
             lblTelefoonProfielEigenaar.Text = eigenaar.Telefoonnummer;
-
-            // Overig
             lblOpmerkingenProfielEigenaar.Text = eigenaar.Opmerkingen;
 
-            // Dierenlijst onderaan verversen
             HerlaadDierenLijst();
         }
 
         private void HerlaadDierenLijst()
         {
             flpDierenProfielEigenaar.Controls.Clear();
-
             var alleDieren = DataManager.LaadDieren();
             var eigenDieren = alleDieren.Where(d => d.Eigenaar == _huidigeEigenaar.Naam).ToList();
 
             if (!eigenDieren.Any())
             {
-                Label lblLeeg = new Label
-                {
-                    Text = "Geen huisdieren gevonden.",
-                    AutoSize = true,
-                    ForeColor = Color.Gray,
-                    Padding = new Padding(10)
-                };
+                Label lblLeeg = new Label { Text = "Geen huisdieren gevonden.", AutoSize = true, ForeColor = Color.Gray, Padding = new Padding(10) };
                 flpDierenProfielEigenaar.Controls.Add(lblLeeg);
                 return;
             }
 
             foreach (var dier in eigenDieren)
             {
-                Panel pnlDierCard = new Panel
-                {
-                    Size = new Size(130, 150),
-                    BackColor = Color.White,
-                    Margin = new Padding(10),
-                    Cursor = Cursors.Hand
-                };
-
-                PictureBox pcbDier = new PictureBox
-                {
-                    Size = new Size(130, 110),
-                    Location = new Point(0, 0),
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    BorderStyle = BorderStyle.None
-                };
-
+                Panel pnlDierCard = new Panel { Size = new Size(130, 150), BackColor = Color.White, Margin = new Padding(10), Cursor = Cursors.Hand };
+                PictureBox pcbDier = new PictureBox { Size = new Size(130, 110), Location = new Point(0, 0), SizeMode = PictureBoxSizeMode.Zoom, BorderStyle = BorderStyle.None };
                 string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
 
-                if (!string.IsNullOrEmpty(dier.FotoBestandsnaam) && File.Exists(fotoPad))
-                {
-                    pcbDier.ImageLocation = null;
-                    pcbDier.ImageLocation = fotoPad;
-                }
-                else
-                {
-                    pcbDier.BackColor = Color.LightGray;
-                }
+                if (!string.IsNullOrEmpty(dier.FotoBestandsnaam) && File.Exists(fotoPad)) pcbDier.ImageLocation = fotoPad;
+                else pcbDier.BackColor = Color.LightGray;
 
-                Label lblNaam = new Label
-                {
-                    Text = dier.Naam,
-                    Size = new Size(130, 40),
-                    Location = new Point(0, 110),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
-                    BackColor = Color.FromArgb(240, 240, 240)
-                };
+                Label lblNaam = new Label { Text = dier.Naam, Size = new Size(130, 40), Location = new Point(0, 110), TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 9, FontStyle.Bold), BackColor = Color.FromArgb(240, 240, 240) };
 
                 EventHandler gaNaarDier = (s, e) =>
                 {
@@ -125,7 +81,6 @@ namespace PetCareProApp
                 pnlDierCard.Click += gaNaarDier;
                 pcbDier.Click += gaNaarDier;
                 lblNaam.Click += gaNaarDier;
-
                 pnlDierCard.Controls.Add(pcbDier);
                 pnlDierCard.Controls.Add(lblNaam);
                 flpDierenProfielEigenaar.Controls.Add(pnlDierCard);
@@ -136,7 +91,12 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                if (_bronScherm == "DierProfiel" && _bronDier != null)
+                // Aangepast: Terug naar dashboard als dat de bron was
+                if (_bronScherm == "Dashboard")
+                {
+                    mainForm.ToonScherm(new ucDashboard());
+                }
+                else if (_bronScherm == "DierProfiel" && _bronDier != null)
                 {
                     mainForm.ActiveerMenuKnopInCode("btnDieren");
                     ucProfielPaginaDieren dierScherm = new ucProfielPaginaDieren();
@@ -167,14 +127,11 @@ namespace PetCareProApp
         private void btnVerwijderenProfielEigenaar_Click(object sender, EventArgs e)
         {
             if (_huidigeEigenaar == null) return;
-
-            if (MessageBox.Show($"Weet je zeker dat je {_huidigeEigenaar.Naam} wilt verwijderen?",
-                "Bevestig", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show($"Weet je zeker dat je {_huidigeEigenaar.Naam} wilt verwijderen?", "Bevestig", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 var lijst = DataManager.LaadEigenaren();
                 lijst.RemoveAll(x => x.Naam == _huidigeEigenaar.Naam && x.Email == _huidigeEigenaar.Email);
                 DataManager.SlaEigenarenOp(lijst);
-
                 if (this.ParentForm is MainForm mainForm)
                 {
                     mainForm.ActiveerMenuKnopInCode("btnEigenaren");
