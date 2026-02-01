@@ -19,11 +19,12 @@ namespace PetCareProApp
         public ucProfielPaginaDieren()
         {
             InitializeComponent();
+            // Maak de eigenaar-label herkenbaar als klikbare link
             lblEigenaarOutputProfielDieren.Cursor = Cursors.Hand;
             lblEigenaarOutputProfielDieren.ForeColor = Color.Blue;
         }
 
-        // NIEUWE CONSTRUCTOR: Lost de CS1729 error op in ucDashboard
+        // Constructor voor directe aanroep vanuit het Dashboard
         public ucProfielPaginaDieren(Dier dier) : this()
         {
             VulData(dier, "Dashboard");
@@ -33,6 +34,8 @@ namespace PetCareProApp
         {
             huidigDier = dier;
             _bronScherm = bron;
+
+            // Vul de labels met data van het dier
             lblHeaderProfielDieren.Text = "Profiel van " + dier.Naam;
             lblNaamOutputProfielDieren.Text = dier.Naam;
             lblEigenaarOutputProfielDieren.Text = dier.Eigenaar;
@@ -44,9 +47,11 @@ namespace PetCareProApp
             lblChipNrOutputProfielDieren.Text = dier.Chipnummer;
             lblVerblijfOutputProfielDieren.Text = dier.Verblijf;
 
+            // Onderstreep eigenaar-naam als er een eigenaar gekoppeld is
             if (!string.IsNullOrEmpty(dier.Eigenaar))
                 lblEigenaarOutputProfielDieren.Font = new Font(lblEigenaarOutputProfielDieren.Font, FontStyle.Underline);
 
+            // Laad de pasfoto van het dier
             string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
             if (File.Exists(fotoPad)) pcbFotoProfielDieren.ImageLocation = fotoPad;
         }
@@ -55,7 +60,7 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                // Aangepast: Terug naar dashboard als dat de bron was
+                // Navigeer terug naar het scherm waar de gebruiker vandaan kwam
                 if (_bronScherm == "Dashboard")
                 {
                     mainForm.ToonScherm(new ucDashboard());
@@ -71,13 +76,20 @@ namespace PetCareProApp
                     }
                     else mainForm.ToonScherm(new ucEigenaren());
                 }
-                else if (_bronScherm == "Kalender") mainForm.ToonScherm(new ucKalender());
-                else mainForm.ToonScherm(new ucDieren());
+                else if (_bronScherm == "Kalender")
+                {
+                    mainForm.ToonScherm(new ucKalender());
+                }
+                else
+                {
+                    mainForm.ToonScherm(new ucDieren());
+                }
             }
         }
 
         private void lblEigenaarOutputProfielDieren_Click(object sender, EventArgs e)
         {
+            // Navigeer naar het profiel van de eigenaar bij klik op de naam
             if (huidigDier != null && !string.IsNullOrEmpty(huidigDier.Eigenaar) && this.ParentForm is MainForm mainForm)
             {
                 var eigenaar = DataManager.LaadEigenaren().FirstOrDefault(eig => eig.Naam == huidigDier.Eigenaar);
@@ -92,6 +104,7 @@ namespace PetCareProApp
 
         private void btnBewerkenProfielDieren_Click(object sender, EventArgs e)
         {
+            // Open het formulier om de gegevens van dit dier aan te passen
             if (huidigDier != null && this.ParentForm is MainForm mainForm)
             {
                 ucDierenToevoegen bewerkScherm = new ucDierenToevoegen();
@@ -102,6 +115,7 @@ namespace PetCareProApp
 
         private void btnVerwijderenProfielDieren_Click(object sender, EventArgs e)
         {
+            // Verwijder het dier uit de database na bevestiging
             if (huidigDier != null)
             {
                 var resultaat = MessageBox.Show($"Weet je zeker dat je {huidigDier.Naam} wilt verwijderen?", "Dier verwijderen", MessageBoxButtons.YesNo);
@@ -110,7 +124,9 @@ namespace PetCareProApp
                     List<Dier> lijst = DataManager.LaadDieren();
                     lijst.RemoveAll(d => d.Chipnummer == huidigDier.Chipnummer);
                     DataManager.SlaDierenOp(lijst);
-                    if (this.ParentForm is MainForm mainForm) mainForm.ToonScherm(new ucDieren());
+
+                    if (this.ParentForm is MainForm mainForm)
+                        mainForm.ToonScherm(new ucDieren());
                 }
             }
         }

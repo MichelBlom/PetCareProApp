@@ -23,6 +23,7 @@ namespace PetCareProApp
             btnVolgendePlanning.Click += BtnVolgendePlanning_Click;
             dtpWeekPlanning.ValueChanged += DtpWeekPlanning_ValueChanged;
 
+            // Zorg voor een strakke weergave 
             tlpGridPlanning.Padding = new Padding(0);
             tlpGridPlanning.Margin = new Padding(0);
         }
@@ -34,10 +35,12 @@ namespace PetCareProApp
 
         private void InstellenWeek(DateTime datum)
         {
+            // Bereken de maandag van de betreffende week
             int verschil = (int)datum.DayOfWeek - (int)DayOfWeek.Monday;
             if (verschil < 0) verschil += 7;
             huidigeMaandag = datum.AddDays(-verschil).Date;
 
+            // Update de DateTimePicker zonder een dubbele event-trigger
             dtpWeekPlanning.ValueChanged -= DtpWeekPlanning_ValueChanged;
             dtpWeekPlanning.Value = huidigeMaandag;
             dtpWeekPlanning.ValueChanged += DtpWeekPlanning_ValueChanged;
@@ -48,6 +51,7 @@ namespace PetCareProApp
 
         private void UpdateHeaderDatums()
         {
+            // Zet de datums in de kolomkoppen van de tabel
             lblMaPlanning.Text = $"Ma {huidigeMaandag:dd/MM}";
             lblDiPlanning.Text = $"Di {huidigeMaandag.AddDays(1):dd/MM}";
             lblWoPlanning.Text = $"Wo {huidigeMaandag.AddDays(2):dd/MM}";
@@ -67,6 +71,7 @@ namespace PetCareProApp
             var reserveringen = DataManager.LaadReserveringen();
             DateTime eindeWeek = huidigeMaandag.AddDays(6);
 
+            // Haal alle hokken op die deze week bezet zijn
             var toegewezenHokken = reserveringen
                 .Where(r => !string.IsNullOrEmpty(r.Verblijf) &&
                             r.Verblijf != "(Geen)" &&
@@ -84,12 +89,14 @@ namespace PetCareProApp
                 return;
             }
 
+            // Maak voor elk bezet hok een rij aan
             for (int i = 0; i < toegewezenHokken.Count; i++)
             {
                 string hokNaam = toegewezenHokken[i];
                 tlpGridPlanning.RowCount++;
                 tlpGridPlanning.RowStyles.Add(new RowStyle(SizeType.Absolute, RijHoogte));
 
+                // Hoknummer in de eerste kolom
                 Label lblHok = new Label
                 {
                     Text = hokNaam.Replace("Hok ", ""),
@@ -100,6 +107,7 @@ namespace PetCareProApp
                 };
                 tlpGridPlanning.Controls.Add(lblHok, 0, i);
 
+                // Controleer de status voor elke dag van de week
                 for (int dag = 0; dag < 7; dag++)
                 {
                     DateTime datumCheck = huidigeMaandag.AddDays(dag);
@@ -114,17 +122,17 @@ namespace PetCareProApp
                         Color achtergrondKleur;
                         if (datumCheck > res.EindDatum.Date)
                         {
-                            // Koraalrood (Overbezet/Overschrijding)
+                            // Rood: Dier is nog aanwezig na uitcheckdatum
                             achtergrondKleur = Color.FromArgb(255, 107, 107);
                         }
                         else if (datumCheck == res.EindDatum.Date)
                         {
-                            // CornflowerBlue (Check-out vandaag)
+                            // Blauw: Dier vertrekt vandaag
                             achtergrondKleur = Color.FromArgb(100, 149, 237);
                         }
                         else
                         {
-                            // Nu aangepast naar een donkerdere, frisse groentint
+                            // Groen: Normale bezetting
                             achtergrondKleur = Color.FromArgb(100, 220, 100);
                         }
 
@@ -145,6 +153,7 @@ namespace PetCareProApp
                             Font = new Font("Segoe UI", 8, FontStyle.Regular)
                         };
 
+                        // Navigeer naar dierprofiel bij klik op de naam
                         lblDier.Click += (s, e) => GaNaarDierProfiel(res.DierChipnummer);
                         pnlBezet.Controls.Add(lblDier);
                         tlpGridPlanning.Controls.Add(pnlBezet, dag + 1, i);
@@ -152,6 +161,7 @@ namespace PetCareProApp
                 }
             }
 
+            // Pas de hoogte van de tabel aan op basis van het aantal rijen
             int extraVoorBorders = (tlpGridPlanning.CellBorderStyle == TableLayoutPanelCellBorderStyle.None) ? 0 : toegewezenHokken.Count + 1;
             tlpGridPlanning.Height = (toegewezenHokken.Count * RijHoogte) + extraVoorBorders;
 
@@ -160,6 +170,7 @@ namespace PetCareProApp
 
         private void GaNaarDierProfiel(string chipnummer)
         {
+            // Zoek dier en open de profielpagina
             var dier = DataManager.LaadDieren().FirstOrDefault(d => d.Chipnummer == chipnummer);
             if (dier != null && this.ParentForm is MainForm mainForm)
             {
@@ -169,6 +180,7 @@ namespace PetCareProApp
             }
         }
 
+        // Navigatie-events voor de weekplanning
         private void BtnVorigePlanning_Click(object sender, EventArgs e) => InstellenWeek(huidigeMaandag.AddDays(-7));
         private void BtnVolgendePlanning_Click(object sender, EventArgs e) => InstellenWeek(huidigeMaandag.AddDays(7));
         private void DtpWeekPlanning_ValueChanged(object sender, EventArgs e) => InstellenWeek(dtpWeekPlanning.Value);

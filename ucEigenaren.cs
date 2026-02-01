@@ -17,14 +17,17 @@ namespace PetCareProApp
             InstellenPlaceholder();
             VulTabel();
 
+            // Koppel klik-event voor navigatie via de tabel
             dgvEigenaren.CellClick += dgvEigenaren_CellClick;
         }
 
         private void InstellenPlaceholder()
         {
+            // Initialiseer de zoekbalk met placeholder tekst
             txbZoekenEigenaren.Text = ZoekPlaceholder;
             txbZoekenEigenaren.ForeColor = Color.Gray;
 
+            // Verwijder placeholder wanneer gebruiker in het veld klikt
             txbZoekenEigenaren.Enter += (s, e) =>
             {
                 if (txbZoekenEigenaren.Text == ZoekPlaceholder)
@@ -34,6 +37,7 @@ namespace PetCareProApp
                 }
             };
 
+            // Herstel placeholder bij leeg veld
             txbZoekenEigenaren.Leave += (s, e) =>
             {
                 if (string.IsNullOrWhiteSpace(txbZoekenEigenaren.Text))
@@ -43,6 +47,7 @@ namespace PetCareProApp
                 }
             };
 
+            // Start zoeken zodra op Enter wordt gedrukt
             txbZoekenEigenaren.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -52,6 +57,7 @@ namespace PetCareProApp
                 }
             };
 
+            // Update de resultaten direct tijdens het typen
             txbZoekenEigenaren.TextChanged += (s, e) =>
             {
                 if (txbZoekenEigenaren.Text != ZoekPlaceholder)
@@ -68,6 +74,7 @@ namespace PetCareProApp
 
             dgvEigenaren.AutoGenerateColumns = false;
 
+            // Vult tabel met data
             var weergaveLijst = alleEigenaren.Select(e => new EigenaarTabelView
             {
                 Naam = e.Naam,
@@ -77,10 +84,12 @@ namespace PetCareProApp
                 Straat = e.Straat,
                 Huisnummer = e.Huisnummer,
                 Woonplaats = e.Woonplaats,
+                // Koppel huisdieren van deze eigenaar aan de tekstkolom
                 Huisdier = string.Join(", ", alleDieren.Where(d => d.Eigenaar == e.Naam).Select(d => d.Naam)),
                 DeEigenaar = e
             }).ToList();
 
+            // Filter toepassen op basis van de zoekopdracht
             if (!string.IsNullOrWhiteSpace(filter) && filter != ZoekPlaceholder)
             {
                 string f = filter.ToLower();
@@ -93,8 +102,7 @@ namespace PetCareProApp
             dgvEigenaren.DataSource = null;
             dgvEigenaren.DataSource = weergaveLijst;
 
-            // --- STYLING VOOR LINKS ---
-            // We maken de kolommen 'Naam' en 'Huisdier' blauw en onderstreept
+            // Maak specifieke kolommen herkenbaar als klikbare links
             foreach (DataGridViewColumn col in dgvEigenaren.Columns)
             {
                 if (col.DataPropertyName == "Naam" || col.DataPropertyName == "Huisdier")
@@ -108,11 +116,13 @@ namespace PetCareProApp
 
         private void btnZoekenEigenaren_Click(object sender, EventArgs e)
         {
+            // Handmatig zoeken via de zoekknop
             VulTabel(txbZoekenEigenaren.Text);
         }
 
         private void btnToevoegenEigenaren_Click(object sender, EventArgs e)
         {
+            // Open het formulier om een nieuwe eigenaar aan te maken
             if (this.ParentForm is MainForm mainForm)
             {
                 mainForm.ToonScherm(new ucEigenaarToevoegen());
@@ -121,6 +131,7 @@ namespace PetCareProApp
 
         private void btnBewerkenEigenaren_Click(object sender, EventArgs e)
         {
+            // Open bewerkscherm voor de geselecteerde eigenaar
             if (dgvEigenaren.CurrentRow?.DataBoundItem is EigenaarTabelView geselecteerdeView)
             {
                 Eigenaar deEigenaar = geselecteerdeView.DeEigenaar;
@@ -137,6 +148,7 @@ namespace PetCareProApp
 
         private void btnVerwijderEigenaren_Click(object sender, EventArgs e)
         {
+            // Verwijder geselecteerde eigenaar na bevestiging
             if (dgvEigenaren.CurrentRow?.DataBoundItem is EigenaarTabelView geselecteerdeView)
             {
                 var resultaat = MessageBox.Show($"Weet je zeker dat je {geselecteerdeView.Naam} wilt verwijderen?",
@@ -164,6 +176,7 @@ namespace PetCareProApp
 
         private void btnProfielEigenaren_Click(object sender, EventArgs e)
         {
+            // Navigeer naar de profielpagina van de geselecteerde eigenaar
             if (dgvEigenaren.CurrentRow?.DataBoundItem is EigenaarTabelView geselecteerdeView)
             {
                 Eigenaar deEigenaar = geselecteerdeView.DeEigenaar;
@@ -187,7 +200,7 @@ namespace PetCareProApp
                 var kolom = dgvEigenaren.Columns[e.ColumnIndex];
                 var cellValue = dgvEigenaren.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
 
-                // 1. Klik op Naam -> Naar Eigenaar Profiel
+                // Navigatie naar eigenaarsprofiel via de naam
                 if (kolom.Name == "Naam" || kolom.DataPropertyName == "Naam")
                 {
                     if (dgvEigenaren.Rows[e.RowIndex].DataBoundItem is EigenaarTabelView view)
@@ -200,7 +213,7 @@ namespace PetCareProApp
                         }
                     }
                 }
-                // 2. Klik op Huisdier -> Naar Dier Profiel
+                // Navigatie naar dierprofiel via de huisdier
                 else if (kolom.Name == "Huisdier" || kolom.DataPropertyName == "Huisdier")
                 {
                     if (!string.IsNullOrWhiteSpace(cellValue))
@@ -211,7 +224,6 @@ namespace PetCareProApp
                         if (dier != null && this.ParentForm is MainForm mainForm)
                         {
                             mainForm.ActiveerMenuKnopInCode("btnDieren");
-
                             ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
                             dierProfiel.VulData(dier, "EigenarenOverzicht");
                             mainForm.ToonScherm(dierProfiel);
@@ -222,6 +234,7 @@ namespace PetCareProApp
         }
     }
 
+    // Klasse voor data in de DataGridView
     public class EigenaarTabelView
     {
         public string Naam { get; set; }
@@ -233,6 +246,7 @@ namespace PetCareProApp
         public string Woonplaats { get; set; }
         public string Huisdier { get; set; }
 
+        // Verberg de ruwe data van de eigenaar voor de tabelweergave
         [System.ComponentModel.Browsable(false)]
         public Eigenaar DeEigenaar { get; set; }
     }

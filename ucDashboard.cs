@@ -12,6 +12,7 @@ namespace PetCareProApp
 {
     public partial class ucDashboard : UserControl
     {
+        // Constanten voor dashboardbeheer
         private const int TOTAAL_HOKKEN = 100;
         private List<Reservering> _huidigeReserveringen = new List<Reservering>();
         private readonly Color KleurOverschreden = Color.FromArgb(255, 107, 107);
@@ -20,15 +21,14 @@ namespace PetCareProApp
         {
             InitializeComponent();
 
-            // Voorkom automatische selectie en stel zwarte tekst in
+            // Configureer grids 
             ConfigureerGrid(dgvCkeckInDashboard);
             ConfigureerGrid(dgvCheckOutDashboard);
 
-            // Events koppelen voor navigatie
+            // Koppel events voor interactie
             dgvCkeckInDashboard.CellContentClick += Grid_CellContentClick;
             dgvCheckOutDashboard.CellContentClick += Grid_CellContentClick;
 
-            // Events koppelen voor de interactieve "Link" stijl
             dgvCkeckInDashboard.CellMouseEnter += Grid_CellMouseEnter;
             dgvCkeckInDashboard.CellMouseLeave += Grid_CellMouseLeave;
             dgvCheckOutDashboard.CellMouseEnter += Grid_CellMouseEnter;
@@ -37,19 +37,16 @@ namespace PetCareProApp
 
         private void ConfigureerGrid(DataGridView dgv)
         {
+            // Stel kleuren en gedrag van grid in
             dgv.DefaultCellStyle.ForeColor = Color.Black;
             dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-            // Zet de selectiekleur op een heel licht grijs/blauw zodat rood erdoorheen kan schijnen
-            // Of gebruik Color.Transparent als je helemaal geen selectiekleur wilt zien
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 220, 255);
-
-            // Zorg dat de focus niet direct een cel selecteert
             dgv.CurrentCell = null;
         }
 
         public void RefreshDashboard()
         {
+            // Initialiseer data en ververs alle statistieken en overzichten
             DataManager.Initialiseer();
 
             _huidigeReserveringen = DataManager.LaadReserveringen();
@@ -62,6 +59,7 @@ namespace PetCareProApp
 
         private void UpdateStatistieken(List<Reservering> reserveringen, List<Eigenaar> eigenaren)
         {
+            // Bereken aantal gasten op basis van actieve reserveringen
             var huidigeGastenLijst = reserveringen.Where(r =>
                 !string.IsNullOrEmpty(r.Status) &&
                 (r.Status.Trim().Equals("Ingecheckt", StringComparison.OrdinalIgnoreCase) ||
@@ -69,6 +67,7 @@ namespace PetCareProApp
 
             lblHuidigeGastenDashboard.Text = huidigeGastenLijst.Count.ToString();
 
+            // Bereken vrije verblijven
             int bezetteHokkenCount = huidigeGastenLijst
                 .Select(r => r.Verblijf)
                 .Where(v => !string.IsNullOrEmpty(v) && v != "(Geen)")
@@ -82,12 +81,15 @@ namespace PetCareProApp
 
         private void VulGrids(List<Reservering> reserveringen, List<Dier> dieren)
         {
+            // Maak grids leeg voor nieuwe data
             dgvCkeckInDashboard.Rows.Clear();
             dgvCheckOutDashboard.Rows.Clear();
             DateTime vandaag = DateTime.Today;
 
+            // Filter reserveringen voor check-in vandaag
             var aankomstVandaag = reserveringen.Where(r => r.StartDatum.Date == vandaag).ToList();
 
+            // Filter reserveringen voor check-out vandaag of overschreden check-out
             var checkOutLijst = reserveringen.Where(r =>
                 r.EindDatum.Date == vandaag ||
                 (r.EindDatum.Date < vandaag &&
@@ -95,6 +97,7 @@ namespace PetCareProApp
                  !r.Status.Trim().Equals("Uitgecheckt", StringComparison.OrdinalIgnoreCase))
             ).OrderBy(r => r.EindDatum).ToList();
 
+            // Vul check-in grid
             foreach (var res in aankomstVandaag)
             {
                 var dier = dieren.FirstOrDefault(d => d.Chipnummer == res.DierChipnummer);
@@ -103,6 +106,7 @@ namespace PetCareProApp
                 dgvCkeckInDashboard.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
             }
 
+            // Vul check-out grid en markeer overschreden check-outs
             foreach (var res in checkOutLijst)
             {
                 var dier = dieren.FirstOrDefault(d => d.Chipnummer == res.DierChipnummer);
@@ -116,7 +120,7 @@ namespace PetCareProApp
                 }
             }
 
-            // Cruciaal: Verwijder de automatische selectie na het vullen van de data
+            // Verwijder automatische selectie na vullen
             dgvCkeckInDashboard.ClearSelection();
             dgvCheckOutDashboard.ClearSelection();
             dgvCkeckInDashboard.CurrentCell = null;
@@ -125,6 +129,7 @@ namespace PetCareProApp
 
         private void Grid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
+            // Toon handcursor en onderstreep tekst bij hover 
             if (e.RowIndex < 0 || e.ColumnIndex < 1) return;
 
             DataGridView grid = (DataGridView)sender;
@@ -138,6 +143,7 @@ namespace PetCareProApp
 
         private void Grid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
+            // Herstel standaard cursor en tekststijl bij verlaten cel
             if (e.RowIndex < 0 || e.ColumnIndex < 1) return;
 
             DataGridView grid = (DataGridView)sender;
@@ -151,6 +157,7 @@ namespace PetCareProApp
 
         private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Navigeer naar dier- of eigenaarprofiel op basis van geklikte cel
             if (e.RowIndex < 0) return;
 
             DataGridView grid = (DataGridView)sender;

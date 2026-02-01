@@ -9,6 +9,7 @@ namespace PetCareProApp
 {
     public partial class ucDieren : UserControl
     {
+        // Tekst voor de zoekbalk wanneer deze leeg is
         private const string ZoekPlaceholderDieren = "Typ naam van dier of eigenaar..";
 
         public ucDieren()
@@ -18,6 +19,7 @@ namespace PetCareProApp
 
         private void ucDieren_Load(object sender, EventArgs e)
         {
+            // Initialiseer data en stel de zoekbalk in bij het laden
             DataManager.Initialiseer();
             VerversGrid();
             txbZoekenDieren.Text = ZoekPlaceholderDieren;
@@ -26,6 +28,7 @@ namespace PetCareProApp
 
         private void VerversGrid(string filter = "")
         {
+            // Laad dierenlijst en koppel de kolommen aan juiste data
             List<Dier> lijst = DataManager.LaadDieren();
             dgvDieren.AutoGenerateColumns = false;
             ColumnNaam.DataPropertyName = "Naam";
@@ -37,6 +40,7 @@ namespace PetCareProApp
             ColumnEigenaar.DataPropertyName = "Eigenaar";
             ColumnVerblijf.DataPropertyName = "Verblijf";
 
+            // Pas filter toe op naam of eigenaar indien er een zoekterm is ingevoerd
             if (!string.IsNullOrWhiteSpace(filter) && filter != ZoekPlaceholderDieren)
             {
                 string zoekTerm = filter.ToLower().Trim();
@@ -45,10 +49,13 @@ namespace PetCareProApp
                     (d.Eigenaar != null && d.Eigenaar.ToLower().Contains(zoekTerm))
                 ).ToList();
             }
+
+            // Toon de (gefilterde) lijst in het grid
             dgvDieren.DataSource = null;
             dgvDieren.DataSource = lijst;
         }
 
+        // Handlers voor de zoekfunctionaliteit en placeholder
         private void txbZoekenDieren_TextChanged(object sender, EventArgs e) { if (txbZoekenDieren.Text != ZoekPlaceholderDieren) VerversGrid(txbZoekenDieren.Text); }
         private void txbZoekenDieren_KeyDown(object sender, KeyEventArgs e) { if (e.KeyCode == Keys.Enter) { VerversGrid(txbZoekenDieren.Text); e.SuppressKeyPress = true; } }
         private void btnZoekenDieren_Click(object sender, EventArgs e) => VerversGrid(txbZoekenDieren.Text);
@@ -57,11 +64,13 @@ namespace PetCareProApp
 
         private void btnToevoegenDieren_Click(object sender, EventArgs e)
         {
+            // Open het scherm om een nieuw dier toe te voegen
             if (this.ParentForm is MainForm mainForm) mainForm.ToonScherm(new ucDierenToevoegen());
         }
 
         private void btnBewerkenDieren_Click(object sender, EventArgs e)
         {
+            // Open bewerkscherm voor het geselecteerde dier
             if (dgvDieren.SelectedRows.Count > 0)
             {
                 Dier gekozenDier = (Dier)dgvDieren.SelectedRows[0].DataBoundItem;
@@ -74,6 +83,7 @@ namespace PetCareProApp
 
         private void btnVerwijderDieren_Click(object sender, EventArgs e)
         {
+            // Verwijder geselecteerd dier na bevestiging van de gebruiker
             if (dgvDieren.SelectedRows.Count > 0)
             {
                 Dier gekozenDier = (Dier)dgvDieren.SelectedRows[0].DataBoundItem;
@@ -90,7 +100,10 @@ namespace PetCareProApp
 
         private void dgvDieren_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Navigeer naar profielpagina bij klik op naam of eigenaar in het grid
             if (e.RowIndex < 0) return;
+
+            // Controleer of er op de naamkolom is geklikt voor het dierprofiel
             if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnNaam")
             {
                 Dier gekozenDier = (Dier)dgvDieren.Rows[e.RowIndex].DataBoundItem;
@@ -101,6 +114,8 @@ namespace PetCareProApp
                     mainForm.ToonScherm(profiel);
                 }
             }
+
+            // Controleer voetafrduk
             if (dgvDieren.Columns[e.ColumnIndex].Name == "ColumnEigenaar")
             {
                 string eigenaarNaam = dgvDieren.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();

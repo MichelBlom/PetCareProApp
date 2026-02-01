@@ -22,12 +22,14 @@ namespace PetCareProApp
         public ucDierenToevoegen()
         {
             InitializeComponent();
+            // Zet minimale datum op vandaag voor nieuwe reserveringen
             dtpIcheckenToevoegenDieren.MinDate = DateTime.Today;
             dtpUitcheckenToevoegenDieren.MinDate = DateTime.Today;
         }
 
         public void PrepareerVoorNieuwDierVanafEigenaar(string eigenaarNaam)
         {
+            // Initialiseer velden wanneer aangeroepen vanuit een eigenaarprofiel
             _bronEigenaarNaam = eigenaarNaam;
             kwamVanProfiel = true;
             _herkomst = "ProfielEigenaar";
@@ -41,6 +43,7 @@ namespace PetCareProApp
 
         private void VulEigenaren()
         {
+            // Haal alle eigenaren op en vul de combobox
             var eigenaren = DataManager.LaadEigenaren();
             var namenLijst = eigenaren.Select(e => e.Naam).OrderBy(n => n).ToList();
             namenLijst.Insert(0, "- Selecteer eigenaar -");
@@ -49,6 +52,7 @@ namespace PetCareProApp
 
         private void ucDierenToevoegen_Load(object sender, EventArgs e)
         {
+            // Vul lijst en zet standaardwaarden bij het laden van het scherm
             if (string.IsNullOrEmpty(_bronEigenaarNaam)) VulEigenaren();
             if (dierOmTeBewerken == null)
             {
@@ -60,6 +64,7 @@ namespace PetCareProApp
 
         public void LaadDierVoorBewerken(Dier dier, bool vanafProfiel = false, string herkomst = "Overzicht")
         {
+            // Vul alle velden met de gegevens van het bestaande dier
             dierOmTeBewerken = dier;
             kwamVanProfiel = vanafProfiel;
             _herkomst = herkomst;
@@ -92,6 +97,7 @@ namespace PetCareProApp
                 pcbFotoDierToevoegen.ImageLocation = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
             }
 
+            // Koppel actuele reserveringstijden aan de datum-kiezers
             var reserveringen = DataManager.LaadReserveringen();
             var bestaandeRes = reserveringen.FirstOrDefault(r => r.DierChipnummer == dier.Chipnummer);
             if (bestaandeRes != null)
@@ -103,6 +109,7 @@ namespace PetCareProApp
 
         private void btnOpslaanDierToevoegen_Click(object sender, EventArgs e)
         {
+            // Valideer verplichte velden en datums
             string foutmelding = "";
             if (string.IsNullOrWhiteSpace(txbNaamDierToevoegen.Text)) foutmelding += "- Naam\n";
             if (string.IsNullOrWhiteSpace(txbChipNrDierToevoegen.Text)) foutmelding += "- Chipnummer\n";
@@ -118,10 +125,11 @@ namespace PetCareProApp
             List<Dier> lijstDieren = DataManager.LaadDieren();
             List<Reservering> lijstReserveringen = DataManager.LaadReserveringen();
 
-            string gekozenEigenaar = cmbEigenaarDierToevoegen.SelectedIndex == 0 ? "" : cmbEigenaarDierToevoegen.Text;
+            string gekozenEigenaar = cmbEigenaarDierToevoegen.SelectedIndex <= 0 ? "" : cmbEigenaarDierToevoegen.Text;
             string oudChipnummer = dierOmTeBewerken?.Chipnummer;
             string nieuwChipnummer = txbChipNrDierToevoegen.Text;
 
+            // Verwerk en kopieer de foto indien gewijzigd
             string fotoBestandsnaam = (dierOmTeBewerken != null) ? dierOmTeBewerken.FotoBestandsnaam : "";
             if (!string.IsNullOrEmpty(geselecteerdFotoPad))
             {
@@ -143,6 +151,7 @@ namespace PetCareProApp
             UpdateDierVelden(opTeSlaanDier, gekozenEigenaar);
             opTeSlaanDier.FotoBestandsnaam = fotoBestandsnaam;
 
+            // Voeg nieuw dier toe of update bestaande in de lijst
             if (wasBewerking)
             {
                 int index = lijstDieren.FindIndex(d => d.Chipnummer == oudChipnummer);
@@ -155,11 +164,8 @@ namespace PetCareProApp
 
             DataManager.SlaDierenOp(lijstDieren);
 
-            Reservering bestaandeRes = null;
-            if (wasBewerking)
-            {
-                bestaandeRes = lijstReserveringen.FirstOrDefault(r => r.DierChipnummer == oudChipnummer);
-            }
+            // Update of maak bijbehorende reservering aan
+            Reservering bestaandeRes = wasBewerking ? lijstReserveringen.FirstOrDefault(r => r.DierChipnummer == oudChipnummer) : null;
 
             if (bestaandeRes == null)
             {
@@ -176,15 +182,12 @@ namespace PetCareProApp
 
             DataManager.SlaReserveringenOp(lijstReserveringen);
 
+            // Navigeer terug naar het juiste scherm op basis van herkomst
             if (this.ParentForm is MainForm mainForm)
             {
                 if (wasBewerking)
                 {
-                    // Update de knop op basis van herkomst
-                    if (_herkomst == "Kalender") mainForm.ActiveerMenuKnopInCode("btnPlanning");
-                    else if (_herkomst == "ProfielEigenaar") mainForm.ActiveerMenuKnopInCode("btnEigenaren");
-                    else mainForm.ActiveerMenuKnopInCode("btnDieren");
-
+                    UpdateMenuStatus(mainForm);
                     ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
                     dierProfiel.VulData(opTeSlaanDier, _herkomst);
                     mainForm.ToonScherm(dierProfiel);
@@ -211,6 +214,7 @@ namespace PetCareProApp
 
         private void UpdateDierVelden(Dier d, string eigenaar)
         {
+            // Koppel formulierdata aan dier-gegevens
             d.Naam = txbNaamDierToevoegen.Text;
             d.Eigenaar = eigenaar;
             d.Leeftijd = (int)nmrLeeftijdDierToevoegen.Value;
@@ -222,17 +226,22 @@ namespace PetCareProApp
             d.Opmerkingen = txbOpmerkingenDierToevoegen.Text;
         }
 
+        private void UpdateMenuStatus(MainForm mainForm)
+        {
+            // Zet de actieve menuknop goed op basis van de herkomst
+            if (_herkomst == "Kalender") mainForm.ActiveerMenuKnopInCode("btnPlanning");
+            else if (_herkomst == "ProfielEigenaar") mainForm.ActiveerMenuKnopInCode("btnEigenaren");
+            else mainForm.ActiveerMenuKnopInCode("btnDieren");
+        }
+
         private void btnAnnulerenDierToevoegen_Click(object sender, EventArgs e)
         {
+            // Keer terug naar het vorige scherm zonder wijzigingen op te slaan
             if (this.ParentForm is MainForm mainForm)
             {
                 if (dierOmTeBewerken != null)
                 {
-                    // Activeer juiste knop bij terugkeer
-                    if (_herkomst == "Kalender") mainForm.ActiveerMenuKnopInCode("btnPlanning");
-                    else if (_herkomst == "ProfielEigenaar") mainForm.ActiveerMenuKnopInCode("btnEigenaren");
-                    else mainForm.ActiveerMenuKnopInCode("btnDieren");
-
+                    UpdateMenuStatus(mainForm);
                     ucProfielPaginaDieren dierProfiel = new ucProfielPaginaDieren();
                     dierProfiel.VulData(dierOmTeBewerken, _herkomst);
                     mainForm.ToonScherm(dierProfiel);
@@ -259,6 +268,7 @@ namespace PetCareProApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Selecteer een nieuwe afbeelding voor het dier
             OpenFileDialog ofd = new OpenFileDialog { Filter = "Afbeeldingen|*.jpg;*.jpeg;*.png" };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -269,6 +279,7 @@ namespace PetCareProApp
 
         private void linkLabelEigenaarDierToevoegen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            // Navigeer naar het scherm om een nieuwe eigenaar toe te voegen
             if (this.ParentForm is MainForm mainForm)
             {
                 ucEigenaarToevoegen eigenaarScherm = new ucEigenaarToevoegen();
@@ -277,6 +288,7 @@ namespace PetCareProApp
             }
         }
 
+        // Lege eventhandlers voor UI
         private void lblSoortDierToevoegen_Click(object sender, EventArgs e) { }
         private void lblOpmerkingenDierToevoegen_Click(object sender, EventArgs e) { }
         private void pnlLeftDierenToevoegen_Paint(object sender, PaintEventArgs e) { }

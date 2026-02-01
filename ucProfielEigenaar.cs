@@ -18,7 +18,7 @@ namespace PetCareProApp
             InitializeComponent();
         }
 
-        // NIEUWE CONSTRUCTOR: Lost de CS1729 error op in ucDashboard
+        // Constructor voor directe aanroep
         public ucProfielEigenaar(Eigenaar eigenaar) : this()
         {
             VulData(eigenaar, "Dashboard");
@@ -30,6 +30,7 @@ namespace PetCareProApp
             _bronScherm = bron;
             _bronDier = bronDier;
 
+            // Vul alle labels met eigenaar-gegevens
             lblHeaderProfielEigenaar.Text = $"Profiel van {eigenaar.Naam}";
             lblNaamProfielEigenaar.Text = eigenaar.Naam;
             lblStraatProfielEigenaar.Text = eigenaar.Straat;
@@ -49,6 +50,7 @@ namespace PetCareProApp
             var alleDieren = DataManager.LaadDieren();
             var eigenDieren = alleDieren.Where(d => d.Eigenaar == _huidigeEigenaar.Naam).ToList();
 
+            // Toon melding als er geen dieren zijn gekoppeld
             if (!eigenDieren.Any())
             {
                 Label lblLeeg = new Label { Text = "Geen huisdieren gevonden.", AutoSize = true, ForeColor = Color.Gray, Padding = new Padding(10) };
@@ -56,17 +58,21 @@ namespace PetCareProApp
                 return;
             }
 
+            // Genereer visuele kaarten voor elk huisdier
             foreach (var dier in eigenDieren)
             {
                 Panel pnlDierCard = new Panel { Size = new Size(130, 150), BackColor = Color.White, Margin = new Padding(10), Cursor = Cursors.Hand };
                 PictureBox pcbDier = new PictureBox { Size = new Size(130, 110), Location = new Point(0, 0), SizeMode = PictureBoxSizeMode.Zoom, BorderStyle = BorderStyle.None };
+
                 string fotoPad = DataManager.KrijgFotoPad(dier.FotoBestandsnaam);
 
+                // Laad foto of toon placeholder
                 if (!string.IsNullOrEmpty(dier.FotoBestandsnaam) && File.Exists(fotoPad)) pcbDier.ImageLocation = fotoPad;
                 else pcbDier.BackColor = Color.LightGray;
 
                 Label lblNaam = new Label { Text = dier.Naam, Size = new Size(130, 40), Location = new Point(0, 110), TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 9, FontStyle.Bold), BackColor = Color.FromArgb(240, 240, 240) };
 
+                // Klik-event om naar het specifieke dierprofiel te gaan
                 EventHandler gaNaarDier = (s, e) =>
                 {
                     if (this.ParentForm is MainForm mainForm)
@@ -81,6 +87,7 @@ namespace PetCareProApp
                 pnlDierCard.Click += gaNaarDier;
                 pcbDier.Click += gaNaarDier;
                 lblNaam.Click += gaNaarDier;
+
                 pnlDierCard.Controls.Add(pcbDier);
                 pnlDierCard.Controls.Add(lblNaam);
                 flpDierenProfielEigenaar.Controls.Add(pnlDierCard);
@@ -91,7 +98,7 @@ namespace PetCareProApp
         {
             if (this.ParentForm is MainForm mainForm)
             {
-                // Aangepast: Terug naar dashboard als dat de bron was
+                // Bepaal de juiste terugkeer-locatie op basis van de herkomst
                 if (_bronScherm == "Dashboard")
                 {
                     mainForm.ToonScherm(new ucDashboard());
@@ -118,6 +125,7 @@ namespace PetCareProApp
 
         private void btnBewerkenProfielEigenaar_Click(object sender, EventArgs e)
         {
+            // Open bewerkscherm voor de huidige eigenaar
             if (this.ParentForm is MainForm mainForm && _huidigeEigenaar != null)
             {
                 mainForm.ToonScherm(new ucEigenaarToevoegen(_huidigeEigenaar, true));
@@ -126,12 +134,14 @@ namespace PetCareProApp
 
         private void btnVerwijderenProfielEigenaar_Click(object sender, EventArgs e)
         {
+            // Verwijder eigenaar na bevestiging en keer terug naar overzicht
             if (_huidigeEigenaar == null) return;
             if (MessageBox.Show($"Weet je zeker dat je {_huidigeEigenaar.Naam} wilt verwijderen?", "Bevestig", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 var lijst = DataManager.LaadEigenaren();
                 lijst.RemoveAll(x => x.Naam == _huidigeEigenaar.Naam && x.Email == _huidigeEigenaar.Email);
                 DataManager.SlaEigenarenOp(lijst);
+
                 if (this.ParentForm is MainForm mainForm)
                 {
                     mainForm.ActiveerMenuKnopInCode("btnEigenaren");
@@ -142,6 +152,7 @@ namespace PetCareProApp
 
         private void btnHuisdierProfielEigenaar_Click(object sender, EventArgs e)
         {
+            // Direct een nieuw huisdier toevoegen gekoppeld aan deze eigenaar
             if (this.ParentForm is MainForm mainForm && _huidigeEigenaar != null)
             {
                 mainForm.ActiveerMenuKnopInCode("btnDieren");

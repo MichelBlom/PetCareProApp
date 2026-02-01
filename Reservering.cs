@@ -10,10 +10,10 @@ namespace PetCareProApp
     {
         public string ReserveringId { get; set; } // Uniek ID voor de boeking
         public string DierChipnummer { get; set; } // Koppeling naar het dier
-        public string DierNaam { get; set; } // Voor snelle weergave in de chart
+        public string DierNaam { get; set; } 
         public DateTime StartDatum { get; set; }
         public DateTime EindDatum { get; set; }
-        public string Verblijf { get; set; } // Welk hok?
-        public string Status { get; set; } // Bijv: "Gepland", "Ingecheckt", "Uitgecheckt"
+        public string Verblijf { get; set; } 
+        public string Status { get; set; } 
     }
 }
